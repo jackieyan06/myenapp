@@ -1,0 +1,503 @@
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import {
+  Sparkles,
+  TrainFront,
+  Calendar,
+  Users,
+  Globe2,
+  Loader2,
+  ArrowLeft,
+  Check,
+} from "lucide-react";
+import {
+  JAPAN_CITIES,
+  MEETUP_CATEGORIES,
+  LANGUAGE_FOCUSES,
+  LANGUAGE_LEVELS,
+  CURATED_COVERS,
+} from "@/lib/constants";
+import { useAuth } from "@/components/AuthProvider";
+
+function getDefaultDateTimeLocal(): string {
+  const d = new Date();
+  d.setDate(d.getDate() + 3);
+  d.setHours(14, 0, 0, 0);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(
+    d.getDate()
+  )}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+export function HostMeetupForm() {
+  const router = useRouter();
+  const { user, openAuthModal } = useAuth();
+
+  const [title, setTitle] = useState("");
+  const [titleJp, setTitleJp] = useState("");
+  const [category, setCategory] = useState<string>(MEETUP_CATEGORIES[0].name);
+  const [city, setCity] = useState<string>(user?.homeCity || "Tokyo");
+  const [neighborhood, setNeighborhood] = useState("");
+  const [station, setStation] = useState("");
+  const [venueName, setVenueName] = useState("");
+  const [meetingPoint, setMeetingPoint] = useState("");
+  const [startsAt, setStartsAt] = useState(getDefaultDateTimeLocal);
+  const [durationMinutes, setDurationMinutes] = useState(120);
+  const [maxAttendees, setMaxAttendees] = useState(8);
+  const [costNote, setCostNote] = useState("Free · Order your own drink (~¥600)");
+  const [languageFocus, setLanguageFocus] = useState<string>(
+    LANGUAGE_FOCUSES[0]
+  );
+  const [languageLevel, setLanguageLevel] = useState<string>(
+    LANGUAGE_LEVELS[0]
+  );
+  const [description, setDescription] = useState("");
+  const [tagsInput, setTagsInput] = useState(
+    "Beginner Friendly, Solo Welcome, Coffee"
+  );
+  const [coverImage, setCoverImage] = useState<string>(CURATED_COVERS[0].url);
+
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user) {
+      openAuthModal("Sign in to publish your meetup");
+      return;
+    }
+
+    setSubmitting(true);
+    setError("");
+    try {
+      const tags = tagsInput
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+
+      const res = await fetch("/api/meetups", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          titleJp,
+          category,
+          city,
+          neighborhood,
+          station,
+          venueName,
+          meetingPoint,
+          startsAt: new Date(startsAt).toISOString(),
+          durationMinutes,
+          maxAttendees,
+          costNote,
+          languageFocus,
+          languageLevel,
+          description,
+          tags,
+          coverImage,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Unable to create meetup.");
+      } else {
+        router.push(`/meetups/${data.meetup.id}`);
+        router.refresh();
+      }
+    } catch {
+      setError("Network error while publishing meetup.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#5A5D66] hover:text-[#1A1D24]"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back to Meetups
+      </Link>
+
+      <div className="mt-4">
+        <div className="inline-flex items-center gap-2 rounded-full bg-[#D94E34]/10 px-3 py-1 text-xs font-semibold text-[#D94E34]">
+          <Sparkles className="h-3.5 w-3.5" />
+          Host a Small-Table Gathering
+        </div>
+        <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-[#1A1D24]">
+          Create a Meetup in Japan
+        </h1>
+        <p className="mt-1.5 text-sm text-[#5A5D66]">
+          Whether it&apos;s a 6-person kissaten coffee morning, an English–Japanese
+          language exchange, or an izakaya evening—share the exact station exit
+          so newcomers find you easily.
+        </p>
+      </div>
+
+      {!user && (
+        <div className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#D94E34]/30 bg-[#D94E34]/8 p-4 sm:flex-row sm:items-center">
+          <div className="text-sm text-[#1A1D24]">
+            <strong>Almost ready!</strong> Sign in (or choose a 1-click Demo
+            Persona) so guests know who is hosting.
+          </div>
+          <button
+            type="button"
+            onClick={() => openAuthModal("Sign in to host a meetup")}
+            className="shrink-0 rounded-xl bg-[#D94E34] px-4 py-2 text-xs font-bold text-white hover:bg-[#C04028]"
+          >
+            Sign In / Try Demo
+          </button>
+        </div>
+      )}
+
+      {error && (
+        <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="mt-7 space-y-6">
+        {/* Section 1: Core Info */}
+        <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-5">
+          <h2 className="font-display text-lg font-bold text-[#1A1D24]">
+            1. What are we doing?
+          </h2>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="sm:col-span-2">
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Meetup Title *
+              </label>
+              <input
+                type="text"
+                required
+                minLength={5}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="e.g., Nakameguro Riverside Coffee & Bilingual Chat"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+
+            <div className="sm:col-span-2">
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Japanese Subtitle (optional)
+              </label>
+              <input
+                type="text"
+                value={titleJp}
+                onChange={(e) => setTitleJp(e.target.value)}
+                placeholder="e.g., 中目黒カフェ・日英交流会"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 font-jp text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Category *
+              </label>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              >
+                {MEETUP_CATEGORIES.map((c) => (
+                  <option key={c.name} value={c.name}>
+                    {c.name} ({c.jp})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Tags (comma separated)
+              </label>
+              <input
+                type="text"
+                value={tagsInput}
+                onChange={(e) => setTagsInput(e.target.value)}
+                placeholder="Beginner Friendly, Matcha, Walk"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+              Description &amp; Vibe *
+            </label>
+            <textarea
+              rows={4}
+              required
+              minLength={20}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Share what the meetup feels like, whether beginners are welcome, and how you organize conversation..."
+              className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-3 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+            />
+          </div>
+        </div>
+
+        {/* Section 2: Location & Train Station */}
+        <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-5">
+          <div className="flex items-center gap-2">
+            <TrainFront className="h-5 w-5 text-[#2B4C7E]" />
+            <h2 className="font-display text-lg font-bold text-[#1A1D24]">
+              2. Where in Japan &amp; Which Train Exit?
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                City *
+              </label>
+              <select
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              >
+                {JAPAN_CITIES.map((c) => (
+                  <option key={c.name} value={c.name}>
+                    {c.name} ({c.jp})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Neighborhood / Area *
+              </label>
+              <input
+                type="text"
+                required
+                value={neighborhood}
+                onChange={(e) => setNeighborhood(e.target.value)}
+                placeholder="e.g., Nakameguro, Gion, Umeda"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Nearest Train Station + Exit *
+              </label>
+              <input
+                type="text"
+                required
+                value={station}
+                onChange={(e) => setStation(e.target.value)}
+                placeholder="e.g., Nakameguro Station (Main Exit, 3 min walk)"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Café, Venue or Park Name *
+              </label>
+              <input
+                type="text"
+                required
+                value={venueName}
+                onChange={(e) => setVenueName(e.target.value)}
+                placeholder="e.g., Streamer Coffee Company"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+
+            <div className="sm:col-span-2">
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                How to Spot the Group (optional)
+              </label>
+              <input
+                type="text"
+                value={meetingPoint}
+                onChange={(e) => setMeetingPoint(e.target.value)}
+                placeholder="e.g., I'll sit at the long wooden table near the window with a small blue notebook"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Section 3: Time, Capacity & Languages */}
+        <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-5">
+          <div className="flex items-center gap-2">
+            <Calendar className="h-5 w-5 text-[#D94E34]" />
+            <h2 className="font-display text-lg font-bold text-[#1A1D24]">
+              3. Schedule, Languages &amp; Group Size
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div className="sm:col-span-1">
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Date &amp; Start Time (JST) *
+              </label>
+              <input
+                type="datetime-local"
+                required
+                value={startsAt}
+                onChange={(e) => setStartsAt(e.target.value)}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Duration (minutes)
+              </label>
+              <select
+                value={durationMinutes}
+                onChange={(e) => setDurationMinutes(Number(e.target.value))}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              >
+                <option value={60}>60 min (1 hour)</option>
+                <option value={90}>90 min (1.5 hours)</option>
+                <option value={120}>120 min (2 hours)</option>
+                <option value={150}>150 min (2.5 hours)</option>
+                <option value={180}>180 min (3 hours)</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                <span className="inline-flex items-center gap-1">
+                  <Users className="h-3.5 w-3.5" />
+                  Max Table Size (incl. you)
+                </span>
+              </label>
+              <input
+                type="number"
+                min={2}
+                max={30}
+                value={maxAttendees}
+                onChange={(e) => setMaxAttendees(Number(e.target.value))}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                <span className="inline-flex items-center gap-1">
+                  <Globe2 className="h-3.5 w-3.5" />
+                  Language Focus
+                </span>
+              </label>
+              <select
+                value={languageFocus}
+                onChange={(e) => setLanguageFocus(e.target.value)}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              >
+                {LANGUAGE_FOCUSES.map((lf) => (
+                  <option key={lf} value={lf}>
+                    {lf}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Language Comfort Level
+              </label>
+              <select
+                value={languageLevel}
+                onChange={(e) => setLanguageLevel(e.target.value)}
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              >
+                {LANGUAGE_LEVELS.map((ll) => (
+                  <option key={ll} value={ll}>
+                    {ll}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
+                Cost / Warikan Note
+              </label>
+              <input
+                type="text"
+                value={costNote}
+                onChange={(e) => setCostNote(e.target.value)}
+                placeholder="Free · Order your own drink"
+                className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Section 4: Cover Photo Selection */}
+        <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-4">
+          <h2 className="font-display text-lg font-bold text-[#1A1D24]">
+            4. Choose a Cover Atmosphere
+          </h2>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {CURATED_COVERS.map((cov) => {
+              const selected = coverImage === cov.url;
+              return (
+                <button
+                  key={cov.url}
+                  type="button"
+                  onClick={() => setCoverImage(cov.url)}
+                  className={`group relative overflow-hidden rounded-2xl border-2 text-left transition ${
+                    selected
+                      ? "border-[#D94E34] ring-2 ring-[#D94E34]/20"
+                      : "border-[#E6E0D6] hover:border-[#1A1D24]"
+                  }`}
+                >
+                  <div className="aspect-[16/10] w-full overflow-hidden">
+                    <img
+                      src={cov.url}
+                      alt={cov.label}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="bg-white px-2.5 py-2 text-xs font-semibold text-[#1A1D24]">
+                    {cov.label}
+                  </div>
+                  {selected && (
+                    <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#D94E34] text-white shadow">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-end gap-3">
+          <Link
+            href="/"
+            className="rounded-2xl border border-[#E6E0D6] bg-white px-5 py-3 text-sm font-semibold text-[#5A5D66] hover:text-[#1A1D24]"
+          >
+            Cancel
+          </Link>
+          <button
+            type="submit"
+            disabled={submitting}
+            className="inline-flex items-center gap-2 rounded-2xl bg-[#D94E34] px-7 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#C04028] disabled:opacity-60"
+          >
+            {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
+            Publish Meetup
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
