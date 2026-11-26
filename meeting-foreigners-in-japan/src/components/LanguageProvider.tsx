@@ -16,7 +16,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     heroDescription: "Small-table coffee mornings, Japanese–English language exchanges, neighborhood walks, and welcoming evenings—with exact train station exits and zero awkwardness.",
     searchPlaceholder: "Search neighborhood, station, coffee, or language...",
     allCities: "All Cities", all: "All", monthly: "Monthly", annual: "Annual",
-    freeTrial: "7-day free trial", selectLanguage: "Language",,
+    freeTrial: "7-day free trial", selectLanguage: "Language",
     pricingIntro: "Find your people, discover local experiences, and make every encounter count.",
     pricingTitle: "More meaningful connections.",
     pricingSubtitle: "More of Japan, together.",
@@ -46,7 +46,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     heroDescription: "少人数のカフェ交流会、日本語・英語の言語交換、街歩きなど。初めてでも安心して参加できます。",
     searchPlaceholder: "エリア、駅、カフェ、言語で検索...",
     allCities: "すべての都市", all: "すべて", monthly: "月額", annual: "年額",
-    freeTrial: "7日間無料トライアル", selectLanguage: "言語",,
+    freeTrial: "7日間無料トライアル", selectLanguage: "言語",
     pricingIntro: "仲間と出会い、地域の体験を見つけ、一つひとつの出会いを大切に。",
     pricingTitle: "もっと豊かなつながりを。",
     pricingSubtitle: "日本を一緒に楽しもう。",
@@ -77,6 +77,17 @@ const messages: Record<AppLocale, Record<string, string>> = {
     searchPlaceholder: "搜索街区、车站、咖啡或语言...",
     allCities: "所有城市", all: "全部", monthly: "月付", annual: "年付",
     freeTrial: "7天免费试用", selectLanguage: "语言",
+    pricingIntro: "结识朋友、探索当地体验，让每一次相遇都更有意义。",
+    pricingTitle: "建立更有意义的联系。", pricingSubtitle: "一起探索更多日本。",
+    stayFlexible: "灵活订阅", makeYear: "开启全年体验",
+    benefits1: "发现并参加社区聚会", benefits2: "结识在日国际居民与日本当地人",
+    benefits3: "创建个人文化档案并分享兴趣", benefits4: "获取聚会和社区活动的最新消息",
+    selected: "当前选择", chooseMonthly: "选择月付", chooseAnnual: "选择年付",
+    bestValue: "超值推荐", billingMonthly: "灵活订阅，随时取消",
+    saveAnnual: "相比按月付款节省1,960日元",
+    checkoutPreview: "结账预览 — 支付尚未连接",
+    noPayments: "不会收集付款信息，也不会产生扣款。连接 Stripe 后才会启用安全支付。"
+
   },
   "zh-TW": {
     discover: "探索活動", people: "社群成員", guide: "日本指南", membership: "會員方案",
@@ -90,6 +101,17 @@ const messages: Record<AppLocale, Record<string, string>> = {
     searchPlaceholder: "搜尋街區、車站、咖啡或語言...",
     allCities: "所有城市", all: "全部", monthly: "月付", annual: "年付",
     freeTrial: "7天免費試用", selectLanguage: "語言",
+    pricingIntro: "認識朋友、探索在地體驗，讓每一次相遇都更有意義。",
+    pricingTitle: "建立更有意義的連結。", pricingSubtitle: "一起探索更多日本。",
+    stayFlexible: "彈性訂閱", makeYear: "開啟全年體驗",
+    benefits1: "探索並參加社群聚會", benefits2: "認識在日國際居民與日本當地人",
+    benefits3: "建立個人文化檔案並分享興趣", benefits4: "接收聚會與社群活動最新消息",
+    selected: "目前選擇", chooseMonthly: "選擇月付", chooseAnnual: "選擇年付",
+    bestValue: "超值推薦", billingMonthly: "彈性訂閱，隨時取消",
+    saveAnnual: "相比按月付款節省1,960日圓",
+    checkoutPreview: "結帳預覽 — 尚未連接付款",
+    noPayments: "不會收集付款資訊，也不會產生扣款。連接 Stripe 後才會啟用安全付款。"
+
   },
 };
 
