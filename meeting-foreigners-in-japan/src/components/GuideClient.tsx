@@ -32,9 +32,7 @@ export function GuideClient() {
           {t("Meeting in Japan: Etiquette & Essential Phrases")}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5A5D66] sm:text-base">
-          Practical tips for navigating Japanese train station exits, splitting
-          izakaya bills smoothly, and breaking the ice with helpful Japanese
-          phrases.
+          {t("Practical tips for navigating Japanese train station exits, splitting izakaya bills smoothly, and breaking the ice with helpful Japanese phrases.")}
         </p>
       </div>
 
@@ -47,8 +45,7 @@ export function GuideClient() {
           </h2>
         </div>
         <p className="mt-1 text-sm text-[#5A5D66]">
-          Tap copy to paste into a meetup discussion thread or practice before
-          you arrive.
+          {t("Tap copy to paste into a meetup discussion thread or practice before you arrive.")}
         </p>
 
         <div className="mt-4 space-y-3.5">
@@ -124,8 +121,7 @@ export function GuideClient() {
             {t("Ready to put it into practice?")}
           </h3>
           <p className="mt-1 text-sm text-white/75">
-            Join an upcoming coffee table, city walk, or izakaya night near
-            you.
+            {t("Join an upcoming coffee table, city walk, or izakaya night near you.")}
           </p>
         </div>
         <Link
