@@ -34,7 +34,7 @@ import {
   formatShortTimestamp,
 } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
 
 export function MeetupDetailClient({
   initialMeetup,
