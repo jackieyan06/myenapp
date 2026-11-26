@@ -119,9 +119,7 @@ export function HomeDiscoveryClient({
               </h1>
 
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#5A5D66]">
-                Small-table coffee mornings, 50/50 Japanese–English language
-                exchanges, neighborhood walks, and welcoming izakaya nights—with
-                exact train station exits and zero awkwardness.
+                {t("Small-table coffee mornings, 50/50 Japanese–English language exchanges, neighborhood walks, and welcoming izakaya nights—with exact train station exits and zero awkwardness.")}
               </p>
 
               {/* Search Input */}
@@ -210,7 +208,7 @@ export function HomeDiscoveryClient({
                     className="inline-flex items-center gap-1.5 font-semibold text-[#2B4C7E] hover:underline"
                   >
                     <Users className="h-3.5 w-3.5" />
-                    Browse {totalMembers} members
+                    {t("Browse members")} ({totalMembers})
                   </Link>
                   <Link
                     href="/guide"
@@ -369,8 +367,7 @@ export function HomeDiscoveryClient({
               {t("No meetups match those filters yet")}
             </h3>
             <p className="mx-auto mt-2 max-w-md text-sm text-[#5A5D66]">
-              Try clearing your filters or start a small coffee table or evening
-              walk in {city === "All" ? "your city in Japan" : city}!
+              {t("Try clearing your filters or start a small coffee table or evening walk in your city in Japan!") }
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <button
