@@ -230,7 +230,7 @@ export function MyHubClient({
               {user.nationalityFlag} {user.name}
             </h1>
             <p className="text-sm text-[#5A5D66]">
-              {user.roleLabel} · {user.homeCity}
+              {t(roleTranslationKey(user.roleLabel))} · {user.homeCity}
               {user.neighborhood ? ` (${user.neighborhood})` : ""}
             </p>
           </div>
