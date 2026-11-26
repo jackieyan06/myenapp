@@ -17,7 +17,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export function Navbar() {
@@ -125,7 +125,7 @@ export function Navbar() {
                         {user.nationalityFlag} {user.name}
                       </div>
                       <div className="text-xs text-[#5A5D66]">
-                        {user.roleLabel} · {user.homeCity}
+                        {t(roleTranslationKey(user.roleLabel))} · {user.homeCity}
                       </div>
                     </div>
                     <Link
