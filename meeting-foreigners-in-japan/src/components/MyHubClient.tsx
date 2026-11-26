@@ -18,6 +18,7 @@ import {
 import type { MeetupSummary } from "@/lib/queries";
 import { MeetupCard } from "@/components/MeetupCard";
 import { useAuth } from "@/components/AuthProvider";
+import { useLocale } from "@/components/LocaleProvider";
 import {
   JAPAN_CITIES,
   NATIONALITIES,
@@ -57,6 +58,7 @@ export function MyHubClient({
 }) {
   const router = useRouter();
   const { user, setUser, openAuthModal } = useAuth();
+  const { t } = useLocale();
   const [tab, setTab] = useState(initialTab);
   const [statusOverrides, setStatusOverrides] = useState<
     Record<number, string>
@@ -540,7 +542,7 @@ export function MyHubClient({
                 type="text"
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="e.g., Shimokitazawa, Gion, Tenjin"
+                placeholder={t("e.g., Shimokitazawa, Gion, Tenjin")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -553,7 +555,7 @@ export function MyHubClient({
                 type="text"
                 value={languagesText}
                 onChange={(e) => setLanguagesText(e.target.value)}
-                placeholder="English:Native, Japanese:Conversational (N3)"
+                placeholder={t("English:Native, Japanese:Conversational (N3)")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -566,7 +568,7 @@ export function MyHubClient({
                 type="text"
                 value={interestsText}
                 onChange={(e) => setInterestsText(e.target.value)}
-                placeholder="Specialty Coffee, Hiking, Ramen, Film"
+                placeholder={t("Specialty Coffee, Hiking, Ramen, Film")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
