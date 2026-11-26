@@ -127,7 +127,7 @@ export function CommunityDirectoryClient({
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="{t("communitySearch")}"
+              placeholder={t("communitySearch")}
               className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[#D94E34]"
             />
           </div>
