@@ -10,8 +10,8 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-[#E6E0D6] bg-[#F2EDE4]/60">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="md:col-span-2">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#D94E34] text-white">
                 <span className="font-jp text-sm font-bold">縁</span>
@@ -48,7 +48,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
-              Community
+              {t("community")}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
               <li>
@@ -77,6 +77,25 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">{t("footerAbout")}</h3>
+            <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
+              <li><Link href="/about" className="transition hover:text-[#D94E34]">{t("footerAbout")}</Link></li>
+              <li><Link href="/advertising" className="transition hover:text-[#D94E34]">{t("footerAdvertising")}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">{t("footerLegal")}</h3>
+            <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
+              <li><Link href="/terms" className="transition hover:text-[#D94E34]">{t("footerTerms")}</Link></li>
+              <li><Link href="/privacy" className="transition hover:text-[#D94E34]">{t("footerPrivacy")}</Link></li>
+              <li><Link href="/commercial-disclosure" className="transition hover:text-[#D94E34]">{t("footerCommercial")}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">{t("footerConnect")}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#5A5D66]">{t("footerSocialComingSoon")}</p>
           </div>
         </div>
 
