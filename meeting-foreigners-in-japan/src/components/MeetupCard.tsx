@@ -16,6 +16,7 @@ import type { MeetupSummary } from "@/lib/queries";
 import { getCategoryStyle, getCityJp } from "@/lib/constants";
 import { formatMeetupDate, formatMeetupTime } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function MeetupCard({
   meetup,
@@ -27,6 +28,7 @@ export function MeetupCard({
   onSaveToggle?: (meetupId: number, saved: boolean) => void;
 }) {
   const { user, openAuthModal } = useAuth();
+  const { t } = useLanguage();
   const [localSaved, setLocalSaved] = useState<{
     propVal: boolean;
     val: boolean;
@@ -137,8 +139,8 @@ export function MeetupCard({
               }`}
             >
               {isFull
-                ? `Waitlist (${meetup.waitlistCount})`
-                : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} left`}
+                ? `${t("waitlistCount")} (${meetup.waitlistCount})`
+                : `${spotsLeft} ${t(spotsLeft === 1 ? "spot" : "spots")} ${t("spotsLeft")}`}
             </span>
             <div className="mt-1 text-[11px] text-[#5A5D66]">
               {meetup.goingCount} / {meetup.maxAttendees} joined
@@ -148,7 +150,7 @@ export function MeetupCard({
           <button
             type="button"
             onClick={handleToggleSave}
-            aria-label={saved ? "Remove bookmark" : "Save meetup"}
+            aria-label={saved ? t("removeBookmark") : t("saveMeetup")}
             className={`rounded-full border p-2 transition ${
               saved
                 ? "border-[#D94E34] bg-[#D94E34]/10 text-[#D94E34]"
@@ -189,7 +191,7 @@ export function MeetupCard({
           <button
             type="button"
             onClick={handleToggleSave}
-            aria-label={saved ? "Remove bookmark" : "Bookmark meetup"}
+            aria-label={saved ? t("removeBookmark") : t("saveMeetup")}
             className={`rounded-full p-2 backdrop-blur-sm transition ${
               saved
                 ? "bg-[#D94E34] text-white shadow-sm"
@@ -306,7 +308,7 @@ export function MeetupCard({
                     : "bg-[#3E6B48]/10 text-[#3E6B48]"
                 }`}
               >
-                {isFull ? "Full" : `${spotsLeft} left`}
+                {isFull ? "Full" : `${spotsLeft} ${t("spotsLeft")}`}
               </span>
               {meetup.commentCount > 0 && (
                 <span className="inline-flex items-center gap-0.5 text-[11px] text-[#5A5D66]">
