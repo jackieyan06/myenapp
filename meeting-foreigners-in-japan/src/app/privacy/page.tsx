@@ -1,7 +1,7 @@
 import { InfoLayout } from "@/components/InfoLayout";
 
 export default function PrivacyPage() {
-  return <InfoLayout title="Privacy Policy" intro="This policy explains how EnJapan handles personal information when you use the platform.">
+  return <InfoLayout pageKey="privacy" locale="en" title="Privacy Policy" intro="This policy explains how EnJapan handles personal information when you use the platform.">
     <p><strong>Last updated: 26 November 2026</strong></p>
     <p>EnJapan (縁), operated by an individual business operator in Japan (“we”), takes privacy seriously and handles personal information in accordance with applicable Japanese laws, including the Act on the Protection of Personal Information (APPI).</p>
     <h2>1. Information we may collect</h2><p>Depending on the features you use, we may process account details such as name, email address and authentication data; profile information you choose to provide; meetup listings, RSVPs, messages, comments and other content; and technical information such as device/browser data, log records and security events. Please do not include sensitive personal information in public profile fields or meetup posts.</p>
