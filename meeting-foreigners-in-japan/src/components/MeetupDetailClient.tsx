@@ -98,7 +98,7 @@ export function MeetupDetailClient({
   const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to join this meetup");
+      openAuthModal(t("signInToJoin"));
       return;
     }
     setRsvpLoading(true);
@@ -150,7 +150,7 @@ export function MeetupDetailClient({
 
   const handleToggleSave = async () => {
     if (!user) {
-      openAuthModal("Sign in to save meetups");
+      openAuthModal(t("signInToSave"));
       return;
     }
     const res = await fetch(`/api/meetups/${meetup.id}/save`, {
@@ -175,7 +175,7 @@ export function MeetupDetailClient({
   const handlePostComment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to ask a question or say hello");
+      openAuthModal(t("signInToDiscuss"));
       return;
     }
     if (!commentText.trim()) return;
@@ -237,7 +237,7 @@ export function MeetupDetailClient({
   const handleSendWave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to message the host");
+      openAuthModal(t("signInToMessageHost"));
       return;
     }
     setWaveLoading(true);
@@ -852,15 +852,14 @@ export function MeetupDetailClient({
 
               <div className="mt-4 flex items-center justify-between border-t border-[#E6E0D6] pt-3.5 text-xs">
                 <span className="font-semibold text-[#5A5D66]">
-                  {meetup.host.hostedCount} meetup
-                  {meetup.host.hostedCount === 1 ? "" : "s"} hosted
+                  {meetup.host.hostedCount} {t(meetup.host.hostedCount === 1 ? "meetupHostedSingular" : "meetupHostedPlural")}
                 </span>
                 {!isHost && (
                   <button
                     type="button"
                     onClick={() => {
                       if (!user) {
-                        openAuthModal("Sign in to wave to the host");
+                        openAuthModal(t("signInToWave"));
                         return;
                       }
                       setWaveOpen(true);
