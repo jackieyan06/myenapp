@@ -16,6 +16,7 @@ import type { MeetupSummary } from "@/lib/queries";
 import { getCategoryStyle, getCityJp } from "@/lib/constants";
 import { formatMeetupDate, formatMeetupTime } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
+import { useLocale } from "@/components/LocaleProvider";
 
 export function MeetupCard({
   meetup,
@@ -27,6 +28,7 @@ export function MeetupCard({
   onSaveToggle?: (meetupId: number, saved: boolean) => void;
 }) {
   const { user, openAuthModal } = useAuth();
+  const { t } = useLocale();
   const [localSaved, setLocalSaved] = useState<{
     propVal: boolean;
     val: boolean;
@@ -46,7 +48,7 @@ export function MeetupCard({
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
-      openAuthModal("Sign in to bookmark meetups");
+      openAuthModal(t("Sign in to bookmark meetups"));
       return;
     }
     if (saving) return;
@@ -148,7 +150,7 @@ export function MeetupCard({
           <button
             type="button"
             onClick={handleToggleSave}
-            aria-label={saved ? "Remove bookmark" : "Save meetup"}
+            aria-label={saved ? t("Remove bookmark") : t("Save meetup")}
             className={`rounded-full border p-2 transition ${
               saved
                 ? "border-[#D94E34] bg-[#D94E34]/10 text-[#D94E34]"
@@ -189,7 +191,7 @@ export function MeetupCard({
           <button
             type="button"
             onClick={handleToggleSave}
-            aria-label={saved ? "Remove bookmark" : "Bookmark meetup"}
+            aria-label={saved ? t("Remove bookmark") : t("Bookmark meetup")}
             className={`rounded-full p-2 backdrop-blur-sm transition ${
               saved
                 ? "bg-[#D94E34] text-white shadow-sm"
@@ -306,7 +308,7 @@ export function MeetupCard({
                     : "bg-[#3E6B48]/10 text-[#3E6B48]"
                 }`}
               >
-                {isFull ? "Full" : `${spotsLeft} left`}
+                {isFull ? t("Full") : `${spotsLeft} ${t("spot left")}`}
               </span>
               {meetup.commentCount > 0 && (
                 <span className="inline-flex items-center gap-0.5 text-[11px] text-[#5A5D66]">
