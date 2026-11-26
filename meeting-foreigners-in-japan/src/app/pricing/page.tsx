@@ -22,7 +22,7 @@ export default function PricingPage() {
       <section className="relative overflow-hidden border-b border-[#E6E0D6] bg-[#F2EDE4]">
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#D94E34]/20 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#D94E34]">
-            <Sparkles className="h-4 w-4" /> En Membership
+            <Sparkles className="h-4 w-4" /> {t("membershipBrand")}
           </div>
           <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-tight tracking-tight text-[#1A1D24] sm:text-5xl">
             {t("pricingTitle")}
