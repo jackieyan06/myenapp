@@ -198,7 +198,7 @@ export function HomeDiscoveryClient({
                       東京・京都・大阪・福岡・札幌・横浜
                     </div>
                     <div className="mt-0.5 text-sm font-bold">
-                      Real conversations over matcha, coffee &amp; yakitori
+                      {t("realConversations")}
                     </div>
                   </div>
                 </div>
@@ -208,14 +208,14 @@ export function HomeDiscoveryClient({
                     className="inline-flex items-center gap-1.5 font-semibold text-[#2B4C7E] hover:underline"
                   >
                     <Users className="h-3.5 w-3.5" />
-                    Browse {totalMembers} members
+                    {t("browse")} {totalMembers} {t("members")}
                   </Link>
                   <Link
                     href="/guide"
                     className="inline-flex items-center gap-1.5 font-semibold text-[#D94E34] hover:underline"
                   >
                     <BookOpen className="h-3.5 w-3.5" />
-                    Japanese meetup phrases →
+                    {t("meetupPhrases")} →
                   </Link>
                 </div>
               </div>
@@ -231,10 +231,9 @@ export function HomeDiscoveryClient({
           <div className="mb-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#2B4C7E]/20 bg-[#2B4C7E]/5 px-4 py-3.5 sm:flex-row sm:items-center">
             <div className="text-sm text-[#1A1D24]">
               <span className="font-semibold text-[#2B4C7E]">
-                Visiting or new in Japan?
+                {t("visitingJapan")}
               </span>{" "}
-              Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or
-              Kyoto Traveler) to RSVP, post questions, or host your own meetup.
+              {t("demoWelcome")}
             </div>
             <button
               type="button"
@@ -259,7 +258,7 @@ export function HomeDiscoveryClient({
                   : "border border-[#E6E0D6] bg-white text-[#5A5D66] hover:text-[#1A1D24]"
               }`}
             >
-              All Categories
+              {t("allCategories")}
             </button>
             {MEETUP_CATEGORIES.map((cat) => (
               <button
@@ -287,10 +286,10 @@ export function HomeDiscoveryClient({
                 <select
                   value={languageFocus}
                   onChange={(e) => setLanguageFocus(e.target.value)}
-                  aria-label="Filter by language focus"
+                  aria-label={t("filterLanguage")}
                   className="bg-transparent text-xs font-semibold text-[#1A1D24] outline-none"
                 >
-                  <option value="All">All Languages</option>
+                  <option value="All">{t("allLanguages")}</option>
                   {LANGUAGE_FOCUSES.map((lf) => (
                     <option key={lf} value={lf}>
                       {lf}
@@ -306,7 +305,7 @@ export function HomeDiscoveryClient({
                   onChange={(e) => setOpenOnly(e.target.checked)}
                   className="accent-[#D94E34]"
                 />
-                Open spots only
+                {t("openSpots")}
               </label>
 
               {hasActiveFilters && (
@@ -316,22 +315,21 @@ export function HomeDiscoveryClient({
                   className="inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-semibold text-[#D94E34] hover:bg-[#D94E34]/10"
                 >
                   <RotateCcw className="h-3.5 w-3.5" />
-                  Reset filters
+                  {t("resetFilters")}
                 </button>
               )}
             </div>
 
             <div className="flex items-center gap-3">
               <span className="text-xs font-medium text-[#5A5D66]">
-                Showing <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
-                {filtered.length === 1 ? "meetup" : "meetups"}
+                {t("showingMeetups")} <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}{t(filtered.length === 1 ? "meetup" : "meetups")}
               </span>
 
               <div className="inline-flex rounded-xl border border-[#E6E0D6] bg-white p-0.5">
                 <button
                   type="button"
                   onClick={() => setView("grid")}
-                  aria-label="Grid view"
+                  aria-label={t("gridView")}
                   className={`rounded-lg p-1.5 transition ${
                     view === "grid"
                       ? "bg-[#1A1D24] text-white"
@@ -343,7 +341,7 @@ export function HomeDiscoveryClient({
                 <button
                   type="button"
                   onClick={() => setView("list")}
-                  aria-label="Schedule list view"
+                  aria-label={t("listView")}
                   className={`rounded-lg p-1.5 transition ${
                     view === "list"
                       ? "bg-[#1A1D24] text-white"
@@ -364,11 +362,10 @@ export function HomeDiscoveryClient({
               🍵
             </div>
             <h3 className="mt-4 font-display text-xl font-bold text-[#1A1D24]">
-              No meetups match those filters yet
+              {t("noMeetups")}
             </h3>
             <p className="mx-auto mt-2 max-w-md text-sm text-[#5A5D66]">
-              Try clearing your filters or start a small coffee table or evening
-              walk in {city === "All" ? "your city in Japan" : city}!
+              {t("tryClearFilters")}
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <button
@@ -376,14 +373,14 @@ export function HomeDiscoveryClient({
                 onClick={resetFilters}
                 className="rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2 text-sm font-semibold text-[#1A1D24] hover:border-[#1A1D24]"
               >
-                Show All Meetups
+                {t("showAllMeetups")}
               </button>
               <Link
                 href="/host"
                 className="inline-flex items-center gap-1.5 rounded-xl bg-[#D94E34] px-4 py-2 text-sm font-semibold text-white hover:bg-[#C04028]"
               >
                 <Plus className="h-4 w-4" />
-                Host a Meetup
+                {t("host")}
               </Link>
             </div>
           </div>
