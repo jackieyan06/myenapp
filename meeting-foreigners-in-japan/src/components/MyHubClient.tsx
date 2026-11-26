@@ -527,7 +527,7 @@ export function MyHubClient({
                 >
                   {JAPAN_CITIES.map((c) => (
                     <option key={c.name} value={c.name}>
-                      {c.name} ({c.jp})
+                      {t(c.name)} ({c.jp})
                     </option>
                   ))}
                 </select>
