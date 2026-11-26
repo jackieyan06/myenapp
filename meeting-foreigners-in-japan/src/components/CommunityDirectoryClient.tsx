@@ -92,13 +92,13 @@ export function CommunityDirectoryClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setInviteError(data.error || "Unable to send invite.");
+        setInviteError(data.error || t("inviteFailed"));
       } else {
         setSentIds((prev) => [...prev, selectedMember.id]);
         setSelectedMember(null);
       }
     } catch {
-      setInviteError("Network error while sending invite.");
+      setInviteError(t("networkInviteError"));
     } finally {
       setSending(false);
     }
