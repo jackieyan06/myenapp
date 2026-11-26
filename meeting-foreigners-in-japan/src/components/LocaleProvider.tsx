@@ -82,6 +82,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Ready to put it into practice?": "実際に使ってみませんか？",
     "Join an upcoming coffee table, city walk, or izakaya night near you.": "近くで開催されるコーヒー交流会、街歩き、居酒屋の集まりに参加しましょう。",
     "Browse Japan Meetups": "日本の交流会を探す",
+    "Practical tips for navigating Japanese train station exits, splitting izakaya bills smoothly, and breaking the ice with helpful Japanese phrases.": "日本の駅の出口の確認方法、居酒屋での割り勘、会話のきっかけになる便利な日本語フレーズをご紹介します。",
+    "Warm, small-group gatherings connecting foreigners, expats, travelers, and Japanese locals across Japan—at neighborhood kissaten cafés, izakayas, and riverside walks.": "日本各地の喫茶店、居酒屋、川沿いの散歩などを通じて、外国人、在住者、旅行者、日本の地元の人々をつなぐ少人数の交流会です。",
+    "一期一会 · Ichigo Ichie — Treasure every encounter.": "一期一会 — すべての出会いを大切に。",
     "Language": "言語", "English": "英語", "Japanese": "日本語", "Simplified Chinese": "簡体字中国語", "Traditional Chinese": "繁体字中国語",
   },
   "zh-cn": {
@@ -152,6 +155,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Ready to put it into practice?": "准备好实践了吗？",
     "Join an upcoming coffee table, city walk, or izakaya night near you.": "参加附近即将举行的咖啡聚会、城市漫步或居酒屋之夜。",
     "Browse Japan Meetups": "浏览日本聚会",
+    "Practical tips for navigating Japanese train station exits, splitting izakaya bills smoothly, and breaking the ice with helpful Japanese phrases.": "为您介绍日本车站出口指引、居酒屋分账技巧，以及开启对话的实用日语表达。",
+    "Warm, small-group gatherings connecting foreigners, expats, travelers, and Japanese locals across Japan—at neighborhood kissaten cafés, izakayas, and riverside walks.": "通过日本各地的咖啡馆、居酒屋和河畔漫步等活动，连接外国居民、旅客与日本当地人的温馨小型聚会。",
+    "一期一会 · Ichigo Ichie — Treasure every encounter.": "一期一会——珍惜每一次相遇。",
     "Language": "语言", "English": "英语", "Japanese": "日语", "Simplified Chinese": "简体中文", "Traditional Chinese": "繁体中文",
   },
   "zh-tw": {
@@ -222,6 +228,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Ready to put it into practice?": "準備好實際運用了嗎？",
     "Join an upcoming coffee table, city walk, or izakaya night near you.": "參加附近即將舉行的咖啡聚會、城市散步或居酒屋之夜。",
     "Browse Japan Meetups": "瀏覽日本聚會",
+    "Practical tips for navigating Japanese train station exits, splitting izakaya bills smoothly, and breaking the ice with helpful Japanese phrases.": "為您介紹日本車站出口指引、居酒屋分帳技巧，以及開啟對話的實用日語表達。",
+    "Warm, small-group gatherings connecting foreigners, expats, travelers, and Japanese locals across Japan—at neighborhood kissaten cafés, izakayas, and riverside walks.": "透過日本各地的咖啡館、居酒屋和河畔散步等活動，連結外籍居民、旅客與日本在地居民的溫馨小型聚會。",
+    "一期一会 · Ichigo Ichie — Treasure every encounter.": "一期一會——珍惜每一次相遇。",
     "Language": "語言", "English": "英文", "Japanese": "日文", "Simplified Chinese": "簡體中文", "Traditional Chinese": "繁體中文",
   },
 };
