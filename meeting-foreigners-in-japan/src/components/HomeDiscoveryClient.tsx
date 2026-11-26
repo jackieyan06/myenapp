@@ -293,7 +293,7 @@ export function HomeDiscoveryClient({
                   <option value="All">{t("All Languages")}</option>
                   {LANGUAGE_FOCUSES.map((lf) => (
                     <option key={lf} value={lf}>
-                      {lf}
+                      {t(lf)}
                     </option>
                   ))}
                 </select>
