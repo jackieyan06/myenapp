@@ -370,7 +370,23 @@ const messages: Record<AppLocale, Record<string, string>> = {
     incorrectCredentials: "Incorrect credentials.",
     createAccountFailed: "Could not create account.",
     networkCreateAccountError: "Network error while creating account.",
-  },
+  
+    signInOrDemo: "Sign in or try a demo account",
+    inviteMember: "Invite",
+    personalMessage: "Personal message",
+    signInToPublish: "Sign in to publish a meetup",
+    signInToHostMeetup: "Sign in to host a meetup",
+    minutesShort: "min",
+    oneHour: "1 hour",
+    hoursShort: "hours",
+    signInToBookmark: "Sign in to bookmark meetups",
+    signInToJoin: "Sign in to join this meetup",
+    signInToSave: "Sign in to save meetups",
+    signInToDiscuss: "Sign in to ask a question or say hello",
+    signInToMessageHost: "Sign in to message the host",
+    signInToWave: "Sign in to say hello to the host",
+    signInToOpenHub: "Sign in to open My Meetups",
+},
   "ja": {
     discover: "イベントを探す",
     people: "コミュニティ",
@@ -756,7 +772,8 @@ const messages: Record<AppLocale, Record<string, string>> = {
     incorrectCredentials: "メールアドレスまたはパスワードが正しくありません。",
     createAccountFailed: "アカウントを作成できませんでした。",
     networkCreateAccountError: "アカウント作成中にネットワークエラーが発生しました。",
-  },
+  
+},
   "zh-CN": {
     discover: "发现活动",
     people: "社区成员",
@@ -1142,7 +1159,8 @@ const messages: Record<AppLocale, Record<string, string>> = {
     incorrectCredentials: "邮箱或密码不正确。",
     createAccountFailed: "无法创建账户。",
     networkCreateAccountError: "创建账户时发生网络错误。",
-  },
+  
+},
   "zh-TW": {
     discover: "探索活動",
     people: "社群成員",
@@ -1528,7 +1546,8 @@ const messages: Record<AppLocale, Record<string, string>> = {
     incorrectCredentials: "電子郵件或密碼不正確。",
     createAccountFailed: "無法建立帳戶。",
     networkCreateAccountError: "建立帳戶時發生網路錯誤。",
-  }
+  
+}
 };
 
 type LanguageContextValue = { locale: AppLocale; setLocale: (locale: AppLocale) => void; t: (key: string) => string };
