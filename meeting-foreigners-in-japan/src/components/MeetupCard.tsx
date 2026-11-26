@@ -308,7 +308,7 @@ export function MeetupCard({
                     : "bg-[#3E6B48]/10 text-[#3E6B48]"
                 }`}
               >
-                {isFull ? "Full" : `${spotsLeft} ${t("spotsLeft")}`}
+                {isFull ? t("tableFull") : `${spotsLeft} ${t("spotsLeft")}`}
               </span>
               {meetup.commentCount > 0 && (
                 <span className="inline-flex items-center gap-0.5 text-[11px] text-[#5A5D66]">
