@@ -393,6 +393,12 @@ const messages: Record<AppLocale, Record<string, string>> = {
     meetupHostedSingular: "meetup hosted",
     meetupHostedPlural: "meetups hosted",
 
+    coverTokyoCafe: "Tokyo Café Language Table",
+    coverKyotoWalk: "Kyoto Lantern Evening Walk",
+    coverOsakaIzakaya: "Osaka Izakaya Counter",
+    coverFukuokaPicnic: "Fukuoka Seaside Picnic",
+    coverSapporoLounge: "Sapporo Cozy Lounge",
+    coverDaikanyamaCoworking: "Daikanyama Coworking Session",
     membershipBrand: "En Membership",
     notFoundHeading: "Gathering Not Found",
     notFoundBody: "This meetup may have been cancelled by the host or the link is no longer available.",
@@ -784,6 +790,12 @@ const messages: Record<AppLocale, Record<string, string>> = {
     networkCreateAccountError: "アカウント作成中にネットワークエラーが発生しました。",
   
 
+    coverTokyoCafe: "東京カフェの言語交流テーブル",
+    coverKyotoWalk: "京都の提灯が灯る夕暮れ散策",
+    coverOsakaIzakaya: "大阪の居酒屋カウンター",
+    coverFukuokaPicnic: "福岡の海辺ピクニック",
+    coverSapporoLounge: "札幌のくつろぎラウンジ",
+    coverDaikanyamaCoworking: "代官山コワーキング交流会",
     membershipBrand: "En メンバーシップ",
     notFoundHeading: "イベントが見つかりません",
     notFoundBody: "このイベントは主催者によってキャンセルされたか、リンクが無効になった可能性があります。",
@@ -1175,6 +1187,12 @@ const messages: Record<AppLocale, Record<string, string>> = {
     networkCreateAccountError: "创建账户时发生网络错误。",
   
 
+    coverTokyoCafe: "东京咖啡馆语言交流桌",
+    coverKyotoWalk: "京都灯笼夜间漫步",
+    coverOsakaIzakaya: "大阪居酒屋吧台",
+    coverFukuokaPicnic: "福冈海滨野餐",
+    coverSapporoLounge: "札幌温馨休闲空间",
+    coverDaikanyamaCoworking: "代官山共享办公交流会",
     membershipBrand: "En 会员",
     notFoundHeading: "未找到活动",
     notFoundBody: "此活动可能已被主办方取消，或链接已失效。",
@@ -1566,6 +1584,12 @@ const messages: Record<AppLocale, Record<string, string>> = {
     networkCreateAccountError: "建立帳戶時發生網路錯誤。",
   
 
+    coverTokyoCafe: "東京咖啡館語言交流桌",
+    coverKyotoWalk: "京都燈籠夜間漫步",
+    coverOsakaIzakaya: "大阪居酒屋吧台",
+    coverFukuokaPicnic: "福岡海濱野餐",
+    coverSapporoLounge: "札幌溫馨休憩空間",
+    coverDaikanyamaCoworking: "代官山共享辦公交流會",
     membershipBrand: "En 會員",
     notFoundHeading: "找不到聚會",
     notFoundBody: "此聚會可能已由主辦人取消，或連結已失效。",
