@@ -82,7 +82,8 @@ export function Navbar() {
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center gap-3">\n          <label className="hidden sm:flex items-center gap-2 text-xs font-semibold text-[#5A5D66]">
+        <div className="hidden md:flex items-center gap-3">
+          <label className="hidden sm:flex items-center gap-2 text-xs font-semibold text-[#5A5D66]">
             <span className="sr-only">{t("Language")}</span>
             <select aria-label={t("Language")} value={locale} onChange={(event) => setLocale(event.target.value as typeof locale)} className="rounded-full border border-[#E6E0D6] bg-white px-3 py-2 text-sm text-[#1A1D24]">
               {LOCALES.map((item) => <option key={item.code} value={item.code}>{item.nativeLabel}</option>)}
@@ -186,7 +187,8 @@ export function Navbar() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="border-t border-[#E6E0D6] bg-[#FAF8F4] px-4 py-4 md:hidden">
-          <div className="space-y-1.5">\n            <div className="px-3 py-2">
+          <div className="space-y-1.5">
+            <div className="px-3 py-2">
               <label className="flex items-center justify-between gap-3 text-sm font-semibold text-[#5A5D66]">
                 {t("Language")}
                 <select aria-label={t("Language")} value={locale} onChange={(event) => setLocale(event.target.value as typeof locale)} className="rounded-lg border border-[#E6E0D6] bg-white px-3 py-2 text-sm text-[#1A1D24]">
