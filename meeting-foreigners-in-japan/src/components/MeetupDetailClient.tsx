@@ -34,7 +34,7 @@ import {
   formatShortTimestamp,
 } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey, roleTranslationKey } from "@/components/LanguageProvider";
 
 export function MeetupDetailClient({
   initialMeetup,
@@ -485,7 +485,7 @@ export function MeetupDetailClient({
                     </span>
                   </div>
                   <div className="text-xs text-[#5A5D66]">
-                    {meetup.host.roleLabel} · {meetup.host.homeCity}
+                    {t(roleTranslationKey(meetup.host.roleLabel))} · {meetup.host.homeCity}
                   </div>
                   <div className="mt-1.5 flex flex-wrap gap-1">
                     {meetup.host.languages.slice(0, 3).map((l) => (
