@@ -21,7 +21,7 @@ import {
 } from "@/lib/constants";
 import { MeetupCard } from "@/components/MeetupCard";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
 
 export function HomeDiscoveryClient({
   initialMeetups,
@@ -292,7 +292,7 @@ export function HomeDiscoveryClient({
                   <option value="All">{t("allLanguages")}</option>
                   {LANGUAGE_FOCUSES.map((lf) => (
                     <option key={lf} value={lf}>
-                      {lf}
+                      {t(languageFocusTranslationKey(lf))}
                     </option>
                   ))}
                 </select>
