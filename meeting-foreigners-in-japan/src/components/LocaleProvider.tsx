@@ -920,6 +920,17 @@ export function LocaleProvider({
     setLocaleState(next);
     document.cookie = `en-locale=${next}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = next;
+
+    // Info pages have dedicated localized routes; changing the global selector
+    // must navigate to the matching translated page, not reload the English route.
+    const infoSlugs = ["about", "terms", "privacy", "commercial-disclosure", "advertising"];
+    const currentSegments = pathname.split("/").filter(Boolean);
+    const currentSlug = currentSegments[currentSegments.length - 1];
+    const isInfoPage = infoSlugs.includes(currentSlug);
+    if (isInfoPage) {
+      window.location.href = next === "en" ? `/${currentSlug}` : `/${next}/${currentSlug}`;
+      return;
+    }
     window.location.reload();
   };
 
