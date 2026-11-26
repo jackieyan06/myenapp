@@ -12,7 +12,7 @@ import {
   Wallet,
   Globe2,
   Bookmark,
-  {t("share")}2,
+  Share2,
   CheckCircle2,
   Users,
   MessageSquare,
@@ -162,7 +162,7 @@ export function MeetupDetailClient({
     }
   };
 
-  const handle{t("share")} = async () => {
+  const handleShare = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
@@ -275,7 +275,7 @@ export function MeetupDetailClient({
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={handle{t("share")}}
+            onClick={handleShare}
             className="inline-flex items-center gap-1.5 rounded-full border border-[#E6E0D6] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
           >
             {copied ? (
@@ -285,7 +285,7 @@ export function MeetupDetailClient({
               </>
             ) : (
               <>
-                <{t("share")}2 className="h-3.5 w-3.5" />
+                <Share2 className="h-3.5 w-3.5" />
                 {t("share")}
               </>
             )}
