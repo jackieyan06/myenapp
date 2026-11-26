@@ -16,10 +16,12 @@ import {
   User as UserIcon,
 } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
+import { useLocale, LOCALES } from "@/components/LocaleProvider";
 
 export function Navbar() {
   const pathname = usePathname();
   const { user, openAuthModal, logout } = useAuth();
+  const { locale, setLocale, t } = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
@@ -49,7 +51,7 @@ export function Navbar() {
               En
             </span>
             <span className="text-[10px] font-medium tracking-wider text-[#5A5D66] uppercase mt-0.5">
-              Meet in Japan
+              {t("Meet in Japan")}
             </span>
           </div>
         </Link>
@@ -73,7 +75,7 @@ export function Navbar() {
                 }`}
               >
                 <Icon className="h-4 w-4" />
-                {item.label}
+                {t(item.label)}
               </Link>
             );
           })}
@@ -81,12 +83,19 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-3">
+          <label className="hidden sm:flex items-center gap-2 text-xs font-semibold text-[#5A5D66]">
+            <span className="sr-only">{t("Language")}</span>
+            <select aria-label={t("Language")} value={locale} onChange={(event) => setLocale(event.target.value as typeof locale)} className="rounded-full border border-[#E6E0D6] bg-white px-3 py-2 text-sm text-[#1A1D24]">
+              {LOCALES.map((item) => <option key={item.code} value={item.code}>{item.nativeLabel}</option>)}
+            </select>
+          </label>
+
           <Link
             href="/host"
             className="inline-flex items-center gap-1.5 rounded-full bg-[#D94E34] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#C04028]"
           >
             <Plus className="h-4 w-4" />
-            Host Meetup
+            {t("Host Meetup")}
           </Link>
 
           {user ? (
@@ -128,7 +137,7 @@ export function Navbar() {
                       className="mt-1 flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[#1A1D24] hover:bg-[#FAF8F4]"
                     >
                       <CalendarHeart className="h-4 w-4 text-[#D94E34]" />
-                      My RSVPs & Coffee Waves
+                      {t("My RSVPs & Coffee Waves")}
                     </Link>
                     <Link
                       href="/my-meetups?tab=profile"
@@ -136,7 +145,7 @@ export function Navbar() {
                       className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[#1A1D24] hover:bg-[#FAF8F4]"
                     >
                       <UserIcon className="h-4 w-4 text-[#2B4C7E]" />
-                      Edit Cultural Profile
+                      {t("Edit Cultural Profile")}
                     </Link>
                     <button
                       type="button"
@@ -147,7 +156,7 @@ export function Navbar() {
                       className="mt-1 flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                     >
                       <LogOut className="h-4 w-4" />
-                      Sign Out
+                      {t("Sign Out")}
                     </button>
                   </div>
                 </>
@@ -159,7 +168,7 @@ export function Navbar() {
               onClick={() => openAuthModal("Sign in or Try a Demo Account")}
               className="rounded-full border border-[#E6E0D6] bg-white px-4 py-2 text-sm font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
             >
-              Sign In
+              {t("Sign In")}
             </button>
           )}
         </div>
@@ -179,6 +188,15 @@ export function Navbar() {
       {mobileOpen && (
         <div className="border-t border-[#E6E0D6] bg-[#FAF8F4] px-4 py-4 md:hidden">
           <div className="space-y-1.5">
+            <div className="px-3 py-2">
+              <label className="flex items-center justify-between gap-3 text-sm font-semibold text-[#5A5D66]">
+                {t("Language")}
+                <select aria-label={t("Language")} value={locale} onChange={(event) => setLocale(event.target.value as typeof locale)} className="rounded-lg border border-[#E6E0D6] bg-white px-3 py-2 text-sm text-[#1A1D24]">
+                  {LOCALES.map((item) => <option key={item.code} value={item.code}>{item.nativeLabel}</option>)}
+                </select>
+              </label>
+            </div>
+
             {navItems.map((item) => {
               const Icon = item.icon;
               const active =
@@ -197,7 +215,7 @@ export function Navbar() {
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               );
             })}
@@ -207,7 +225,7 @@ export function Navbar() {
               className="flex items-center gap-2.5 rounded-xl bg-[#D94E34] px-3.5 py-2.5 text-sm font-semibold text-white"
             >
               <Plus className="h-4 w-4" />
-              Host a Meetup
+              {t("Host a Meetup")}
             </Link>
           </div>
           <div className="mt-4 border-t border-[#E6E0D6] pt-3">
@@ -235,7 +253,7 @@ export function Navbar() {
                   }}
                   className="rounded-lg border border-[#E6E0D6] bg-white px-3 py-1.5 text-xs font-semibold text-red-600"
                 >
-                  Sign Out
+                  {t("Sign Out")}
                 </button>
               </div>
             ) : (
@@ -247,7 +265,7 @@ export function Navbar() {
                 }}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-sm font-semibold text-[#1A1D24]"
               >
-                Sign In / Try Demo Persona
+                {t("Sign In / Try Demo Persona")}
               </button>
             )}
           </div>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { X, Sparkles, Check, Loader2 } from "lucide-react";
 import type { PublicUser } from "@/lib/auth";
 import { JAPAN_CITIES, NATIONALITIES, ROLE_LABELS } from "@/lib/constants";
+import { useLocale } from "@/components/LocaleProvider";
 
 interface AuthContextValue {
   user: PublicUser | null;
@@ -58,6 +59,7 @@ export function AuthProvider({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const { t } = useLocale();
   const [user, setUser] = useState<PublicUser | null>(initialUser);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalReason, setModalReason] = useState<string | undefined>();
@@ -223,7 +225,7 @@ export function AuthProvider({
             <button
               onClick={closeAuthModal}
               className="absolute right-4 top-4 rounded-full p-2 text-[#5A5D66] transition hover:bg-[#E6E0D6]/50 hover:text-[#1A1D24]"
-              aria-label="Close sign in dialog"
+              aria-label={t("Close sign in dialog")}
             >
               <X className="h-5 w-5" />
             </button>
@@ -234,7 +236,7 @@ export function AuthProvider({
                 En (縁) Japan Community
               </div>
               <h2 className="mt-2.5 text-2xl font-bold text-[#1A1D24]">
-                {modalReason || "Welcome to En"}
+                {t(modalReason || "Welcome to En")}
               </h2>
               <p className="mt-1 text-sm text-[#5A5D66]">
                 Connect with foreigners, expats, travelers, and locals across Japan.
@@ -273,7 +275,7 @@ export function AuthProvider({
                           <span>{persona.name}</span>
                         </div>
                         <div className="text-xs text-[#5A5D66]">
-                          {persona.subtitle}
+                          {t(persona.subtitle)}
                         </div>
                       </div>
                     </div>
@@ -436,7 +438,7 @@ export function AuthProvider({
                     >
                       {NATIONALITIES.map((n) => (
                         <option key={n.name} value={n.name}>
-                          {n.flag} {n.name}
+                          {n.flag} {t(n.name)}
                         </option>
                       ))}
                     </select>
@@ -452,7 +454,7 @@ export function AuthProvider({
                     >
                       {JAPAN_CITIES.map((c) => (
                         <option key={c.name} value={c.name}>
-                          {c.name} ({c.jp})
+                          {t(c.name)} ({c.jp})
                         </option>
                       ))}
                     </select>
@@ -481,12 +483,12 @@ export function AuthProvider({
                       onChange={(e) => setRegJpLevel(e.target.value)}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     >
-                      <option value="None">Just starting (0 words)</option>
-                      <option value="Beginner (N5/N4)">Beginner (N5/N4)</option>
-                      <option value="Conversational (N3)">Conversational (N3)</option>
-                      <option value="Intermediate (N2)">Intermediate (N2)</option>
-                      <option value="Fluent (N1)">Fluent (N1)</option>
-                      <option value="Native">Native Japanese</option>
+                      <option value="None">{t("Just starting (0 words)")}</option>
+                      <option value="Beginner (N5/N4)">{t("Beginner (N5/N4)")}</option>
+                      <option value="Conversational (N3)">{t("Conversational (N3)")}</option>
+                      <option value="Intermediate (N2)">{t("Intermediate (N2)")}</option>
+                      <option value="Fluent (N1)">{t("Fluent (N1)")}</option>
+                      <option value="Native">{t("Native Japanese")}</option>
                     </select>
                   </div>
                 </div>

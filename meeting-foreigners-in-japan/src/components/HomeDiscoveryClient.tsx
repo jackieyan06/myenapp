@@ -21,6 +21,7 @@ import {
 } from "@/lib/constants";
 import { MeetupCard } from "@/components/MeetupCard";
 import { useAuth } from "@/components/AuthProvider";
+import { useLocale } from "@/components/LocaleProvider";
 
 export function HomeDiscoveryClient({
   initialMeetups,
@@ -32,6 +33,7 @@ export function HomeDiscoveryClient({
   totalMembers: number;
 }) {
   const { user, openAuthModal } = useAuth();
+  const { t } = useLocale();
   const [savedOverrides, setSavedOverrides] = useState<Record<number, boolean>>({});
   const [city, setCity] = useState<string>(initialCity);
   const [category, setCategory] = useState<string>("All");
@@ -105,21 +107,19 @@ export function HomeDiscoveryClient({
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#D94E34]/25 bg-white/80 px-3.5 py-1 text-xs font-semibold text-[#D94E34] shadow-xs">
                 <Sparkles className="h-3.5 w-3.5" />
-                <span>{meetups.length} Upcoming Gatherings</span>
+                <span>{meetups.length} {t("Upcoming Gatherings")}</span>
                 <span className="text-[#E6E0D6]">•</span>
-                <span className="text-[#2B4C7E]">{totalMembers} Members in Japan</span>
+                <span className="text-[#2B4C7E]">{totalMembers} {t("Members in Japan")}</span>
               </div>
 
               <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-[#1A1D24] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
-                Meet friendly{" "}
-                <span className="text-[#D94E34]">foreigners &amp; locals</span>{" "}
-                across Japan.
+                {t("Meet friendly")}{" "}
+                <span className="text-[#D94E34]">{t("foreigners & locals")}</span>{" "}
+                {t("across Japan.")}
               </h1>
 
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#5A5D66]">
-                Small-table coffee mornings, 50/50 Japanese–English language
-                exchanges, neighborhood walks, and welcoming izakaya nights—with
-                exact train station exits and zero awkwardness.
+                {t("Small-table coffee mornings, 50/50 Japanese–English language exchanges, neighborhood walks, and welcoming izakaya nights—with exact train station exits and zero awkwardness.")}
               </p>
 
               {/* Search Input */}
@@ -130,7 +130,7 @@ export function HomeDiscoveryClient({
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search neighborhood, station (Shibuya, Gion), coffee, or language..."
+                    placeholder={t("Search neighborhood, station (Shibuya, Gion), coffee, or language...")}
                     className="w-full rounded-2xl border border-[#E6E0D6] bg-white py-3 pl-10 pr-4 text-sm text-[#1A1D24] shadow-xs outline-none transition focus:border-[#D94E34] focus:ring-2 focus:ring-[#D94E34]/15"
                   />
                 </div>
@@ -139,7 +139,7 @@ export function HomeDiscoveryClient({
                   className="inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#1A1D24] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#D94E34]"
                 >
                   <Plus className="h-4 w-4" />
-                  Host a Gathering
+                  {t("Host a Gathering")}
                 </Link>
               </div>
 
@@ -154,7 +154,7 @@ export function HomeDiscoveryClient({
                       : "border border-[#E6E0D6] bg-white text-[#5A5D66] hover:border-[#1A1D24] hover:text-[#1A1D24]"
                   }`}
                 >
-                  All Cities
+                  {t("All Cities")}
                 </button>
                 {JAPAN_CITIES.map((c) => {
                   const active = city === c.name;
@@ -169,7 +169,7 @@ export function HomeDiscoveryClient({
                           : "border border-[#E6E0D6] bg-white text-[#1A1D24] hover:border-[#D94E34]"
                       }`}
                     >
-                      <span>{c.name}</span>
+                      <span>{t(c.name)}</span>
                       <span
                         className={`font-jp text-[11px] ${
                           active ? "text-white/85" : "text-[#8B867D]"
@@ -208,14 +208,14 @@ export function HomeDiscoveryClient({
                     className="inline-flex items-center gap-1.5 font-semibold text-[#2B4C7E] hover:underline"
                   >
                     <Users className="h-3.5 w-3.5" />
-                    Browse {totalMembers} members
+                    {t("Browse members")} ({totalMembers})
                   </Link>
                   <Link
                     href="/guide"
                     className="inline-flex items-center gap-1.5 font-semibold text-[#D94E34] hover:underline"
                   >
                     <BookOpen className="h-3.5 w-3.5" />
-                    Japanese meetup phrases →
+                    {t("Japanese meetup phrases")} →
                   </Link>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export function HomeDiscoveryClient({
           <div className="mb-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#2B4C7E]/20 bg-[#2B4C7E]/5 px-4 py-3.5 sm:flex-row sm:items-center">
             <div className="text-sm text-[#1A1D24]">
               <span className="font-semibold text-[#2B4C7E]">
-                Visiting or new in Japan?
+                {t("Visiting or new in Japan?")}
               </span>{" "}
               Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or
               Kyoto Traveler) to RSVP, post questions, or host your own meetup.
@@ -241,7 +241,7 @@ export function HomeDiscoveryClient({
               onClick={() => openAuthModal("Choose a 1-Click Demo Persona or Sign Up")}
               className="shrink-0 rounded-xl bg-[#2B4C7E] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#223C66]"
             >
-              Sign In / Try Demo
+              {t("Sign In / Try Demo")}
             </button>
           </div>
         )}
@@ -259,7 +259,7 @@ export function HomeDiscoveryClient({
                   : "border border-[#E6E0D6] bg-white text-[#5A5D66] hover:text-[#1A1D24]"
               }`}
             >
-              All Categories
+              {t("All Categories")}
             </button>
             {MEETUP_CATEGORIES.map((cat) => (
               <button
@@ -290,10 +290,10 @@ export function HomeDiscoveryClient({
                   aria-label="Filter by language focus"
                   className="bg-transparent text-xs font-semibold text-[#1A1D24] outline-none"
                 >
-                  <option value="All">All Languages</option>
+                  <option value="All">{t("All Languages")}</option>
                   {LANGUAGE_FOCUSES.map((lf) => (
                     <option key={lf} value={lf}>
-                      {lf}
+                      {t(lf)}
                     </option>
                   ))}
                 </select>
@@ -306,7 +306,7 @@ export function HomeDiscoveryClient({
                   onChange={(e) => setOpenOnly(e.target.checked)}
                   className="accent-[#D94E34]"
                 />
-                Open spots only
+                {t("Open spots only")}
               </label>
 
               {hasActiveFilters && (
@@ -316,15 +316,15 @@ export function HomeDiscoveryClient({
                   className="inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-semibold text-[#D94E34] hover:bg-[#D94E34]/10"
                 >
                   <RotateCcw className="h-3.5 w-3.5" />
-                  Reset filters
+                  {t("Reset filters")}
                 </button>
               )}
             </div>
 
             <div className="flex items-center gap-3">
               <span className="text-xs font-medium text-[#5A5D66]">
-                Showing <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
-                {filtered.length === 1 ? "meetup" : "meetups"}
+                {t("Showing")} <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
+                {t(filtered.length === 1 ? "meetup" : "meetups")}
               </span>
 
               <div className="inline-flex rounded-xl border border-[#E6E0D6] bg-white p-0.5">
@@ -364,11 +364,10 @@ export function HomeDiscoveryClient({
               🍵
             </div>
             <h3 className="mt-4 font-display text-xl font-bold text-[#1A1D24]">
-              No meetups match those filters yet
+              {t("No meetups match those filters yet")}
             </h3>
             <p className="mx-auto mt-2 max-w-md text-sm text-[#5A5D66]">
-              Try clearing your filters or start a small coffee table or evening
-              walk in {city === "All" ? "your city in Japan" : city}!
+              {t("Try clearing your filters or start a small coffee table or evening walk in your city in Japan!") }
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <button
@@ -376,7 +375,7 @@ export function HomeDiscoveryClient({
                 onClick={resetFilters}
                 className="rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2 text-sm font-semibold text-[#1A1D24] hover:border-[#1A1D24]"
               >
-                Show All Meetups
+                {t("Show All Meetups")}
               </button>
               <Link
                 href="/host"
