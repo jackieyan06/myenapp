@@ -1438,7 +1438,7 @@ export function LanguageProvider({ children, initialLocale = "en" }: { children:
   useEffect(() => {
     const cookieLocale = document.cookie.split("; ").find((item) => item.startsWith("en-locale="))?.split("=")[1] as AppLocale | undefined;
     const storedLocale = window.localStorage.getItem("en-locale") as AppLocale | null;
-    const saved = (storedLocale && Object.prototype.hasOwnProperty.call(messages, storedLocale) ? storedLocale : null) ?? cookieLocale ?? initialLocale;
+    const saved = (cookieLocale && Object.prototype.hasOwnProperty.call(messages, cookieLocale) ? cookieLocale : null) ?? (storedLocale && Object.prototype.hasOwnProperty.call(messages, storedLocale) ? storedLocale : null) ?? initialLocale;
     if (saved && Object.prototype.hasOwnProperty.call(messages, saved)) { setLocaleState(saved); document.documentElement.lang = saved; }
     document.documentElement.lang = saved;
   }, [initialLocale]);
