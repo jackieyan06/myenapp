@@ -342,7 +342,7 @@ export function AuthProvider({
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Password
+                    {t("password")}
                   </label>
                   <input
                     type="password"
@@ -359,7 +359,7 @@ export function AuthProvider({
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D94E34] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#C04028] disabled:opacity-60"
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                  Sign In
+                  {t("signIn")}
                 </button>
               </form>
             ) : (
