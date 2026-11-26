@@ -619,7 +619,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     languageBilingual: "日英バイリンガル",
     languageBeginner: "日本語初心者歓迎",
     languageInternational: "英語・国際交流",
-    languageImmersion: "日本語 immersion",
+    languageImmersion: "日本語に浸る交流",
     languageMulti: "多言語交流",
     levelAll: "すべてのレベル歓迎",
     levelBeginner: "初心者歓迎",
