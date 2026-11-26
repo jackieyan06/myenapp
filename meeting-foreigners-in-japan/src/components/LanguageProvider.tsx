@@ -1171,3 +1171,42 @@ export const LANGUAGE_OPTIONS: { value: AppLocale; label: string }[] = [
   { value: "en", label: "English" }, { value: "ja", label: "日本語" },
   { value: "zh-CN", label: "简体中文" }, { value: "zh-TW", label: "繁體中文" },
 ];
+
+export function categoryTranslationKey(value: string) {
+  const map: Record<string, string> = {
+    "Language Exchange": "categoryLanguageExchange",
+    "Coffee & Café": "categoryCoffee",
+    "Izakaya & Dining": "categoryDining",
+    "City Walk & Culture": "categoryWalk",
+    "Outdoor & Hiking": "categoryOutdoor",
+    "Coworking & Tech": "categoryCoworking",
+    "Board Games": "categoryGames",
+  };
+  return map[value] ?? value;
+}
+
+export function roleTranslationKey(value: string) {
+  const map: Record<string, string> = {
+    "Japanese Local": "roleLocal",
+    "Expat in Japan": "roleExpat",
+    "Traveler / Visitor": "roleTraveler",
+    "Exchange Student": "roleStudent",
+    "Digital Nomad": "roleNomad",
+  };
+  return map[value] ?? value;
+}
+
+export function languageFocusTranslationKey(value: string) {
+  const map: Record<string, string> = {
+    "Bilingual EN / JP": "languageBilingual",
+    "Beginner JP Welcome": "languageBeginner",
+    "English & International": "languageInternational",
+    "Japanese Immersion": "languageImmersion",
+    "Multilingual Mix": "languageMulti",
+    "All Levels Welcome": "levelAll",
+    "Beginner Friendly": "levelBeginner",
+    "Intermediate+": "levelIntermediate",
+    "Native / Fluent Mix": "levelNative",
+  };
+  return map[value] ?? value;
+}
