@@ -116,9 +116,7 @@ export function CommunityDirectoryClient({
           {t("Meet Expats, Travelers & Locals")}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5A5D66] sm:text-base">
-          Browse people across Tokyo, Kyoto, Osaka, Fukuoka, Sapporo, and
-          Yokohama by language spoken, neighborhood, or interests—and send a
-          friendly coffee chat invite.
+          {t("Browse people across Tokyo, Kyoto, Osaka, Fukuoka, Sapporo, and Yokohama by language spoken, neighborhood, or interests—and send a friendly coffee chat invite.")}
         </p>
 
         {/* Search & Filters */}
@@ -179,7 +177,7 @@ export function CommunityDirectoryClient({
       {/* Results count */}
       <div className="mt-6 flex items-center justify-between text-xs font-medium text-[#5A5D66]">
         <span>
-          Showing <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
+          {t("Showing")} <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
           {t("community members")}
         </span>
         {user && (
