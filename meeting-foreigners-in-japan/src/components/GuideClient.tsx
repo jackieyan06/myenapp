@@ -56,7 +56,7 @@ export function GuideClient() {
             >
               <div>
                 <span className="inline-block rounded-full bg-[#F2EDE4] px-2.5 py-0.5 text-[11px] font-bold text-[#5A5D66]">
-                  {phrase.context}
+                  {t(phrase.context)}
                 </span>
                 <div className="mt-2 font-jp text-lg font-bold text-[#1A1D24]">
                   {phrase.jp}
@@ -64,7 +64,7 @@ export function GuideClient() {
                 <div className="mt-0.5 text-sm font-medium italic text-[#2B4C7E]">
                   {phrase.romaji}
                 </div>
-                <div className="mt-1 text-sm text-[#5A5D66]">{phrase.en}</div>
+                <div className="mt-1 text-sm text-[#5A5D66]">{t(phrase.en)}</div>
               </div>
 
               <button
@@ -97,7 +97,7 @@ export function GuideClient() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {JAPAN_ETIQUETTE_TIPS.map((tip) => (
             <div
-              key={tip.title}
+              key={t(tip.title)}
               className="rounded-2xl border border-[#E6E0D6] bg-white p-6"
             >
               <div className="font-jp text-xs font-bold text-[#D94E34]">
@@ -107,7 +107,7 @@ export function GuideClient() {
                 {tip.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#5A5D66]">
-                {tip.description}
+                {t(tip.description)}
               </p>
             </div>
           ))}
