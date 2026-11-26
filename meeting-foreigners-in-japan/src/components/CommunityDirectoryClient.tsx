@@ -65,7 +65,7 @@ export function CommunityDirectoryClient({
 
   const openWaveModal = (member: CommunityMember) => {
     if (!user) {
-      openAuthModal(`Sign in to send a coffee chat invite to ${member.name}`);
+      openAuthModal(`${t("Sign in to send a coffee chat invite to")} ${member.name}`);
       return;
     }
     setSelectedMember(member);
