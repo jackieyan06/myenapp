@@ -21,9 +21,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-[#5A5D66]">
-              Warm, small-group gatherings connecting foreigners, expats,
-              travelers, and Japanese locals across Japan—at neighborhood
-              kissaten cafés, izakayas, and riverside walks.
+              {t("footerIntro")}
             </p>
             <p className="mt-3 font-jp text-xs font-medium text-[#8B867D]">
               一期一会 · Ichigo Ichie — Treasure every encounter.
@@ -32,7 +30,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
-              Explore Cities
+              {t("exploreCities")}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
               {JAPAN_CITIES.map((city) => (
@@ -84,7 +82,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-[#E6E0D6] pt-6 text-xs text-[#5A5D66] sm:flex-row sm:items-center">
           <span>© {new Date().getFullYear()} En (縁) Japan Community Platform</span>
-          <span>Made for respectful cross-cultural friendship in Japan</span>
+          <span>{t("footerTagline")}</span>
         </div>
       </div>
     </footer>
