@@ -169,7 +169,7 @@ export function HomeDiscoveryClient({
                           : "border border-[#E6E0D6] bg-white text-[#1A1D24] hover:border-[#D94E34]"
                       }`}
                     >
-                      <span>{c.name}</span>
+                      <span>{t(c.name)}</span>
                       <span
                         className={`font-jp text-[11px] ${
                           active ? "text-white/85" : "text-[#8B867D]"
