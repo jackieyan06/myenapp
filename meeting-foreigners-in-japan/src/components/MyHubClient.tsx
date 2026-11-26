@@ -103,8 +103,7 @@ export function MyHubClient({
             Your Japan Meetup Hub
           </h1>
           <p className="mt-2 text-sm text-[#5A5D66]">
-            Sign in or select a 1-click Demo Persona to view your upcoming RSVPs,
-            hosted gatherings, saved meetups, and coffee invitations.
+            {t("Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.")}
           </p>
           <button
             type="button"
