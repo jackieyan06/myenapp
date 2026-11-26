@@ -51,7 +51,7 @@ export function Navbar() {
               En
             </span>
             <span className="text-[10px] font-medium tracking-wider text-[#5A5D66] uppercase mt-0.5">
-              Meet in Japan
+              {t("Meet in Japan")}
             </span>
           </div>
         </Link>
@@ -168,7 +168,7 @@ export function Navbar() {
               onClick={() => openAuthModal("Sign in or Try a Demo Account")}
               className="rounded-full border border-[#E6E0D6] bg-white px-4 py-2 text-sm font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
             >
-              Sign In
+              {t("Sign In")}
             </button>
           )}
         </div>
@@ -215,7 +215,7 @@ export function Navbar() {
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               );
             })}
@@ -225,7 +225,7 @@ export function Navbar() {
               className="flex items-center gap-2.5 rounded-xl bg-[#D94E34] px-3.5 py-2.5 text-sm font-semibold text-white"
             >
               <Plus className="h-4 w-4" />
-              Host a Meetup
+              {t("Host a Meetup")}
             </Link>
           </div>
           <div className="mt-4 border-t border-[#E6E0D6] pt-3">
