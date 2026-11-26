@@ -180,7 +180,7 @@ export function HostMeetupForm() {
                 minLength={5}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Nakameguro Riverside Coffee & Bilingual Chat"
+                placeholder={t("meetupTitleExample")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -193,7 +193,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={titleJp}
                 onChange={(e) => setTitleJp(e.target.value)}
-                placeholder="e.g., 中目黒カフェ・日英交流会"
+                placeholder={t("meetupTitleJapaneseExample")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 font-jp text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -433,7 +433,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={costNote}
                 onChange={(e) => setCostNote(e.target.value)}
-                placeholder="Free · Order your own drink"
+                placeholder={t("costNoteExample")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
