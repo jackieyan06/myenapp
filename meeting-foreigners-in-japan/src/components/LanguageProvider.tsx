@@ -279,7 +279,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     freeTrial: "7日間無料トライアル",
     selectLanguage: "言語",
     pricingIntro: "新しい仲間や地域の体験と出会い、一つひとつの交流を大切にしましょう。",
-    pricingTitle: "もっと meaningful なつながりを。",
+    pricingTitle: "もっと豊かなつながりを。",
     pricingSubtitle: "日本を、もっと一緒に楽しもう。",
     stayFlexible: "気軽に始める",
     makeYear: "一年を通して楽しむ",
