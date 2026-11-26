@@ -137,17 +137,14 @@ export function HostMeetupForm() {
           {t("hostTitle")}
         </h1>
         <p className="mt-1.5 text-sm text-[#5A5D66]">
-          Whether it&apos;s a 6-person kissaten coffee morning, an English–Japanese
-          language exchange, or an izakaya evening—share the exact station exit
-          so newcomers find you easily.
+          {t("hostFormIntro")}
         </p>
       </div>
 
       {!user && (
         <div className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#D94E34]/30 bg-[#D94E34]/8 p-4 sm:flex-row sm:items-center">
           <div className="text-sm text-[#1A1D24]">
-            <strong>{t("almostReady")}</strong> Sign in (or choose a 1-click Demo
-            Persona) so guests know who is hosting.
+            <strong>{t("almostReady")}</strong> {t("signInToHost")}
           </div>
           <button
             type="button"
@@ -226,7 +223,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
-                placeholder="Beginner Friendly, Matcha, Walk"
+                placeholder={t("tagsPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -242,7 +239,7 @@ export function HostMeetupForm() {
               minLength={20}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Share what the meetup feels like, whether beginners are welcome, and how you organize conversation..."
+              placeholder={t("descriptionPlaceholder")}
               className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-3 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
             />
           </div>
@@ -284,7 +281,7 @@ export function HostMeetupForm() {
                 required
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="e.g., Nakameguro, Gion, Umeda"
+                placeholder={t("neighborhoodPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -298,7 +295,7 @@ export function HostMeetupForm() {
                 required
                 value={station}
                 onChange={(e) => setStation(e.target.value)}
-                placeholder="e.g., Nakameguro Station (Main Exit, 3 min walk)"
+                placeholder={t("stationPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -312,7 +309,7 @@ export function HostMeetupForm() {
                 required
                 value={venueName}
                 onChange={(e) => setVenueName(e.target.value)}
-                placeholder="e.g., Streamer Coffee Company"
+                placeholder={t("venuePlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -325,7 +322,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={meetingPoint}
                 onChange={(e) => setMeetingPoint(e.target.value)}
-                placeholder="e.g., I'll sit at the long wooden table near the window with a small blue notebook"
+                placeholder={t("meetingPointPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
