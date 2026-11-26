@@ -374,7 +374,7 @@ export function AuthProvider({
                       required
                       value={regName}
                       onChange={(e) => setRegName(e.target.value)}
-                      placeholder="Alex Chen"
+                      placeholder={t("namePlaceholder")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     />
                   </div>
@@ -387,7 +387,7 @@ export function AuthProvider({
                       required
                       value={regEmail}
                       onChange={(e) => setRegEmail(e.target.value)}
-                      placeholder="alex@example.com"
+                      placeholder={t("emailPlaceholder")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     />
                   </div>
@@ -470,7 +470,7 @@ export function AuthProvider({
                       type="text"
                       value={regNativeLang}
                       onChange={(e) => setRegNativeLang(e.target.value)}
-                      placeholder="English, French, Mandarin..."
+                      placeholder={t("nativeLanguagePlaceholder")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     />
                   </div>
@@ -483,12 +483,12 @@ export function AuthProvider({
                       onChange={(e) => setRegJpLevel(e.target.value)}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     >
-                      <option value="None">Just starting (0 words)</option>
-                      <option value="Beginner (N5/N4)">Beginner (N5/N4)</option>
-                      <option value="Conversational (N3)">Conversational (N3)</option>
-                      <option value="Intermediate (N2)">Intermediate (N2)</option>
-                      <option value="Fluent (N1)">Fluent (N1)</option>
-                      <option value="Native">Native Japanese</option>
+                      <option value="None">{t("jpLevelNone")}</option>
+                      <option value="Beginner (N5/N4)">{t("jpLevelBeginner")}</option>
+                      <option value="Conversational (N3)">{t("jpLevelConversational")}</option>
+                      <option value="Intermediate (N2)">{t("jpLevelIntermediate")}</option>
+                      <option value="Fluent (N1)">{t("jpLevelFluent")}</option>
+                      <option value="Native">{t("jpLevelNative")}</option>
                     </select>
                   </div>
                 </div>
@@ -501,7 +501,7 @@ export function AuthProvider({
                     rows={2}
                     value={regBio}
                     onChange={(e) => setRegBio(e.target.value)}
-                    placeholder="Moving to Tokyo next month, love specialty coffee & indie music..."
+                    placeholder={t("bioPlaceholder")}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                   />
                 </div>
