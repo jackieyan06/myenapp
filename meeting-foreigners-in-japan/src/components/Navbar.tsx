@@ -162,7 +162,7 @@ export function Navbar() {
           ) : (
             <button
               type="button"
-              onClick={() => openAuthModal("Sign in or Try a Demo Account")}
+              onClick={() => openAuthModal(t("signInOrDemo"))}
               className="rounded-full border border-[#E6E0D6] bg-white px-4 py-2 text-sm font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
             >
               {t("signIn")}
@@ -250,7 +250,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => {
                   setMobileOpen(false);
-                  openAuthModal("Sign in or Try a Demo Account");
+                  openAuthModal(t("signInOrDemo"));
                 }}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-sm font-semibold text-[#1A1D24]"
               >
