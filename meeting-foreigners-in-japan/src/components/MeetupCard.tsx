@@ -48,7 +48,7 @@ export function MeetupCard({
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
-      openAuthModal("Sign in to bookmark meetups");
+      openAuthModal(t("signInToBookmark"));
       return;
     }
     if (saving) return;
