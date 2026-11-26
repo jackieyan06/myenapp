@@ -5,6 +5,7 @@ import "./globals.css";
 import { AuthProvider } from "@/components/AuthProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { getCurrentUser } from "@/lib/auth";
 
 const inter = Inter({
@@ -41,11 +42,13 @@ export default async function RootLayout({
       className={`${inter.variable} ${plusJakarta.variable} ${notoSansJp.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#1A1D24] antialiased selection:bg-[#D94E34]/15 selection:text-[#D94E34]">
+        <LanguageProvider>
         <AuthProvider initialUser={initialUser}>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
         </AuthProvider>
+      </LanguageProvider>
       </body>
     </html>
   );
