@@ -83,8 +83,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     chooseCover: "Choose a Cover Atmosphere",
     cancel: "Cancel",
     publishMeetup: "Publish Meetup",
-    signInDemo: "Sign In / Try Demo"
-,
+    signInDemo: "Sign In / Try Demo",
     guideBadge: "日本文化指南",
     guideTitle: "在日本聚会：礼仪与实用短语",
     guideIntro: "了解日本车站出口、居酒屋分账，以及如何用实用日语开启轻松对话。",
@@ -139,8 +138,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     chooseCover: "选择封面图片",
     cancel: "取消",
     publishMeetup: "发布聚会",
-    signInDemo: "登录／试用演示"
-,
+    signInDemo: "登录／试用演示",
     guideBadge: "日本文化指南",
     guideTitle: "在日本聚會：禮儀與實用短語",
     guideIntro: "了解日本車站出口、居酒屋分帳，以及如何用實用日語開啟輕鬆對話。",
@@ -195,8 +193,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     chooseCover: "選擇封面圖片",
     cancel: "取消",
     publishMeetup: "發布聚會",
-    signInDemo: "登入／試用示範"
-,
+    signInDemo: "登入／試用示範",
     backMeetups: "Back to Meetups",
     meetupTitleRequired: "Meetup Title *",
     categoryRequired: "Category *",
@@ -207,8 +204,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     venueRequired: "Café, Venue or Park Name *",
     dateTimeRequired: "Date & Start Time (JST) *",
     almostReady: "Almost ready!",
-    signInToHost: "Sign in (or choose a 1-click Demo Persona) so guests know who is hosting."
-,
+    signInToHost: "Sign in (or choose a 1-click Demo Persona) so guests know who is hosting.",
     backMeetups: "返回聚会列表",
     meetupTitleRequired: "聚会标题 *",
     categoryRequired: "类别 *",
@@ -219,8 +215,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     venueRequired: "咖啡馆、场地或公园名称 *",
     dateTimeRequired: "日期与开始时间（日本时间）*",
     almostReady: "即将完成！",
-    signInToHost: "请登录或选择一键演示身份，让参加者知道主办人是谁。"
-,
+    signInToHost: "请登录或选择一键演示身份，让参加者知道主办人是谁。",
     backMeetups: "返回聚會列表",
     meetupTitleRequired: "聚會標題 *",
     categoryRequired: "類別 *",
@@ -255,8 +250,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     monthPeriod: "/ 月", yearPeriod: "/ 年", monthlyLabel: "月額", annualLabel: "年額",
     choosePlanIntro: "ご利用スタイルに合ったプランをお選びください。", selectedHeading: "選択中のプラン",
     previewTotal: "お支払い予定額", afterTrial: "無料期間終了後", faqHeading: "ご利用前にご確認ください",
-    billingQuestion: "料金の請求はいつ始まりますか？", trialAnswer: "7日間の無料トライアル終了後、決済機能の開始に合わせて請求が始まります。"
-,
+    billingQuestion: "料金の請求はいつ始まりますか？", trialAnswer: "7日間の無料トライアル終了後、決済機能の開始に合わせて請求が始まります。",
     guideBadge: "日本文化ガイド",
     guideTitle: "日本での交流マナーと便利な日本語フレーズ",
     guideIntro: "駅の出口の確認、居酒屋での割り勘、会話のきっかけに役立つ日本語表現など、交流に役立つヒントをご紹介します。",
@@ -311,8 +305,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     chooseCover: "カバー画像を選ぶ",
     cancel: "キャンセル",
     publishMeetup: "交流会を公開",
-    signInDemo: "ログイン／デモを試す"
-,
+    signInDemo: "ログイン／デモを試す",
     backMeetups: "交流会一覧に戻る",
     meetupTitleRequired: "交流会タイトル *",
     categoryRequired: "カテゴリー *",
