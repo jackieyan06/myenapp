@@ -83,7 +83,7 @@ export function MeetupCard({
             className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
           />
           <span className="absolute left-2 top-2 rounded-full bg-[#1A1D24]/80 px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm">
-            {meetup.city} {getCityJp(meetup.city)}
+            {t(meetup.city)} {getCityJp(meetup.city)}
           </span>
         </div>
 
@@ -94,11 +94,11 @@ export function MeetupCard({
                 meetup.category
               )}`}
             >
-              {meetup.category}
+              {t(meetup.category)}
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-[#FAF8F4] border border-[#E6E0D6] px-2.5 py-0.5 text-[11px] font-medium text-[#5A5D66]">
               <Globe2 className="h-3 w-3 text-[#2B4C7E]" />
-              {meetup.languageFocus}
+              {t(meetup.languageFocus)}
             </span>
             {meetup.viewerRsvpStatus === "going" && (
               <span className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/12 px-2.5 py-0.5 text-[11px] font-semibold text-[#3E6B48]">
@@ -139,11 +139,11 @@ export function MeetupCard({
               }`}
             >
               {isFull
-                ? `Waitlist (${meetup.waitlistCount})`
-                : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} left`}
+                ? `${t("Waitlist")} (${meetup.waitlistCount})`
+                : `${spotsLeft} ${t("spot left")}`}
             </span>
             <div className="mt-1 text-[11px] text-[#5A5D66]">
-              {meetup.goingCount} / {meetup.maxAttendees} joined
+              {meetup.goingCount} / {meetup.maxAttendees} {t("joined")}
             </div>
           </div>
 
@@ -182,7 +182,7 @@ export function MeetupCard({
         <div className="absolute left-3 right-3 top-3 flex items-start justify-between gap-2">
           <span className="inline-flex items-center gap-1 rounded-full bg-[#1A1D24]/82 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
             <MapPin className="h-3 w-3 text-[#D94E34]" />
-            {meetup.city}
+            {t(meetup.city)}
             <span className="font-jp text-[11px] opacity-85">
               {getCityJp(meetup.city)}
             </span>
@@ -205,7 +205,7 @@ export function MeetupCard({
         {/* Bottom image overlay */}
         <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2">
           <span className="rounded-full bg-white/92 px-2.5 py-0.5 text-[11px] font-semibold text-[#1A1D24] backdrop-blur-sm">
-            {meetup.languageFocus}
+            {t(meetup.languageFocus)}
           </span>
 
           {isHost ? (
@@ -234,7 +234,7 @@ export function MeetupCard({
               meetup.category
             )}`}
           >
-            {meetup.category}
+            {t(meetup.category)}
           </span>
           <span className="text-xs font-medium text-[#5A5D66]">
             {formatMeetupDate(meetup.startsAt)} · {formatMeetupTime(meetup.startsAt)}
@@ -260,7 +260,7 @@ export function MeetupCard({
           </div>
           <div className="flex items-center gap-1.5">
             <Globe2 className="h-3.5 w-3.5 shrink-0 text-[#3E6B48]" />
-            <span>{meetup.languageLevel}</span>
+            <span>{t(meetup.languageLevel)}</span>
             <span>·</span>
             <span className="truncate">{meetup.costNote}</span>
           </div>
@@ -282,7 +282,7 @@ export function MeetupCard({
                   {meetup.host.nationalityFlag} {meetup.host.name}
                 </div>
                 <div className="truncate text-[10px] text-[#5A5D66]">
-                  {meetup.host.roleLabel}
+                  {t(meetup.host.roleLabel)}
                 </div>
               </div>
             </div>
