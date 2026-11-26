@@ -1,7 +1,7 @@
 import { InfoLayout } from "@/components/InfoLayout";
 
 export default function CommercialDisclosurePage() {
-  return <InfoLayout title="Commercial Disclosure" intro="Information disclosed under Japan’s Act on Specified Commercial Transactions (特定商取引法).">
+  return <InfoLayout pageKey="commercial-disclosure" locale="en" title="Commercial Disclosure" intro="Information disclosed under Japan’s Act on Specified Commercial Transactions (特定商取引法).">
     <p><strong>Business operator:</strong> Individual business operator</p>
     <p><strong>Business name:</strong> EnJapan (縁)</p>
     <p><strong>Contact email:</strong> <a href="mailto:enjapan.support@gmail.com">enjapan.support@gmail.com</a></p>
