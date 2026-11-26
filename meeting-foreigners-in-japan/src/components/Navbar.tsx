@@ -14,6 +14,7 @@ import {
   X,
   ChevronDown,
   User as UserIcon,
+  CreditCard,
 } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 
@@ -27,6 +28,7 @@ export function Navbar() {
     { href: "/", label: "Discover", icon: Compass },
     { href: "/community", label: "People", icon: Users },
     { href: "/guide", label: "Japan Guide", icon: BookOpen },
+    { href: "/pricing", label: "Membership", icon: CreditCard },
     ...(user
       ? [{ href: "/my-meetups", label: "My Hub", icon: CalendarHeart }]
       : []),
