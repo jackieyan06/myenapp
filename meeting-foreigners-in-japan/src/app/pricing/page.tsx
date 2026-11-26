@@ -7,20 +7,13 @@ import { Check, Sparkles, ShieldCheck, CreditCard, ArrowRight } from "lucide-rea
 
 type Plan = "monthly" | "annual";
 
-const plans = {
-  monthly: { name: "Monthly", price: "¥980", period: "/ month", detail: "Flexible, cancel anytime" },
-  annual: { name: "Annual", price: "¥9,800", period: "/ year", detail: "Save ¥1,960 compared with monthly billing" },
-};
-
-const benefits = [
-  t("benefits1"),
-  t("benefits2"),
-  t("benefits3"),
-  t("benefits4"),
-];
-
 export default function PricingPage() {
   const { t } = useLanguage();
+  const plans = {
+    monthly: { name: t("monthly"), price: "¥980", period: "/ month", detail: t("billingMonthly") },
+    annual: { name: t("annual"), price: "¥9,800", period: "/ year", detail: t("saveAnnual") },
+  };
+  const benefits = [t("benefits1"), t("benefits2"), t("benefits3"), t("benefits4")];
   const [selectedPlan, setSelectedPlan] = useState<Plan>("annual");
   const selected = plans[selectedPlan];
 
