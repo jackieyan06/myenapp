@@ -212,7 +212,7 @@ export function HostMeetupForm() {
               >
                 {MEETUP_CATEGORIES.map((c) => (
                   <option key={c.name} value={c.name}>
-                    {c.name} ({c.jp})
+                    {t(c.name)} ({c.jp})
                   </option>
                 ))}
               </select>
@@ -404,7 +404,7 @@ export function HostMeetupForm() {
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               >
                 {LANGUAGE_FOCUSES.map((lf) => (
-                  <option key={lf} value={lf}>
+                  <option key={t(lf)} value={lf}>
                     {lf}
                   </option>
                 ))}
@@ -421,7 +421,7 @@ export function HostMeetupForm() {
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               >
                 {LANGUAGE_LEVELS.map((ll) => (
-                  <option key={ll} value={ll}>
+                  <option key={t(ll)} value={ll}>
                     {ll}
                   </option>
                 ))}
@@ -465,7 +465,7 @@ export function HostMeetupForm() {
                   <div className="aspect-[16/10] w-full overflow-hidden">
                     <img
                       src={cov.url}
-                      alt={cov.label}
+                      alt={t(cov.label)}
                       className="h-full w-full object-cover"
                     />
                   </div>
