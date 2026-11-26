@@ -39,7 +39,7 @@ export function Footer() {
                     href={`/?city=${city.name}`}
                     className="hover:text-[#D94E34] transition"
                   >
-                    {city.name} <span className="font-jp text-xs">({city.jp})</span>
+                    {t(city.name)} <span className="font-jp text-xs">({city.jp})</span>
                   </Link>
                 </li>
               ))}
