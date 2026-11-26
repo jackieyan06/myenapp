@@ -122,14 +122,14 @@ export function AuthProvider({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Sign in failed.");
+        setError(data.error || t("signInFailed"));
       } else {
         setUser(data.user);
         setModalOpen(false);
         router.refresh();
       }
     } catch {
-      setError("Network error while signing in.");
+      setError(t("networkSignInError"));
     } finally {
       setLoading(false);
     }
@@ -147,7 +147,7 @@ export function AuthProvider({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Incorrect credentials.");
+        setError(data.error || t("incorrectCredentials"));
       } else {
         setUser(data.user);
         setModalOpen(false);
@@ -189,14 +189,14 @@ export function AuthProvider({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Could not create account.");
+        setError(data.error || t("createAccountFailed"));
       } else {
         setUser(data.user);
         setModalOpen(false);
         router.refresh();
       }
     } catch {
-      setError("Network error while creating account.");
+      setError(t("networkCreateAccountError"));
     } finally {
       setLoading(false);
     }
