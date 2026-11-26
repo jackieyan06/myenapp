@@ -1,7 +1,7 @@
 import { InfoLayout } from "@/components/InfoLayout";
 
 export default function TermsPage() {
-  return <InfoLayout title="Terms of Service" intro="These terms govern your access to and use of the EnJapan community platform. Please read them before using the service.">
+  return <InfoLayout pageKey="terms" locale="en" title="Terms of Service" intro="These terms govern your access to and use of the EnJapan community platform. Please read them before using the service.">
     <p><strong>Last updated: 26 November 2026</strong></p>
     <p>EnJapan (縁) is operated by an individual business operator in Japan (“EnJapan”, “we”, “us”). By accessing or using the platform, you agree to these terms. If you do not agree, please do not use the service.</p>
     <h2>1. The service</h2><p>EnJapan provides tools and information for discovering, organising and participating in community gatherings. Event details, venues, hosts and availability may change. EnJapan does not guarantee that a particular meetup will take place or that any user will attend.</p>
