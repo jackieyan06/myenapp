@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { X, Sparkles, Check, Loader2 } from "lucide-react";
 import type { PublicUser } from "@/lib/auth";
 import { JAPAN_CITIES, NATIONALITIES, ROLE_LABELS } from "@/lib/constants";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 
 interface AuthContextValue {
   user: PublicUser | null;
@@ -28,7 +29,7 @@ const DEMO_PERSONAS = [
     email: "hana@en-japan.jp",
     name: "Hana Sato",
     flag: "🇯🇵",
-    subtitle: "Japanese Local · Tokyo (Shimokitazawa)",
+    subtitleKey: "demoHanaSubtitle",
     langs: "Japanese (Native) · English (Fluent)",
     color: "#D94E34",
   },
@@ -36,7 +37,7 @@ const DEMO_PERSONAS = [
     email: "lucas@en-japan.jp",
     name: "Lucas Meyer",
     flag: "🇩🇪",
-    subtitle: "Expat from Germany · Tokyo (Daikanyama)",
+    subtitleKey: "demoLucasSubtitle",
     langs: "German · English · Japanese (N3)",
     color: "#2B4C7E",
   },
@@ -44,7 +45,7 @@ const DEMO_PERSONAS = [
     email: "maya@en-japan.jp",
     name: "Maya Lin",
     flag: "🇹🇼",
-    subtitle: "Traveler from Taiwan · Kyoto (Kawaramachi)",
+    subtitleKey: "demoMayaSubtitle",
     langs: "Mandarin · English · Japanese (N4)",
     color: "#3E6B48",
   },
@@ -58,6 +59,7 @@ export function AuthProvider({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const { t } = useLanguage();
   const [user, setUser] = useState<PublicUser | null>(initialUser);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalReason, setModalReason] = useState<string | undefined>();
@@ -120,14 +122,14 @@ export function AuthProvider({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Sign in failed.");
+        setError(data.error || t("signInFailed"));
       } else {
         setUser(data.user);
         setModalOpen(false);
         router.refresh();
       }
     } catch {
-      setError("Network error while signing in.");
+      setError(t("networkSignInError"));
     } finally {
       setLoading(false);
     }
@@ -145,7 +147,7 @@ export function AuthProvider({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Incorrect credentials.");
+        setError(data.error || t("incorrectCredentials"));
       } else {
         setUser(data.user);
         setModalOpen(false);
@@ -187,14 +189,14 @@ export function AuthProvider({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Could not create account.");
+        setError(data.error || t("createAccountFailed"));
       } else {
         setUser(data.user);
         setModalOpen(false);
         router.refresh();
       }
     } catch {
-      setError("Network error while creating account.");
+      setError(t("networkCreateAccountError"));
     } finally {
       setLoading(false);
     }
@@ -223,7 +225,7 @@ export function AuthProvider({
             <button
               onClick={closeAuthModal}
               className="absolute right-4 top-4 rounded-full p-2 text-[#5A5D66] transition hover:bg-[#E6E0D6]/50 hover:text-[#1A1D24]"
-              aria-label="Close sign in dialog"
+              aria-label={t("closeDialog")}
             >
               <X className="h-5 w-5" />
             </button>
@@ -234,10 +236,10 @@ export function AuthProvider({
                 En (縁) Japan Community
               </div>
               <h2 className="mt-2.5 text-2xl font-bold text-[#1A1D24]">
-                {modalReason || "Welcome to En"}
+                {modalReason || t("welcomeToEn")}
               </h2>
               <p className="mt-1 text-sm text-[#5A5D66]">
-                Connect with foreigners, expats, travelers, and locals across Japan.
+                {t("authIntro")}
               </p>
             </div>
 
@@ -245,10 +247,10 @@ export function AuthProvider({
             <div className="mb-5 rounded-2xl border border-[#E6E0D6] bg-white p-4">
               <div className="mb-2.5 flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                  Instant Demo Accounts (1-Click)
+                  {t("demoAccounts")}
                 </span>
                 <span className="text-[11px] text-[#3E6B48] font-medium">
-                  Try as local or expat
+                  {t("tryLocalExpat")}
                 </span>
               </div>
               <div className="grid gap-2">
@@ -273,12 +275,12 @@ export function AuthProvider({
                           <span>{persona.name}</span>
                         </div>
                         <div className="text-xs text-[#5A5D66]">
-                          {persona.subtitle}
+                          {t(persona.subtitleKey)}
                         </div>
                       </div>
                     </div>
                     <span className="rounded-lg bg-[#1A1D24] px-2.5 py-1 text-xs font-medium text-white">
-                      Use
+                      {t("use")}
                     </span>
                   </button>
                 ))}
@@ -299,7 +301,7 @@ export function AuthProvider({
                     : "text-[#5A5D66] hover:text-[#1A1D24]"
                 }`}
               >
-                Sign In
+                {t("signIn")}
               </button>
               <button
                 type="button"
@@ -313,7 +315,7 @@ export function AuthProvider({
                     : "text-[#5A5D66] hover:text-[#1A1D24]"
                 }`}
               >
-                Create Profile
+                {t("createProfile")}
               </button>
             </div>
 
@@ -327,7 +329,7 @@ export function AuthProvider({
               <form onSubmit={handlePasswordLogin} className="space-y-3.5">
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Email Address
+                    {t("emailAddress")}
                   </label>
                   <input
                     type="email"
@@ -340,7 +342,7 @@ export function AuthProvider({
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Password
+                    {t("password")}
                   </label>
                   <input
                     type="password"
@@ -357,7 +359,7 @@ export function AuthProvider({
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D94E34] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#C04028] disabled:opacity-60"
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                  Sign In
+                  {t("signIn")}
                 </button>
               </form>
             ) : (
@@ -365,27 +367,27 @@ export function AuthProvider({
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Your Name *
+                      {t("yourName")} *
                     </label>
                     <input
                       type="text"
                       required
                       value={regName}
                       onChange={(e) => setRegName(e.target.value)}
-                      placeholder="Alex Chen"
+                      placeholder={t("namePlaceholder")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     />
                   </div>
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Email *
+                      {t("email")} *
                     </label>
                     <input
                       type="email"
                       required
                       value={regEmail}
                       onChange={(e) => setRegEmail(e.target.value)}
-                      placeholder="alex@example.com"
+                      placeholder={t("emailPlaceholder")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     />
                   </div>
@@ -394,7 +396,7 @@ export function AuthProvider({
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Password (min 6 chars) *
+                      {t("yourPassword")}
                     </label>
                     <input
                       type="password"
@@ -408,7 +410,7 @@ export function AuthProvider({
                   </div>
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      You are a...
+                      {t("youAre")}
                     </label>
                     <select
                       value={regRole}
@@ -417,7 +419,7 @@ export function AuthProvider({
                     >
                       {ROLE_LABELS.map((r) => (
                         <option key={r} value={r}>
-                          {r}
+                          {t(roleTranslationKey(r))}
                         </option>
                       ))}
                     </select>
@@ -427,7 +429,7 @@ export function AuthProvider({
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Country / Origin
+                      {t("countryOrigin")}
                     </label>
                     <select
                       value={regNationality}
@@ -443,7 +445,7 @@ export function AuthProvider({
                   </div>
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      City in Japan
+                      {t("cityInJapan")}
                     </label>
                     <select
                       value={regCity}
@@ -462,44 +464,44 @@ export function AuthProvider({
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Primary Language
+                      {t("primaryLanguage")}
                     </label>
                     <input
                       type="text"
                       value={regNativeLang}
                       onChange={(e) => setRegNativeLang(e.target.value)}
-                      placeholder="English, French, Mandarin..."
+                      placeholder={t("nativeLanguagePlaceholder")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     />
                   </div>
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Japanese Level
+                      {t("japaneseLevel")}
                     </label>
                     <select
                       value={regJpLevel}
                       onChange={(e) => setRegJpLevel(e.target.value)}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     >
-                      <option value="None">Just starting (0 words)</option>
-                      <option value="Beginner (N5/N4)">Beginner (N5/N4)</option>
-                      <option value="Conversational (N3)">Conversational (N3)</option>
-                      <option value="Intermediate (N2)">Intermediate (N2)</option>
-                      <option value="Fluent (N1)">Fluent (N1)</option>
-                      <option value="Native">Native Japanese</option>
+                      <option value="None">{t("jpLevelNone")}</option>
+                      <option value="Beginner (N5/N4)">{t("jpLevelBeginner")}</option>
+                      <option value="Conversational (N3)">{t("jpLevelConversational")}</option>
+                      <option value="Intermediate (N2)">{t("jpLevelIntermediate")}</option>
+                      <option value="Fluent (N1)">{t("jpLevelFluent")}</option>
+                      <option value="Native">{t("jpLevelNative")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Short Intro (optional)
+                    {t("shortIntro")}
                   </label>
                   <textarea
                     rows={2}
                     value={regBio}
                     onChange={(e) => setRegBio(e.target.value)}
-                    placeholder="Moving to Tokyo next month, love specialty coffee & indie music..."
+                    placeholder={t("bioPlaceholder")}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                   />
                 </div>
@@ -514,7 +516,7 @@ export function AuthProvider({
                   ) : (
                     <Check className="h-4 w-4" />
                   )}
-                  Join En Community
+                  {t("joinCommunity")}
                 </button>
               </form>
             )}

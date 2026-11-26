@@ -15,6 +15,7 @@ import {
 import type { CommunityMember } from "@/lib/queries";
 import { JAPAN_CITIES, ROLE_LABELS } from "@/lib/constants";
 import { useAuth } from "@/components/AuthProvider";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 
 export function CommunityDirectoryClient({
   initialMembers,
@@ -22,6 +23,7 @@ export function CommunityDirectoryClient({
   initialMembers: CommunityMember[];
 }) {
   const { user, openAuthModal } = useAuth();
+  const { t } = useLanguage();
   const [city, setCity] = useState("All");
   const [roleLabel, setRoleLabel] = useState("All");
   const [search, setSearch] = useState("");
@@ -90,13 +92,13 @@ export function CommunityDirectoryClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setInviteError(data.error || "Unable to send invite.");
+        setInviteError(data.error || t("inviteFailed"));
       } else {
         setSentIds((prev) => [...prev, selectedMember.id]);
         setSelectedMember(null);
       }
     } catch {
-      setInviteError("Network error while sending invite.");
+      setInviteError(t("networkInviteError"));
     } finally {
       setSending(false);
     }
@@ -108,15 +110,13 @@ export function CommunityDirectoryClient({
       <div className="rounded-3xl border border-[#E6E0D6] bg-gradient-to-r from-[#F5EFE6] to-white p-6 sm:p-9">
         <div className="inline-flex items-center gap-2 rounded-full bg-[#2B4C7E]/10 px-3.5 py-1 text-xs font-semibold text-[#2B4C7E]">
           <Sparkles className="h-3.5 w-3.5" />
-          Global &amp; Local Community in Japan
+          {t("communityBadge")}
         </div>
         <h1 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-[#1A1D24] sm:text-4xl">
-          Meet Expats, Travelers &amp; Locals
+          {t("communityTitle")}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5A5D66] sm:text-base">
-          Browse people across Tokyo, Kyoto, Osaka, Fukuoka, Sapporo, and
-          Yokohama by language spoken, neighborhood, or interests—and send a
-          friendly coffee chat invite.
+          {t("communityIntro")}
         </p>
 
         {/* Search & Filters */}
@@ -127,7 +127,7 @@ export function CommunityDirectoryClient({
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search language (German, N3), country, neighborhood..."
+              placeholder={t("communitySearch")}
               className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-[#D94E34]"
             />
           </div>
@@ -138,7 +138,7 @@ export function CommunityDirectoryClient({
               onChange={(e) => setCity(e.target.value)}
               className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3.5 py-2.5 text-sm font-medium text-[#1A1D24] outline-none focus:border-[#D94E34]"
             >
-              <option value="All">All Cities in Japan</option>
+              <option value="All">{t("allCitiesOption")}</option>
               {JAPAN_CITIES.map((c) => (
                 <option key={c.name} value={c.name}>
                   {c.name} ({c.jp})
@@ -153,10 +153,10 @@ export function CommunityDirectoryClient({
               onChange={(e) => setRoleLabel(e.target.value)}
               className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3.5 py-2.5 text-sm font-medium text-[#1A1D24] outline-none focus:border-[#D94E34]"
             >
-              <option value="All">All Roles</option>
+              <option value="All">{t("allRoles")}</option>
               {ROLE_LABELS.map((r) => (
                 <option key={r} value={r}>
-                  {r}
+                  {t(roleTranslationKey(r))}
                 </option>
               ))}
             </select>
@@ -169,7 +169,7 @@ export function CommunityDirectoryClient({
               onChange={(e) => setCoffeeOnly(e.target.checked)}
               className="accent-[#D94E34]"
             />
-            Open to coffee
+            {t("coffeeOnly")}
           </label>
         </div>
       </div>
@@ -177,15 +177,15 @@ export function CommunityDirectoryClient({
       {/* Results count */}
       <div className="mt-6 flex items-center justify-between text-xs font-medium text-[#5A5D66]">
         <span>
-          Showing <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
-          community members
+          {t("showing")} <strong className="text-[#1A1D24]">{filtered.length}</strong>{" "}
+          {t("communityMembers")}
         </span>
         {user && (
           <Link
             href="/my-meetups?tab=connections"
             className="font-semibold text-[#2B4C7E] hover:underline"
           >
-            View my Coffee Invites →
+            {t("viewInvites")} →
           </Link>
         )}
       </div>
@@ -194,7 +194,7 @@ export function CommunityDirectoryClient({
       {filtered.length === 0 ? (
         <div className="mt-8 rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
           <p className="text-base font-bold text-[#1A1D24]">
-            No members match those filters
+            {t("noMembers")}
           </p>
           <button
             type="button"
@@ -206,7 +206,7 @@ export function CommunityDirectoryClient({
             }}
             className="mt-4 rounded-xl bg-[#1A1D24] px-4 py-2 text-xs font-semibold text-white"
           >
-            Clear Filters
+            {t("clearFilters")}
           </button>
         </div>
       ) : (
@@ -233,13 +233,13 @@ export function CommunityDirectoryClient({
                         {member.nationalityFlag} {member.name}
                       </h2>
                       <div className="text-xs font-medium text-[#5A5D66]">
-                        {member.roleLabel} · {member.nationality}
+                        {t(roleTranslationKey(member.roleLabel))} · {member.nationality}
                       </div>
                     </div>
                   </div>
                   {member.openToCoffee && (
                     <span
-                      title="Open to coffee chats"
+                      title={`${t("coffeeOnly")} chats`}
                       className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#3E6B48]"
                     >
                       <Coffee className="h-3 w-3" />
@@ -299,12 +299,12 @@ export function CommunityDirectoryClient({
                         href="/my-meetups?tab=profile"
                         className="rounded-xl border border-[#E6E0D6] px-3 py-1.5 text-xs font-semibold text-[#1A1D24] hover:border-[#1A1D24]"
                       >
-                        Edit Profile
+                        {t("editProfile")}
                       </Link>
                     ) : justSent ? (
                       <span className="inline-flex items-center gap-1 rounded-xl bg-[#3E6B48]/12 px-3 py-1.5 text-xs font-semibold text-[#3E6B48]">
                         <CheckCircle2 className="h-3.5 w-3.5" />
-                        Invite Sent
+                        {t("inviteSent")}
                       </span>
                     ) : (
                       <button
@@ -313,7 +313,7 @@ export function CommunityDirectoryClient({
                         className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A1D24] px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-[#D94E34]"
                       >
                         <Coffee className="h-3.5 w-3.5" />
-                        Coffee Wave
+                        {t("coffeeWave")}
                       </button>
                     )}
                   </div>
@@ -330,7 +330,7 @@ export function CommunityDirectoryClient({
           <div className="w-full max-w-md rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-lg font-bold text-[#1A1D24]">
-                Invite {selectedMember.nationalityFlag} {selectedMember.name}
+                {t("inviteMember")} {selectedMember.nationalityFlag} {selectedMember.name}
               </h3>
               <button
                 type="button"
@@ -341,7 +341,7 @@ export function CommunityDirectoryClient({
               </button>
             </div>
             <p className="mt-1 text-xs text-[#5A5D66]">
-              {selectedMember.roleLabel} in {selectedMember.homeCity}
+              {t(roleTranslationKey(selectedMember.roleLabel))} · {selectedMember.homeCity}
             </p>
 
             {inviteError && (
@@ -353,23 +353,23 @@ export function CommunityDirectoryClient({
             <form onSubmit={handleSendInvite} className="mt-4 space-y-3">
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Activity Idea
+                  {t("activityIdea")}
                 </label>
                 <select
                   value={inviteContext}
                   onChange={(e) => setInviteContext(e.target.value)}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                 >
-                  <option>Coffee &amp; Language Chat</option>
-                  <option>Lunch / Ramen Meet</option>
-                  <option>Neighborhood Walk</option>
-                  <option>Coworking Session</option>
-                  <option>Travel Tips / Local Advice</option>
+                  <option>{t("activityCoffeeChat")}</option>
+                  <option>{t("activityLunch")}</option>
+                  <option>{t("activityWalk")}</option>
+                  <option>{t("activityCoworking")}</option>
+                  <option>{t("activityTravelTips")}</option>
                 </select>
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Personal Message
+                  {t("personalMessage")}
                 </label>
                 <textarea
                   rows={3}
@@ -386,7 +386,7 @@ export function CommunityDirectoryClient({
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D94E34] py-2.5 text-sm font-bold text-white hover:bg-[#C04028]"
               >
                 {sending && <Loader2 className="h-4 w-4 animate-spin" />}
-                Send Coffee Invite
+                {t("sendInvite")}
               </button>
             </form>
           </div>

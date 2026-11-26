@@ -14,21 +14,26 @@ import {
   X,
   ChevronDown,
   User as UserIcon,
+  CreditCard,
 } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export function Navbar() {
   const pathname = usePathname();
   const { user, openAuthModal, logout } = useAuth();
+  const { t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/", label: "Discover", icon: Compass },
-    { href: "/community", label: "People", icon: Users },
-    { href: "/guide", label: "Japan Guide", icon: BookOpen },
+    { href: "/", label: t("discover"), icon: Compass },
+    { href: "/community", label: t("people"), icon: Users },
+    { href: "/guide", label: t("guide"), icon: BookOpen },
+    { href: "/pricing", label: t("membership"), icon: CreditCard },
     ...(user
-      ? [{ href: "/my-meetups", label: "My Hub", icon: CalendarHeart }]
+      ? [{ href: "/my-meetups", label: t("myHub"), icon: CalendarHeart }]
       : []),
   ];
 
@@ -81,12 +86,13 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher />
           <Link
             href="/host"
             className="inline-flex items-center gap-1.5 rounded-full bg-[#D94E34] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#C04028]"
           >
             <Plus className="h-4 w-4" />
-            Host Meetup
+            {t("host")}
           </Link>
 
           {user ? (
@@ -119,7 +125,7 @@ export function Navbar() {
                         {user.nationalityFlag} {user.name}
                       </div>
                       <div className="text-xs text-[#5A5D66]">
-                        {user.roleLabel} · {user.homeCity}
+                        {t(roleTranslationKey(user.roleLabel))} · {user.homeCity}
                       </div>
                     </div>
                     <Link
@@ -128,7 +134,7 @@ export function Navbar() {
                       className="mt-1 flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[#1A1D24] hover:bg-[#FAF8F4]"
                     >
                       <CalendarHeart className="h-4 w-4 text-[#D94E34]" />
-                      My RSVPs & Coffee Waves
+                      {t("coffeeWaves")}
                     </Link>
                     <Link
                       href="/my-meetups?tab=profile"
@@ -136,7 +142,7 @@ export function Navbar() {
                       className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[#1A1D24] hover:bg-[#FAF8F4]"
                     >
                       <UserIcon className="h-4 w-4 text-[#2B4C7E]" />
-                      Edit Cultural Profile
+                      {t("editProfile")}
                     </Link>
                     <button
                       type="button"
@@ -147,7 +153,7 @@ export function Navbar() {
                       className="mt-1 flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                     >
                       <LogOut className="h-4 w-4" />
-                      Sign Out
+                      {t("signOut")}
                     </button>
                   </div>
                 </>
@@ -156,10 +162,10 @@ export function Navbar() {
           ) : (
             <button
               type="button"
-              onClick={() => openAuthModal("Sign in or Try a Demo Account")}
+              onClick={() => openAuthModal(t("signInOrDemo"))}
               className="rounded-full border border-[#E6E0D6] bg-white px-4 py-2 text-sm font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
             >
-              Sign In
+              {t("signIn")}
             </button>
           )}
         </div>
@@ -169,7 +175,7 @@ export function Navbar() {
           type="button"
           onClick={() => setMobileOpen((prev) => !prev)}
           className="inline-flex items-center justify-center rounded-xl border border-[#E6E0D6] bg-white p-2 text-[#1A1D24] md:hidden"
-          aria-label="Toggle navigation menu"
+          aria-label={t("toggleMenu")}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -178,6 +184,7 @@ export function Navbar() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="border-t border-[#E6E0D6] bg-[#FAF8F4] px-4 py-4 md:hidden">
+          <div className="mb-3"><LanguageSwitcher /></div>
           <div className="space-y-1.5">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -207,7 +214,7 @@ export function Navbar() {
               className="flex items-center gap-2.5 rounded-xl bg-[#D94E34] px-3.5 py-2.5 text-sm font-semibold text-white"
             >
               <Plus className="h-4 w-4" />
-              Host a Meetup
+              {t("host")}
             </Link>
           </div>
           <div className="mt-4 border-t border-[#E6E0D6] pt-3">
@@ -235,7 +242,7 @@ export function Navbar() {
                   }}
                   className="rounded-lg border border-[#E6E0D6] bg-white px-3 py-1.5 text-xs font-semibold text-red-600"
                 >
-                  Sign Out
+                  {t("signOut")}
                 </button>
               </div>
             ) : (
@@ -243,11 +250,11 @@ export function Navbar() {
                 type="button"
                 onClick={() => {
                   setMobileOpen(false);
-                  openAuthModal("Sign in or Try a Demo Account");
+                  openAuthModal(t("signInOrDemo"));
                 }}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-sm font-semibold text-[#1A1D24]"
               >
-                Sign In / Try Demo Persona
+                {t("signIn")} / {t("tryDemoPersona")}
               </button>
             )}
           </div>

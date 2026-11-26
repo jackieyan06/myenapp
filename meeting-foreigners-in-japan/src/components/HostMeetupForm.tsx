@@ -21,6 +21,7 @@ import {
   CURATED_COVERS,
 } from "@/lib/constants";
 import { useAuth } from "@/components/AuthProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
 
 function getDefaultDateTimeLocal(): string {
   const d = new Date();
@@ -35,6 +36,7 @@ function getDefaultDateTimeLocal(): string {
 export function HostMeetupForm() {
   const router = useRouter();
   const { user, openAuthModal } = useAuth();
+  const { t } = useLanguage();
 
   const [title, setTitle] = useState("");
   const [titleJp, setTitleJp] = useState("");
@@ -66,7 +68,7 @@ export function HostMeetupForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to publish your meetup");
+      openAuthModal(t("signInToPublish"));
       return;
     }
 
@@ -104,13 +106,13 @@ export function HostMeetupForm() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Unable to create meetup.");
+        setError(data.error || t("createMeetupFailed"));
       } else {
         router.push(`/meetups/${data.meetup.id}`);
         router.refresh();
       }
     } catch {
-      setError("Network error while publishing meetup.");
+      setError(t("networkPublishError"));
     } finally {
       setSubmitting(false);
     }
@@ -123,36 +125,33 @@ export function HostMeetupForm() {
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#5A5D66] hover:text-[#1A1D24]"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to Meetups
+        {t("backMeetups")}
       </Link>
 
       <div className="mt-4">
         <div className="inline-flex items-center gap-2 rounded-full bg-[#D94E34]/10 px-3 py-1 text-xs font-semibold text-[#D94E34]">
           <Sparkles className="h-3.5 w-3.5" />
-          Host a Small-Table Gathering
+          {t("hostBadge")}
         </div>
         <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-[#1A1D24]">
-          Create a Meetup in Japan
+          {t("hostTitle")}
         </h1>
         <p className="mt-1.5 text-sm text-[#5A5D66]">
-          Whether it&apos;s a 6-person kissaten coffee morning, an English–Japanese
-          language exchange, or an izakaya evening—share the exact station exit
-          so newcomers find you easily.
+          {t("hostFormIntro")}
         </p>
       </div>
 
       {!user && (
         <div className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#D94E34]/30 bg-[#D94E34]/8 p-4 sm:flex-row sm:items-center">
           <div className="text-sm text-[#1A1D24]">
-            <strong>Almost ready!</strong> Sign in (or choose a 1-click Demo
-            Persona) so guests know who is hosting.
+            <strong>{t("almostReady")}</strong> {t("signInToHost")}
           </div>
           <button
             type="button"
-            onClick={() => openAuthModal("Sign in to host a meetup")}
+            onClick={() => openAuthModal(t("signInToHostMeetup"))}
             className="shrink-0 rounded-xl bg-[#D94E34] px-4 py-2 text-xs font-bold text-white hover:bg-[#C04028]"
           >
-            Sign In / Try Demo
+            {t("signInDemo")}
           </button>
         </div>
       )}
@@ -167,13 +166,13 @@ export function HostMeetupForm() {
         {/* Section 1: Core Info */}
         <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-5">
           <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-            1. What are we doing?
+            {t("hostSection1")}
           </h2>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Meetup Title *
+                {t("meetupTitleRequired")}
               </label>
               <input
                 type="text"
@@ -181,27 +180,27 @@ export function HostMeetupForm() {
                 minLength={5}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Nakameguro Riverside Coffee & Bilingual Chat"
+                placeholder={t("meetupTitleExample")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div className="sm:col-span-2">
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Japanese Subtitle (optional)
+                {t("japaneseSubtitle")}
               </label>
               <input
                 type="text"
                 value={titleJp}
                 onChange={(e) => setTitleJp(e.target.value)}
-                placeholder="e.g., 中目黒カフェ・日英交流会"
+                placeholder={t("meetupTitleJapaneseExample")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 font-jp text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Category *
+                {t("categoryRequired")}
               </label>
               <select
                 value={category}
@@ -210,7 +209,7 @@ export function HostMeetupForm() {
               >
                 {MEETUP_CATEGORIES.map((c) => (
                   <option key={c.name} value={c.name}>
-                    {c.name} ({c.jp})
+                    {t(categoryTranslationKey(c.name))} ({c.jp})
                   </option>
                 ))}
               </select>
@@ -218,13 +217,13 @@ export function HostMeetupForm() {
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Tags (comma separated)
+                {t("tags")}
               </label>
               <input
                 type="text"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
-                placeholder="Beginner Friendly, Matcha, Walk"
+                placeholder={t("tagsPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -232,7 +231,7 @@ export function HostMeetupForm() {
 
           <div>
             <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-              Description &amp; Vibe *
+              {t("descriptionVibeRequired")}
             </label>
             <textarea
               rows={4}
@@ -240,7 +239,7 @@ export function HostMeetupForm() {
               minLength={20}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Share what the meetup feels like, whether beginners are welcome, and how you organize conversation..."
+              placeholder={t("descriptionPlaceholder")}
               className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-3 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
             />
           </div>
@@ -251,14 +250,14 @@ export function HostMeetupForm() {
           <div className="flex items-center gap-2">
             <TrainFront className="h-5 w-5 text-[#2B4C7E]" />
             <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-              2. Where in Japan &amp; Which Train Exit?
+              {t("hostSection2")}
             </h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                City *
+                {t("cityRequired")}
               </label>
               <select
                 value={city}
@@ -275,55 +274,55 @@ export function HostMeetupForm() {
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Neighborhood / Area *
+                {t("neighborhoodRequired")}
               </label>
               <input
                 type="text"
                 required
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="e.g., Nakameguro, Gion, Umeda"
+                placeholder={t("neighborhoodPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Nearest Train Station + Exit *
+                {t("nearestStationRequired")}
               </label>
               <input
                 type="text"
                 required
                 value={station}
                 onChange={(e) => setStation(e.target.value)}
-                placeholder="e.g., Nakameguro Station (Main Exit, 3 min walk)"
+                placeholder={t("stationPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Café, Venue or Park Name *
+                {t("venueRequired")}
               </label>
               <input
                 type="text"
                 required
                 value={venueName}
                 onChange={(e) => setVenueName(e.target.value)}
-                placeholder="e.g., Streamer Coffee Company"
+                placeholder={t("venuePlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div className="sm:col-span-2">
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                How to Spot the Group (optional)
+                {t("meetingPoint")}
               </label>
               <input
                 type="text"
                 value={meetingPoint}
                 onChange={(e) => setMeetingPoint(e.target.value)}
-                placeholder="e.g., I'll sit at the long wooden table near the window with a small blue notebook"
+                placeholder={t("meetingPointPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -335,14 +334,14 @@ export function HostMeetupForm() {
           <div className="flex items-center gap-2">
             <Calendar className="h-5 w-5 text-[#D94E34]" />
             <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-              3. Schedule, Languages &amp; Group Size
+              {t("hostSection3")}
             </h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="sm:col-span-1">
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Date &amp; Start Time (JST) *
+                {t("dateTimeRequired")}
               </label>
               <input
                 type="datetime-local"
@@ -355,18 +354,18 @@ export function HostMeetupForm() {
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Duration (minutes)
+                {t("duration")}
               </label>
               <select
                 value={durationMinutes}
                 onChange={(e) => setDurationMinutes(Number(e.target.value))}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               >
-                <option value={60}>60 min (1 hour)</option>
-                <option value={90}>90 min (1.5 hours)</option>
-                <option value={120}>120 min (2 hours)</option>
-                <option value={150}>150 min (2.5 hours)</option>
-                <option value={180}>180 min (3 hours)</option>
+                <option value={60}>60 {t("minutesShort")} ({t("oneHour")})</option>
+                <option value={90}>90 {t("minutesShort")} (1.5 {t("hoursShort")})</option>
+                <option value={120}>120 {t("minutesShort")} (2 {t("hoursShort")})</option>
+                <option value={150}>150 {t("minutesShort")} (2.5 {t("hoursShort")})</option>
+                <option value={180}>180 {t("minutesShort")} (3 {t("hoursShort")})</option>
               </select>
             </div>
 
@@ -374,7 +373,7 @@ export function HostMeetupForm() {
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
                 <span className="inline-flex items-center gap-1">
                   <Users className="h-3.5 w-3.5" />
-                  Max Table Size (incl. you)
+                  {t("tableSize")}
                 </span>
               </label>
               <input
@@ -393,7 +392,7 @@ export function HostMeetupForm() {
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
                 <span className="inline-flex items-center gap-1">
                   <Globe2 className="h-3.5 w-3.5" />
-                  Language Focus
+                  {t("languageFocus")}
                 </span>
               </label>
               <select
@@ -403,7 +402,7 @@ export function HostMeetupForm() {
               >
                 {LANGUAGE_FOCUSES.map((lf) => (
                   <option key={lf} value={lf}>
-                    {lf}
+                    {t(languageFocusTranslationKey(lf))}
                   </option>
                 ))}
               </select>
@@ -411,7 +410,7 @@ export function HostMeetupForm() {
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Language Comfort Level
+                {t("languageLevel")}
               </label>
               <select
                 value={languageLevel}
@@ -420,7 +419,7 @@ export function HostMeetupForm() {
               >
                 {LANGUAGE_LEVELS.map((ll) => (
                   <option key={ll} value={ll}>
-                    {ll}
+                    {t(languageFocusTranslationKey(ll))}
                   </option>
                 ))}
               </select>
@@ -428,13 +427,13 @@ export function HostMeetupForm() {
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Cost / Warikan Note
+                {t("costNote")}
               </label>
               <input
                 type="text"
                 value={costNote}
                 onChange={(e) => setCostNote(e.target.value)}
-                placeholder="Free · Order your own drink"
+                placeholder={t("costNoteExample")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -444,7 +443,7 @@ export function HostMeetupForm() {
         {/* Section 4: Cover Photo Selection */}
         <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-4">
           <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-            4. Choose a Cover Atmosphere
+            {t("hostSection4")}
           </h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {CURATED_COVERS.map((cov) => {
@@ -463,7 +462,7 @@ export function HostMeetupForm() {
                   <div className="aspect-[16/10] w-full overflow-hidden">
                     <img
                       src={cov.url}
-                      alt={cov.label}
+                      alt={t(cov.labelKey)}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -486,7 +485,7 @@ export function HostMeetupForm() {
             href="/"
             className="rounded-2xl border border-[#E6E0D6] bg-white px-5 py-3 text-sm font-semibold text-[#5A5D66] hover:text-[#1A1D24]"
           >
-            Cancel
+            {t("cancel")}
           </Link>
           <button
             type="submit"
@@ -494,7 +493,7 @@ export function HostMeetupForm() {
             className="inline-flex items-center gap-2 rounded-2xl bg-[#D94E34] px-7 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#C04028] disabled:opacity-60"
           >
             {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
-            Publish Meetup
+            {t("publishMeetup")}
           </button>
         </div>
       </form>

@@ -24,6 +24,7 @@ import {
   ROLE_LABELS,
 } from "@/lib/constants";
 import { formatShortTimestamp } from "@/lib/format";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 
 interface ConnectionItem {
   id: number;
@@ -57,6 +58,7 @@ export function MyHubClient({
 }) {
   const router = useRouter();
   const { user, setUser, openAuthModal } = useAuth();
+  const { t } = useLanguage();
   const [tab, setTab] = useState(initialTab);
   const [statusOverrides, setStatusOverrides] = useState<
     Record<number, string>
@@ -98,18 +100,17 @@ export function MyHubClient({
             <CalendarHeart className="h-7 w-7" />
           </div>
           <h1 className="mt-4 font-display text-2xl font-extrabold text-[#1A1D24]">
-            Your Japan Meetup Hub
+            {t("myHubTitle")}
           </h1>
           <p className="mt-2 text-sm text-[#5A5D66]">
-            Sign in or select a 1-click Demo Persona to view your upcoming RSVPs,
-            hosted gatherings, saved meetups, and coffee invitations.
+            {t("myHubIntro")}
           </p>
           <button
             type="button"
-            onClick={() => openAuthModal("Sign in to open My Hub")}
+            onClick={() => openAuthModal(t("signInToOpenHub"))}
             className="mt-6 rounded-2xl bg-[#D94E34] px-6 py-3 text-sm font-bold text-white hover:bg-[#C04028]"
           >
-            Sign In / Choose Demo Account
+            {t("signInDemo")}
           </button>
         </div>
       </div>
@@ -176,7 +177,7 @@ export function MyHubClient({
       const data = await res.json();
       if (res.ok) {
         setUser(data.user);
-        setProfileSavedMsg("Profile updated!");
+        setProfileSavedMsg(t("profileSaved"));
         router.refresh();
       }
     } finally {
@@ -187,28 +188,28 @@ export function MyHubClient({
   const tabs = [
     {
       id: "attending",
-      label: `Attending (${hubData.attending.length})`,
+      label: `${t("attending")} (${hubData.attending.length})`,
       icon: CalendarHeart,
     },
     {
       id: "hosting",
-      label: `Hosting (${hubData.hosting.length})`,
+      label: `${t("hosting")} (${hubData.hosting.length})`,
       icon: Sparkles,
     },
     {
       id: "saved",
-      label: `Saved (${hubData.saved.length})`,
+      label: `${t("saved")} (${hubData.saved.length})`,
       icon: Bookmark,
     },
     {
       id: "connections",
-      label: `Coffee Waves (${connectionsList.length})`,
+      label: `${t("coffeeWaves")} (${connectionsList.length})`,
       badge: pendingIncomingCount,
       icon: Coffee,
     },
     {
       id: "profile",
-      label: "Edit Profile",
+      label: t("editProfile"),
       icon: UserIcon,
     },
   ];
@@ -229,7 +230,7 @@ export function MyHubClient({
               {user.nationalityFlag} {user.name}
             </h1>
             <p className="text-sm text-[#5A5D66]">
-              {user.roleLabel} · {user.homeCity}
+              {t(roleTranslationKey(user.roleLabel))} · {user.homeCity}
               {user.neighborhood ? ` (${user.neighborhood})` : ""}
             </p>
           </div>
@@ -239,7 +240,7 @@ export function MyHubClient({
           className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-[#D94E34] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#C04028]"
         >
           <Plus className="h-4 w-4" />
-          Host New Meetup
+          {t("host")}
         </Link>
       </div>
 
@@ -278,16 +279,16 @@ export function MyHubClient({
             {hubData.attending.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  You haven&apos;t joined any upcoming meetups yet
+                  {t("attendingEmpty")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
-                  Explore coffee mornings, language tables, and city walks across Japan.
+                  {t("exploreMeetups")}
                 </p>
                 <Link
                   href="/"
                   className="mt-4 inline-block rounded-xl bg-[#D94E34] px-5 py-2.5 text-sm font-semibold text-white"
                 >
-                  Discover Meetups
+                  {t("discoverMeetups")}
                 </Link>
               </div>
             ) : (
@@ -305,18 +306,17 @@ export function MyHubClient({
             {hubData.hosting.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  You aren&apos;t hosting any meetups yet
+                  {t("hostingEmpty")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
-                  Hosting a 4–8 person café meetup is one of the easiest ways to
-                  meet foreigners and locals in your neighborhood!
+                  {t("hostTip")}
                 </p>
                 <Link
                   href="/host"
                   className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-[#D94E34] px-5 py-2.5 text-sm font-semibold text-white"
                 >
                   <Plus className="h-4 w-4" />
-                  Host Your First Meetup
+                  {t("hostFirst")}
                 </Link>
               </div>
             ) : (
@@ -334,13 +334,13 @@ export function MyHubClient({
             {hubData.saved.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  No bookmarked meetups yet
+                  {t("savedEmpty")}
                 </p>
                 <Link
                   href="/"
                   className="mt-4 inline-block rounded-xl bg-[#1A1D24] px-5 py-2.5 text-sm font-semibold text-white"
                 >
-                  Browse Meetups
+                  {t("browseMeetups")}
                 </Link>
               </div>
             ) : (
@@ -358,17 +358,16 @@ export function MyHubClient({
             {connectionsList.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  No coffee waves or invites yet
+                  {t("connectionsEmpty")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
-                  Visit the People directory to say hello and invite someone for
-                  a coffee chat.
+                  {t("connectionTip")}
                 </p>
                 <Link
                   href="/community"
                   className="mt-4 inline-block rounded-xl bg-[#2B4C7E] px-5 py-2.5 text-sm font-semibold text-white"
                 >
-                  Explore People Directory
+                  {t("peopleDirectory")}
                 </Link>
               </div>
             ) : (
@@ -392,8 +391,8 @@ export function MyHubClient({
                           </div>
                           <div className="text-xs text-[#5A5D66]">
                             {conn.direction === "incoming"
-                              ? "Invited you"
-                              : "You invited"}{" "}
+                              ? t("invitedYou")
+                              : t("youInvited")}{" "}
                             · {conn.meetupContext}
                           </div>
                         </div>
@@ -407,7 +406,7 @@ export function MyHubClient({
                             : "bg-amber-50 text-amber-800"
                         }`}
                       >
-                        {conn.status}
+                        {t(`status${conn.status.charAt(0).toUpperCase()}${conn.status.slice(1)}`)}
                       </span>
                     </div>
 
@@ -428,7 +427,7 @@ export function MyHubClient({
                               className="inline-flex items-center gap-1 rounded-lg border border-[#E6E0D6] px-2.5 py-1 font-semibold text-[#5A5D66] hover:bg-red-50 hover:text-red-600"
                             >
                               <X className="h-3 w-3" />
-                              Decline
+                              {t("decline")}
                             </button>
                             <button
                               type="button"
@@ -438,7 +437,7 @@ export function MyHubClient({
                               className="inline-flex items-center gap-1 rounded-lg bg-[#3E6B48] px-3 py-1 font-semibold text-white hover:bg-[#315539]"
                             >
                               <Check className="h-3 w-3" />
-                              Accept Coffee
+                              {t("acceptCoffee")}
                             </button>
                           </div>
                         )}
@@ -456,7 +455,7 @@ export function MyHubClient({
             className="max-w-2xl rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-4"
           >
             <h2 className="font-display text-xl font-bold text-[#1A1D24]">
-              Edit Cultural Profile
+              {t("editProfileTitle")}
             </h2>
 
             {profileSavedMsg && (
@@ -469,7 +468,7 @@ export function MyHubClient({
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Display Name
+                  {t("displayName")}
                 </label>
                 <input
                   type="text"
@@ -482,7 +481,7 @@ export function MyHubClient({
 
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Role in Japan
+                  {t("roleInJapan")}
                 </label>
                 <select
                   value={roleLabel}
@@ -491,7 +490,7 @@ export function MyHubClient({
                 >
                   {ROLE_LABELS.map((r) => (
                     <option key={r} value={r}>
-                      {r}
+                      {t(roleTranslationKey(r))}
                     </option>
                   ))}
                 </select>
@@ -499,7 +498,7 @@ export function MyHubClient({
 
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Country / Origin
+                  {t("countryOrigin")}
                 </label>
                 <select
                   value={nationality}
@@ -516,7 +515,7 @@ export function MyHubClient({
 
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Base City in Japan
+                  {t("baseCity")}
                 </label>
                 <select
                   value={homeCity}
@@ -534,46 +533,46 @@ export function MyHubClient({
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Favorite Neighborhood
+                {t("favoriteNeighborhood")}
               </label>
               <input
                 type="text"
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="e.g., Shimokitazawa, Gion, Tenjin"
+                placeholder={t("favoriteNeighborhoodPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Languages (format: Language:Level, comma separated)
+                {t("profileLanguages")}
               </label>
               <input
                 type="text"
                 value={languagesText}
                 onChange={(e) => setLanguagesText(e.target.value)}
-                placeholder="English:Native, Japanese:Conversational (N3)"
+                placeholder={t("profileLanguagesPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Interests (comma separated)
+                {t("interests")}
               </label>
               <input
                 type="text"
                 value={interestsText}
                 onChange={(e) => setInterestsText(e.target.value)}
-                placeholder="Specialty Coffee, Hiking, Ramen, Film"
+                placeholder={t("interestsPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Bio
+                {t("bio")}
               </label>
               <textarea
                 rows={3}
@@ -590,7 +589,7 @@ export function MyHubClient({
                 onChange={(e) => setOpenToCoffee(e.target.checked)}
                 className="accent-[#D94E34]"
               />
-              Show &ldquo;Open to Coffee Chats&rdquo; badge on my directory card
+              {t("openToCoffeeBadge")}
             </label>
 
             <button
@@ -599,7 +598,7 @@ export function MyHubClient({
               className="inline-flex items-center gap-2 rounded-xl bg-[#D94E34] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#C04028] disabled:opacity-60"
             >
               {savingProfile && <Loader2 className="h-4 w-4 animate-spin" />}
-              Save Profile
+              {t("saveProfile")}
             </button>
           </form>
         )}
