@@ -269,7 +269,7 @@ export function MeetupDetailClient({
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#5A5D66] transition hover:text-[#1A1D24]"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Japan Meetups
+          {t("Back to Japan Meetups")}
         </Link>
 
         <div className="flex items-center gap-2">
@@ -281,12 +281,12 @@ export function MeetupDetailClient({
             {copied ? (
               <>
                 <Check className="h-3.5 w-3.5 text-[#3E6B48]" />
-                Copied Link
+                {t("Copied Link")}
               </>
             ) : (
               <>
                 <Share2 className="h-3.5 w-3.5" />
-                Share
+                {t("Share")}
               </>
             )}
           </button>
@@ -481,7 +481,7 @@ export function MeetupDetailClient({
                       {meetup.host.nationalityFlag} {meetup.host.name}
                     </span>
                     <span className="rounded-full bg-[#D94E34] px-2 py-0.5 text-[10px] font-bold text-white">
-                      Host
+                      {t("Host")}
                     </span>
                   </div>
                   <div className="text-xs text-[#5A5D66]">
@@ -534,7 +534,7 @@ export function MeetupDetailClient({
             {meetup.waitlistAttendees.length > 0 && (
               <div className="mt-5 border-t border-[#E6E0D6] pt-4">
                 <div className="text-xs font-bold uppercase tracking-wider text-[#5A5D66]">
-                  Waitlist Queue
+                  {t("Waitlist Queue")}
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {meetup.waitlistAttendees.map((w, idx) => (
@@ -602,7 +602,7 @@ export function MeetupDetailClient({
                             {c.isPinned && (
                               <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-[#D94E34] border border-[#D94E34]/20">
                                 <Pin className="h-2.5 w-2.5" />
-                                Pinned note
+                                {t("Pinned note")}
                               </span>
                             )}
                           </div>
@@ -655,7 +655,7 @@ export function MeetupDetailClient({
                   ) : (
                     <Send className="h-4 w-4" />
                   )}
-                  Post
+                  {t("Post")}
                 </button>
               </div>
             </form>
@@ -696,7 +696,7 @@ export function MeetupDetailClient({
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-[#D94E34]/10 px-3.5 py-2.5 text-xs font-semibold text-[#D94E34]">
                     <Sparkles className="h-4 w-4" />
-                    You are hosting this gathering
+                    {t("You are hosting this gathering")}
                   </div>
                   <button
                     type="button"
@@ -704,7 +704,7 @@ export function MeetupDetailClient({
                     className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
                   >
                     <Edit3 className="h-4 w-4" />
-                    Edit Details
+                    {t("Edit Details")}
                   </button>
                   {!deleteConfirm ? (
                     <button
@@ -713,12 +713,12 @@ export function MeetupDetailClient({
                       className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-200 bg-white px-4 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
-                      Cancel Meetup
+                      {t("Cancel Meetup")}
                     </button>
                   ) : (
                     <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-center">
                       <p className="text-xs font-semibold text-red-800">
-                        Cancel and remove this meetup?
+                        {t("Cancel and remove this meetup?")}
                       </p>
                       <div className="mt-2 flex gap-2">
                         <button
@@ -726,14 +726,14 @@ export function MeetupDetailClient({
                           onClick={handleDeleteMeetup}
                           className="flex-1 rounded-lg bg-red-600 py-1.5 text-xs font-semibold text-white"
                         >
-                          Yes, Delete
+                          {t("Yes, Delete")}
                         </button>
                         <button
                           type="button"
                           onClick={() => setDeleteConfirm(false)}
                           className="flex-1 rounded-lg bg-white py-1.5 text-xs font-semibold text-[#1A1D24] border border-[#E6E0D6]"
                         >
-                          Keep
+                          {t("Keep")}
                         </button>
                       </div>
                     </div>
@@ -774,14 +774,14 @@ export function MeetupDetailClient({
                     onClick={handleCancelRsvp}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-xs font-semibold text-[#5A5D66] hover:text-red-600"
                   >
-                    Leave Waitlist
+                    {t("Leave Waitlist")}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleRsvp} className="mt-5 space-y-3">
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Quick intro for the host (optional)
+                      {t("Quick intro for the host (optional)")}
                     </label>
                     <textarea
                       rows={2}
@@ -876,7 +876,7 @@ export function MeetupDetailClient({
                     className="inline-flex items-center gap-1 rounded-full bg-[#2B4C7E]/10 px-3 py-1 font-semibold text-[#2B4C7E] hover:bg-[#2B4C7E] hover:text-white transition"
                   >
                     <Hand className="h-3.5 w-3.5" />
-                    Say Hello
+                    {t("Say Hello")}
                   </button>
                 )}
               </div>
@@ -885,7 +885,7 @@ export function MeetupDetailClient({
             {/* Handy Japan Meetup Phrase */}
             <div className="rounded-3xl border border-[#E6E0D6] bg-[#F2EDE4]/70 p-5">
               <div className="text-xs font-bold uppercase tracking-wider text-[#D94E34]">
-                Handy Phrase for Today
+                {t("Handy Phrase for Today")}
               </div>
               <div className="mt-2 font-jp text-sm font-bold text-[#1A1D24]">
                 {JAPAN_PHRASES[0].jp}
@@ -913,7 +913,7 @@ export function MeetupDetailClient({
           <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-xl font-bold text-[#1A1D24]">
-                Edit Meetup Details
+                {t("Edit Meetup Details")}
               </h3>
               <button
                 type="button"
@@ -954,7 +954,7 @@ export function MeetupDetailClient({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Venue Name
+                  {t("Venue Name")}
                 </label>
                 <input
                   type="text"
@@ -968,7 +968,7 @@ export function MeetupDetailClient({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Meeting Point Cue
+                  {t("Meeting Point Cue")}
                 </label>
                 <input
                   type="text"
@@ -982,7 +982,7 @@ export function MeetupDetailClient({
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Capacity
+                    {t("Capacity")}
                   </label>
                   <input
                     type="number"
@@ -1000,7 +1000,7 @@ export function MeetupDetailClient({
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Cost Note
+                    {t("Cost Note")}
                   </label>
                   <input
                     type="text"
@@ -1014,7 +1014,7 @@ export function MeetupDetailClient({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Description
+                  {t("Description")}
                 </label>
                 <textarea
                   rows={4}
@@ -1032,7 +1032,7 @@ export function MeetupDetailClient({
                   onClick={() => setEditOpen(false)}
                   className="rounded-xl border border-[#E6E0D6] bg-white px-4 py-2 text-sm font-semibold"
                 >
-                  Cancel
+                  {t("Cancel")}
                 </button>
                 <button
                   type="submit"
@@ -1083,7 +1083,7 @@ export function MeetupDetailClient({
                   onClick={() => setWaveOpen(false)}
                   className="w-full rounded-xl bg-[#1A1D24] py-2.5 text-sm font-semibold text-white"
                 >
-                  Done
+                  {t("Done")}
                 </button>
               </div>
             ) : (
@@ -1107,7 +1107,7 @@ export function MeetupDetailClient({
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#D94E34] py-2.5 text-sm font-semibold text-white hover:bg-[#C04028]"
                 >
                   {waveLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                  Send Hello
+                  {t("Send Hello")}
                 </button>
               </form>
             )}
