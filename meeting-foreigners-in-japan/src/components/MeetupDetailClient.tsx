@@ -114,7 +114,7 @@ export function MeetupDetailClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setRsvpFeedback(data.error || "Could not complete RSVP.");
+        setRsvpFeedback(data.error || t("rsvpFailed"));
       } else {
         setRsvpFeedback(
           data.status === "waitlist"
@@ -139,7 +139,7 @@ export function MeetupDetailClient({
         method: "DELETE",
       });
       if (res.ok) {
-        setRsvpFeedback("Your RSVP has been cancelled.");
+        setRsvpFeedback(t("rsvpCancelled"));
         await refreshDetail();
         router.refresh();
       }
