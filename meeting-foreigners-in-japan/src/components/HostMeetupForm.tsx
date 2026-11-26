@@ -462,7 +462,7 @@ export function HostMeetupForm() {
                   <div className="aspect-[16/10] w-full overflow-hidden">
                     <img
                       src={cov.url}
-                      alt={cov.label}
+                      alt={t(cov.labelKey)}
                       className="h-full w-full object-cover"
                     />
                   </div>
