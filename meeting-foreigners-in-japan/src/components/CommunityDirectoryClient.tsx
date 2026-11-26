@@ -156,7 +156,7 @@ export function CommunityDirectoryClient({
               <option value="All">{t("All Roles")}</option>
               {ROLE_LABELS.map((r) => (
                 <option key={r} value={r}>
-                  {r}
+                  {t(r)}
                 </option>
               ))}
             </select>
