@@ -481,7 +481,7 @@ export function MeetupDetailClient({
                       {meetup.host.nationalityFlag} {meetup.host.name}
                     </span>
                     <span className="rounded-full bg-[#D94E34] px-2 py-0.5 text-[10px] font-bold text-white">
-                      Host
+                      {t("hostLabel")}
                     </span>
                   </div>
                   <div className="text-xs text-[#5A5D66]">
@@ -601,12 +601,12 @@ export function MeetupDetailClient({
                             {c.isPinned && (
                               <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-[#D94E34] border border-[#D94E34]/20">
                                 <Pin className="h-2.5 w-2.5" />
-                                Pinned note
+                                {t("pinnedNote")}
                               </span>
                             )}
                           </div>
                           <div className="text-[11px] text-[#5A5D66]">
-                            {c.userRole} · {formatShortTimestamp(c.createdAt)}
+                            {t(roleTranslationKey(c.userRole))} · {formatShortTimestamp(c.createdAt)}
                           </div>
                         </div>
                       </div>
@@ -665,8 +665,8 @@ export function MeetupDetailClient({
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-[#1A1D24]">
                   {isFull
-                    ? "Table is currently full"
-                    : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} remaining`}
+                    ? t("tableFull")
+                    : t("spotsRemaining").replace("{count}", String(spotsLeft))}
                 </span>
                 <span className="text-xs font-semibold text-[#5A5D66]">
                   {meetup.goingCount} / {meetup.maxAttendees}
@@ -741,8 +741,7 @@ export function MeetupDetailClient({
                     {t("confirmed")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    Look for {meetup.host.name} at {meetup.venueName}. If your
-                    plans change, please cancel so someone else can join.
+                    {t("lookForHost").replace("{host}", meetup.host.name).replace("{venue}", meetup.venueName)}
                   </p>
                   <button
                     type="button"
@@ -921,7 +920,7 @@ export function MeetupDetailClient({
             <form onSubmit={handleSaveEdit} className="mt-4 space-y-3.5">
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Title
+                  {t("title")}
                 </label>
                 <input
                   type="text"
@@ -977,7 +976,7 @@ export function MeetupDetailClient({
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                    Capacity
+                    {t("capacity")}
                   </label>
                   <input
                     type="number"
@@ -1009,7 +1008,7 @@ export function MeetupDetailClient({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Description
+                  {t("description")}
                 </label>
                 <textarea
                   rows={4}
