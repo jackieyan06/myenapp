@@ -17,20 +17,23 @@ import {
   CreditCard,
 } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
+import { useLanguage } from "@/components/LanguageProvider";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export function Navbar() {
   const pathname = usePathname();
   const { user, openAuthModal, logout } = useAuth();
+  const { t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/", label: "Discover", icon: Compass },
-    { href: "/community", label: "People", icon: Users },
-    { href: "/guide", label: "Japan Guide", icon: BookOpen },
-    { href: "/pricing", label: "Membership", icon: CreditCard },
+    { href: "/", label: t("discover"), icon: Compass },
+    { href: "/community", label: t("people"), icon: Users },
+    { href: "/guide", label: t("guide"), icon: BookOpen },
+    { href: "/pricing", label: t("membership"), icon: CreditCard },
     ...(user
-      ? [{ href: "/my-meetups", label: "My Hub", icon: CalendarHeart }]
+      ? [{ href: "/my-meetups", label: t("myHub"), icon: CalendarHeart }]
       : []),
   ];
 
@@ -83,12 +86,13 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher />
           <Link
             href="/host"
             className="inline-flex items-center gap-1.5 rounded-full bg-[#D94E34] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#C04028]"
           >
             <Plus className="h-4 w-4" />
-            Host Meetup
+            {t("host")}
           </Link>
 
           {user ? (
@@ -161,7 +165,7 @@ export function Navbar() {
               onClick={() => openAuthModal("Sign in or Try a Demo Account")}
               className="rounded-full border border-[#E6E0D6] bg-white px-4 py-2 text-sm font-semibold text-[#1A1D24] transition hover:border-[#1A1D24]"
             >
-              Sign In
+              {t("signIn")}
             </button>
           )}
         </div>
@@ -180,6 +184,7 @@ export function Navbar() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="border-t border-[#E6E0D6] bg-[#FAF8F4] px-4 py-4 md:hidden">
+          <div className="mb-3"><LanguageSwitcher /></div>
           <div className="space-y-1.5">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -209,7 +214,7 @@ export function Navbar() {
               className="flex items-center gap-2.5 rounded-xl bg-[#D94E34] px-3.5 py-2.5 text-sm font-semibold text-white"
             >
               <Plus className="h-4 w-4" />
-              Host a Meetup
+              {t("host")}
             </Link>
           </div>
           <div className="mt-4 border-t border-[#E6E0D6] pt-3">
@@ -237,7 +242,7 @@ export function Navbar() {
                   }}
                   className="rounded-lg border border-[#E6E0D6] bg-white px-3 py-1.5 text-xs font-semibold text-red-600"
                 >
-                  Sign Out
+                  {t("signOut")}
                 </button>
               </div>
             ) : (
@@ -249,7 +254,7 @@ export function Navbar() {
                 }}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-sm font-semibold text-[#1A1D24]"
               >
-                Sign In / Try Demo Persona
+                {t("signIn")} / Try Demo Persona
               </button>
             )}
           </div>
