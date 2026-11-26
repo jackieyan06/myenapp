@@ -814,7 +814,7 @@ export function MeetupDetailClient({
                     }`}
                   >
                     {rsvpLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                    {isFull ? "{t("joinWaitlist")}" : "{t("joinMeetup")}"}
+                    {isFull ? t("joinWaitlist") : t("joinMeetup")}
                   </button>
                 </form>
               )}
