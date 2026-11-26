@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { JAPAN_CITIES } from "@/lib/constants";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="mt-16 border-t border-[#E6E0D6] bg-[#F2EDE4]/60">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
