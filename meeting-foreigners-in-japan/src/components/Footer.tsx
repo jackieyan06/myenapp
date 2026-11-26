@@ -71,6 +71,27 @@ export function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
+              EnJapan
+            </h3>
+            <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
+              <li><Link href="/about" className="hover:text-[#D94E34] transition">About us</Link></li>
+              <li><Link href="/terms" className="hover:text-[#D94E34] transition">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-[#D94E34] transition">Privacy Policy</Link></li>
+              <li><Link href="/commercial-disclosure" className="hover:text-[#D94E34] transition">Commercial Disclosure</Link></li>
+              <li><Link href="/advertising" className="hover:text-[#D94E34] transition">Advertising with EnJapan</Link></li>
+            </ul>
+            <h3 className="mt-6 text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
+              Connect with us
+            </h3>
+            <p className="mt-3 text-sm text-[#5A5D66]">Follow our social channels as official accounts launch.</p>
+            <a href="mailto:enjapan.support@gmail.com" className="mt-2 inline-block text-sm font-semibold text-[#D94E34] hover:underline">Email EnJapan</a>
+            <ul className="mt-2 space-y-1 text-sm text-[#5A5D66]">
+              {["YouTube", "X", "Meta", "Instagram", "TikTok", "LinkedIn"].map((name) => <li key={name}>{name} <span className="text-xs text-[#8B867D]">· Official link coming soon</span></li>)}
+            </ul>
+          </div>
+
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-[#E6E0D6] pt-6 text-xs text-[#5A5D66] sm:flex-row sm:items-center">
