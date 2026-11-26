@@ -22,7 +22,7 @@ export function InfoLayout({
   locale?: string;
 }) {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
+    <div lang={locale} className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
       <Link href="/" className="text-sm font-semibold text-[#D94E34] hover:underline">← EnJapan home</Link>
       <header className="mt-6 border-b border-[#E6E0D6] pb-8">
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#D94E34]">EnJapan · 縁</p>
