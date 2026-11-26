@@ -36,7 +36,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "across Japan.": "日本各地で。",
     "Small-table coffee mornings, 50/50 Japanese–English language exchanges, neighborhood walks, and welcoming izakaya nights—with exact train station exits and zero awkwardness.": "少人数のコーヒー交流会、日英ランゲージエクスチェンジ、街歩き、居心地のよい居酒屋の集まりを楽しみましょう。駅の出口もわかりやすくご案内します。",
     "Search neighborhood, station (Shibuya, Gion), coffee, or language...": "エリア、駅（渋谷・祇園）、コーヒー、言語で検索…",
-    "Host a Gathering": "交流会を主催",
+    
     "All Cities": "すべての都市",
     "Visiting or new in Japan?": "日本に来たばかりですか？",
     "Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or Kyoto Traveler) to RSVP, post questions, or host your own meetup.": "デモアカウント（東京在住者、ベルリン出身者、京都旅行者）でログインして、参加登録や質問、交流会の主催を体験できます。",
@@ -108,7 +108,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Language Comfort Level": "言語レベル",
     "Cost / Warikan Note": "費用・割り勘について",
     "4. Choose a Cover Atmosphere": "4. カバー画像の雰囲気を選択",
-    "Cancel": "キャンセル",
+    
     "Publish Meetup": "交流会を公開",
     "Unable to create meetup.": "交流会を作成できませんでした。",
     "Network error while publishing meetup.": "公開中にネットワークエラーが発生しました。",
@@ -181,7 +181,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Explore People Directory": "メンバー一覧を見る",
     "Decline": "辞退",
     "Accept Coffee": "コーヒーのお誘いを承認",
-    "Edit Cultural Profile": "プロフィールを編集",
+    
     "Display Name": "表示名",
     "Role in Japan": "日本での立場",
     "Country / Origin": "国・出身地",
@@ -274,7 +274,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Specialty Coffee, Hiking, Ramen, Film": "スペシャルティコーヒー、ハイキング、ラーメン、映画",
     "Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.": "ログインするか、ワンクリックのデモアカウントを選択して、参加予定、主催イベント、保存した交流会、コーヒーのお誘いを確認しましょう。",
     "Saved": "保存済み",
-    "Save": "保存",
+    
     "Date & Time": "日時",
     "Venue & Meeting Spot": "会場・集合場所",
     "Discussion & Questions": "交流・質問",
@@ -325,7 +325,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "across Japan.": "遍布日本各地。",
     "Small-table coffee mornings, 50/50 Japanese–English language exchanges, neighborhood walks, and welcoming izakaya nights—with exact train station exits and zero awkwardness.": "参加小型咖啡聚会、日英语言交流、街区漫步和轻松的居酒屋之夜。我们还会提供清晰的车站出口信息，让见面更轻松。",
     "Search neighborhood, station (Shibuya, Gion), coffee, or language...": "搜索街区、车站（涩谷、祇园）、咖啡或语言…",
-    "Host a Gathering": "发起聚会",
+    
     "All Cities": "所有城市",
     "Visiting or new in Japan?": "刚来日本或正在旅行？",
     "Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or Kyoto Traveler) to RSVP, post questions, or host your own meetup.": "使用一键演示身份（东京当地人、柏林外籍居民或京都旅行者）登录，即可报名、提问或发起聚会。",
@@ -397,7 +397,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Language Comfort Level": "语言程度",
     "Cost / Warikan Note": "费用／分摊说明",
     "4. Choose a Cover Atmosphere": "4. 选择封面氛围",
-    "Cancel": "取消",
+    
     "Publish Meetup": "发布聚会",
     "Unable to create meetup.": "无法创建聚会。",
     "Network error while publishing meetup.": "发布聚会时发生网络错误。",
@@ -470,7 +470,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Explore People Directory": "浏览社区成员",
     "Decline": "拒绝",
     "Accept Coffee": "接受咖啡邀约",
-    "Edit Cultural Profile": "编辑个人资料",
+    
     "Display Name": "显示名称",
     "Role in Japan": "在日本的身份",
     "Country / Origin": "国家／来源地",
@@ -563,7 +563,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Specialty Coffee, Hiking, Ramen, Film": "精品咖啡、徒步、拉面、电影",
     "Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.": "登录或选择一键演示身份，即可查看即将参加的活动、主办的聚会、收藏的活动和咖啡邀约。",
     "Saved": "已收藏",
-    "Save": "收藏",
+    
     "Date & Time": "日期与时间",
     "Venue & Meeting Spot": "场地与集合地点",
     "Discussion & Questions": "讨论与提问",
@@ -614,7 +614,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "across Japan.": "遍布日本各地。",
     "Small-table coffee mornings, 50/50 Japanese–English language exchanges, neighborhood walks, and welcoming izakaya nights—with exact train station exits and zero awkwardness.": "參加小型咖啡聚會、日英語言交流、街區散步，以及輕鬆的居酒屋之夜。我們也會提供清楚的車站出口資訊，讓見面更自在。",
     "Search neighborhood, station (Shibuya, Gion), coffee, or language...": "搜尋街區、車站（澀谷、祇園）、咖啡或語言…",
-    "Host a Gathering": "發起聚會",
+    
     "All Cities": "所有城市",
     "Visiting or new in Japan?": "剛來日本或正在旅行嗎？",
     "Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or Kyoto Traveler) to RSVP, post questions, or host your own meetup.": "使用一鍵示範身分（東京在地居民、柏林外籍居民或京都旅人）登入，即可報名、提問或發起聚會。",
@@ -686,7 +686,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Language Comfort Level": "語言程度",
     "Cost / Warikan Note": "費用／分攤說明",
     "4. Choose a Cover Atmosphere": "4. 選擇封面氛圍",
-    "Cancel": "取消",
+    
     "Publish Meetup": "發布聚會",
     "Unable to create meetup.": "無法建立聚會。",
     "Network error while publishing meetup.": "發布聚會時發生網路錯誤。",
@@ -759,7 +759,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Explore People Directory": "瀏覽社群成員",
     "Decline": "拒絕",
     "Accept Coffee": "接受咖啡邀約",
-    "Edit Cultural Profile": "編輯個人資料",
+    
     "Display Name": "顯示名稱",
     "Role in Japan": "在日本的身分",
     "Country / Origin": "國家／來源地",
@@ -852,7 +852,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Specialty Coffee, Hiking, Ramen, Film": "精品咖啡、健行、拉麵、電影",
     "Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.": "登入或選擇一鍵示範身分，即可查看即將參加的活動、主辦的聚會、收藏的活動及咖啡邀約。",
     "Saved": "已收藏",
-    "Save": "收藏",
+    
     "Date & Time": "日期與時間",
     "Venue & Meeting Spot": "場地與集合地點",
     "Discussion & Questions": "討論與提問",
