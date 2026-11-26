@@ -321,12 +321,12 @@ export function MeetupDetailClient({
               <div className="absolute bottom-4 left-5 right-5 flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1 rounded-full bg-white/92 px-3 py-1 text-xs font-bold text-[#1A1D24] backdrop-blur-sm">
                   <MapPin className="h-3.5 w-3.5 text-[#D94E34]" />
-                  {meetup.city}{" "}
+                  {t(meetup.city)}{" "}
                   <span className="font-jp">{getCityJp(meetup.city)}</span> ·{" "}
                   {meetup.neighborhood}
                 </span>
                 <span className="rounded-full bg-[#1A1D24]/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                  {meetup.languageFocus}
+                  {t(meetup.languageFocus)}
                 </span>
               </div>
             </div>
@@ -338,10 +338,10 @@ export function MeetupDetailClient({
                     meetup.category
                   )}`}
                 >
-                  {meetup.category}
+                  {t(meetup.category)}
                 </span>
                 <span className="rounded-full border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-0.5 text-xs font-medium text-[#5A5D66]">
-                  {meetup.languageLevel}
+                  {t(meetup.languageLevel)}
                 </span>
               </div>
 
@@ -363,7 +363,7 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                      Date &amp; Time
+                      {t("Date & Time")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
                       {formatMeetupFullDate(meetup.startsAt)}
@@ -397,7 +397,7 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                      Venue &amp; Meeting Spot
+                      {t("Venue & Meeting Spot")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
                       {meetup.venueName}
@@ -518,7 +518,7 @@ export function MeetupDetailClient({
                       </span>
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {att.roleLabel}
+                      {t(att.roleLabel)}
                       {att.speakingLanguage ? ` · ${att.speakingLanguage}` : ""}
                     </div>
                     {att.introNote && (
@@ -557,12 +557,11 @@ export function MeetupDetailClient({
             <div className="flex items-center gap-2.5">
               <MessageSquare className="h-5 w-5 text-[#2B4C7E]" />
               <h2 className="font-display text-xl font-bold text-[#1A1D24]">
-                Discussion &amp; Questions ({meetup.comments.length})
+                {t("Discussion & Questions")} ({meetup.comments.length})
               </h2>
             </div>
             <p className="mt-1 text-xs text-[#5A5D66]">
-              Ask about train exits, arriving slightly late, dietary preferences,
-              or say hello before meeting!
+              {t("Ask about train exits, arriving slightly late, dietary preferences, or say hello before meeting!")}
             </p>
 
             {/* Comments List */}
@@ -608,7 +607,7 @@ export function MeetupDetailClient({
                             )}
                           </div>
                           <div className="text-[11px] text-[#5A5D66]">
-                            {c.userRole} · {formatShortTimestamp(c.createdAt)}
+                            {t(c.userRole)} · {formatShortTimestamp(c.createdAt)}
                           </div>
                         </div>
                       </div>
@@ -794,7 +793,7 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Languages you&apos;d like to speak
+                      {t("Languages you'd like to speak")}
                     </label>
                     <input
                       type="text"
@@ -901,7 +900,7 @@ export function MeetupDetailClient({
                 href="/guide"
                 className="mt-3 inline-block text-xs font-semibold text-[#2B4C7E] hover:underline"
               >
-                Open full phrasebook &amp; etiquette →
+                {t("Open full phrasebook & etiquette →")}
               </Link>
             </div>
           </div>
@@ -941,7 +940,7 @@ export function MeetupDetailClient({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Nearest Train Station &amp; Exit
+                  {t("Nearest Train Station & Exit")}
                 </label>
                 <input
                   type="text"
