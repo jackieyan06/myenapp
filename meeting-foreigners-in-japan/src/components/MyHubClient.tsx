@@ -490,7 +490,7 @@ export function MyHubClient({
                 >
                   {ROLE_LABELS.map((r) => (
                     <option key={r} value={r}>
-                      {r}
+                      {t(roleTranslationKey(r))}
                     </option>
                   ))}
                 </select>
