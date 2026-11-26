@@ -386,6 +386,12 @@ const messages: Record<AppLocale, Record<string, string>> = {
     signInToMessageHost: "Sign in to message the host",
     signInToWave: "Sign in to say hello to the host",
     signInToOpenHub: "Sign in to open My Meetups",
+
+    statusPending: "Pending",
+    statusAccepted: "Accepted",
+    statusDeclined: "Declined",
+    meetupHostedSingular: "meetup hosted",
+    meetupHostedPlural: "meetups hosted",
 },
   "ja": {
     discover: "イベントを探す",
