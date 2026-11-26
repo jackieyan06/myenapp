@@ -21,12 +21,10 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-[#5A5D66]">
-              Warm, small-group gatherings connecting foreigners, expats,
-              travelers, and Japanese locals across Japan—at neighborhood
-              kissaten cafés, izakayas, and riverside walks.
+              {t("Warm, small-group gatherings connecting foreigners, expats, travelers, and Japanese locals across Japan—at neighborhood kissaten cafés, izakayas, and riverside walks.")}
             </p>
             <p className="mt-3 font-jp text-xs font-medium text-[#8B867D]">
-              一期一会 · Ichigo Ichie — Treasure every encounter.
+              {t("一期一会 · Ichigo Ichie — Treasure every encounter.")}
             </p>
           </div>
 
