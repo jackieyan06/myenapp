@@ -42,3 +42,6 @@ jobs:
 
       - name: Build Next.js application
         run: npm run build
+        env:
+          # Build-time placeholder only; CI does not connect to this database.
+          DATABASE_URL: postgresql://ci:ci@127.0.0.1:5432/enjapan_ci
