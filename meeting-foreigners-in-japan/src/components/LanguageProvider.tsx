@@ -1433,13 +1433,15 @@ const LanguageContext = createContext<LanguageContextValue>({
   locale: "en", setLocale: () => undefined, t: (key) => messages.en[key] ?? key,
 });
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<AppLocale>("en");
+export function LanguageProvider({ children, initialLocale = "en" }: { children: React.ReactNode; initialLocale?: AppLocale }) {
+  const [locale, setLocaleState] = useState<AppLocale>(initialLocale);
   useEffect(() => {
     const cookieLocale = document.cookie.split("; ").find((item) => item.startsWith("en-locale="))?.split("=")[1] as AppLocale | undefined;
-    const saved = (window.localStorage.getItem("en-locale") as AppLocale | null) ?? cookieLocale ?? null;
+    const storedLocale = window.localStorage.getItem("en-locale") as AppLocale | null;
+    const saved = (storedLocale && Object.prototype.hasOwnProperty.call(messages, storedLocale) ? storedLocale : null) ?? cookieLocale ?? initialLocale;
     if (saved && Object.prototype.hasOwnProperty.call(messages, saved)) { setLocaleState(saved); document.documentElement.lang = saved; }
-  }, []);
+    document.documentElement.lang = saved;
+  }, [initialLocale]);
   const setLocale = (next: AppLocale) => {
     if (!Object.prototype.hasOwnProperty.call(messages, next)) return;
     setLocaleState(next);
