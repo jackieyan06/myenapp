@@ -245,6 +245,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Intermediate (N2)": "中級（N2）",
     "Fluent (N1)": "流暢（N1）",
     "Native Japanese": "日本語ネイティブ",
+    "joined": "参加",
+    "spot left": "空席",
+    "Waitlist": "キャンセル待ち",
     "Language": "言語", "English": "英語", "Japanese": "日本語", "Simplified Chinese": "簡体字中国語", "Traditional Chinese": "繁体字中国語",
   },
   "zh-cn": {
@@ -479,6 +482,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Intermediate (N2)": "中级（N2）",
     "Fluent (N1)": "流利（N1）",
     "Native Japanese": "日语母语者",
+    "joined": "人已参加",
+    "spot left": "个空位",
+    "Waitlist": "候补名单",
     "Language": "语言", "English": "英语", "Japanese": "日语", "Simplified Chinese": "简体中文", "Traditional Chinese": "繁体中文",
   },
   "zh-tw": {
@@ -713,6 +719,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Intermediate (N2)": "中級（N2）",
     "Fluent (N1)": "流利（N1）",
     "Native Japanese": "日語母語者",
+    "joined": "人已參加",
+    "spot left": "個名額",
+    "Waitlist": "候補名單",
     "Language": "語言", "English": "英文", "Japanese": "日文", "Simplified Chinese": "簡體中文", "Traditional Chinese": "繁體中文",
   },
 };
@@ -742,7 +751,6 @@ export function LocaleProvider({
     setLocaleState(next);
     document.cookie = `en-locale=${next}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = next;
-    window.localStorage.setItem("en-locale", next);
     window.location.reload();
   };
 
