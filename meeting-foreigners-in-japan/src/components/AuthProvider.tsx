@@ -29,7 +29,7 @@ const DEMO_PERSONAS = [
     email: "hana@en-japan.jp",
     name: "Hana Sato",
     flag: "🇯🇵",
-    subtitle: "Japanese Local · Tokyo (Shimokitazawa)",
+    subtitleKey: "demoHanaSubtitle",
     langs: "Japanese (Native) · English (Fluent)",
     color: "#D94E34",
   },
@@ -37,7 +37,7 @@ const DEMO_PERSONAS = [
     email: "lucas@en-japan.jp",
     name: "Lucas Meyer",
     flag: "🇩🇪",
-    subtitle: "Expat from Germany · Tokyo (Daikanyama)",
+    subtitleKey: "demoLucasSubtitle",
     langs: "German · English · Japanese (N3)",
     color: "#2B4C7E",
   },
@@ -45,7 +45,7 @@ const DEMO_PERSONAS = [
     email: "maya@en-japan.jp",
     name: "Maya Lin",
     flag: "🇹🇼",
-    subtitle: "Traveler from Taiwan · Kyoto (Kawaramachi)",
+    subtitleKey: "demoMayaSubtitle",
     langs: "Mandarin · English · Japanese (N4)",
     color: "#3E6B48",
   },
@@ -275,7 +275,7 @@ export function AuthProvider({
                           <span>{persona.name}</span>
                         </div>
                         <div className="text-xs text-[#5A5D66]">
-                          {persona.subtitle}
+                          {t(persona.subtitleKey)}
                         </div>
                       </div>
                     </div>
