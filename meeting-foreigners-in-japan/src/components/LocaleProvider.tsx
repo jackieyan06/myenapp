@@ -902,15 +902,15 @@ export function LocaleProvider({
   initialLocale: Locale;
   children: React.ReactNode;
 }) {
-  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  const [selectedLocale, setLocaleState] = useState<Locale>(initialLocale);
   const pathname = usePathname();
+  const routeLocale = pathname.split("/")[1];
+  const locale: Locale = routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw" ? routeLocale : selectedLocale;
 
   // Keep the shared navigation/footer language in sync with localized info-page URLs.
   // This also persists the route locale so returning to the home page keeps that language.
   useEffect(() => {
-    const routeLocale = pathname.split("/")[1];
     if (routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw") {
-      setLocaleState(routeLocale);
       document.cookie = `en-locale=${routeLocale}; path=/; max-age=31536000; samesite=lax`;
       document.documentElement.lang = routeLocale;
     }
