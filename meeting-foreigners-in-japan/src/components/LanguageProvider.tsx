@@ -28,8 +28,7 @@ const messages: Record<AppLocale, Record<string, string>> = {
     monthPeriod: "/ month", yearPeriod: "/ year", monthlyLabel: "MONTHLY", annualLabel: "ANNUAL",
     choosePlanIntro: "Choose a membership that fits the way you connect.", selectedHeading: "Your selection",
     previewTotal: "Preview total", afterTrial: "After 7-day trial", faqHeading: "A few things to know",
-    billingQuestion: "When does billing start?", trialAnswer: "The proposed plan includes a 7-day free trial. Billing begins after the trial when live checkout is activated."
-
+    billingQuestion: "When does billing start?", trialAnswer: "The proposed plan includes a 7-day free trial. Billing begins after the trial when live checkout is activated.",
     guideBadge: "Cultural Field Guide",
     guideTitle: "Meeting in Japan: Etiquette & Essential Phrases",
     guideIntro: "Practical tips for navigating Japanese train station exits, splitting izakaya bills smoothly, and breaking the ice with helpful Japanese phrases.",
