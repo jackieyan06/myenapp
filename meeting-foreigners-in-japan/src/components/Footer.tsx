@@ -69,6 +69,11 @@ export function Footer() {
                   Japan Etiquette & Phrases
                 </Link>
               </li>
+              <li>
+                <Link href="/pricing" className="hover:text-[#D94E34] transition">
+                  Membership & Pricing
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
