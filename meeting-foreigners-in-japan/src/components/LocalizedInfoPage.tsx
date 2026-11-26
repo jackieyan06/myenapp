@@ -142,7 +142,7 @@ export default async function LocalizedInfoPage({ params }: { params: Promise<{ 
   const { locale: rawLocale, slug } = await params;
   if (!(rawLocale in copy) || !(slug in paths)) return null;
   const locale = rawLocale as Locale;
-  const page = copy[locale][slug];
+  const page = copy[locale][slug as keyof typeof copy.ja];
   if (!page) return null;
   return <InfoLayout title={page.title} intro={page.intro} pageKey={slug} locale={locale}>
     {page.sections.map((section) => <section key={section.heading}>
