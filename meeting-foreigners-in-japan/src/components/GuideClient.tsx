@@ -121,8 +121,7 @@ export function GuideClient() {
             {t("guideCta")}
           </h3>
           <p className="mt-1 text-sm text-white/75">
-            Join an upcoming coffee table, city walk, or izakaya night near
-            you.
+            {t("guideCtaText")}
           </p>
         </div>
         <Link
