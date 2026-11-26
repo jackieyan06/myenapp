@@ -68,7 +68,7 @@ export function HostMeetupForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to publish your meetup");
+      openAuthModal(t("signInToPublish"));
       return;
     }
 
@@ -148,7 +148,7 @@ export function HostMeetupForm() {
           </div>
           <button
             type="button"
-            onClick={() => openAuthModal("Sign in to host a meetup")}
+            onClick={() => openAuthModal(t("signInToHostMeetup"))}
             className="shrink-0 rounded-xl bg-[#D94E34] px-4 py-2 text-xs font-bold text-white hover:bg-[#C04028]"
           >
             {t("signInDemo")}
@@ -361,11 +361,11 @@ export function HostMeetupForm() {
                 onChange={(e) => setDurationMinutes(Number(e.target.value))}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               >
-                <option value={60}>60 min (1 hour)</option>
-                <option value={90}>90 min (1.5 hours)</option>
-                <option value={120}>120 min (2 hours)</option>
-                <option value={150}>150 min (2.5 hours)</option>
-                <option value={180}>180 min (3 hours)</option>
+                <option value={60}>60 {t("minutesShort")} ({t("oneHour")})</option>
+                <option value={90}>90 {t("minutesShort")} (1.5 {t("hoursShort")})</option>
+                <option value={120}>120 {t("minutesShort")} (2 {t("hoursShort")})</option>
+                <option value={150}>150 {t("minutesShort")} (2.5 {t("hoursShort")})</option>
+                <option value={180}>180 {t("minutesShort")} (3 {t("hoursShort")})</option>
               </select>
             </div>
 
