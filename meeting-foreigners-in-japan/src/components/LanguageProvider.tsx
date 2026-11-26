@@ -340,6 +340,25 @@ const messages: Record<AppLocale, Record<string, string>> = {
     pinnedNote: "Pinned note",
     waitlistYou: "You're on the Waitlist",
     cancelRsvp: "Cancel RSVP",
+    updating: "Updating...",
+    cancelMyRsvp: "Cancel my RSVP",
+    languagesToSpeakLabel: "Languages you'd like to speak",
+    passwordLabel: "Password",
+    namePlaceholder: "Alex Chen",
+    emailPlaceholder: "alex@example.com",
+    nativeLanguagePlaceholder: "English, French, Mandarin...",
+    jpLevelNone: "Just starting (0 words)",
+    jpLevelBeginner: "Beginner (N5/N4)",
+    jpLevelConversational: "Conversational (N3)",
+    jpLevelIntermediate: "Intermediate (N2)",
+    jpLevelFluent: "Fluent (N1)",
+    jpLevelNative: "Native Japanese",
+    bioPlaceholder: "Moving to Tokyo next month, love specialty coffee & indie music...",
+    meetupTitleExample: "e.g., Nakameguro Riverside Coffee & Bilingual Chat",
+    meetupTitleJapaneseExample: "e.g., 中目黒カフェ・日英交流会",
+    costNoteExample: "Free · Order your own drink",
+    tryDemoPersona: "Try Demo Persona",
+    waitlistOpens: "You’ll automatically be promoted to Going if a spot opens up.",
   },
   "ja": {
     discover: "イベントを探す",
@@ -676,6 +695,25 @@ const messages: Record<AppLocale, Record<string, string>> = {
     pinnedNote: "固定メモ",
     waitlistYou: "キャンセル待ちに登録されています",
     cancelRsvp: "参加をキャンセル",
+    updating: "更新中...",
+    cancelMyRsvp: "参加登録をキャンセル",
+    languagesToSpeakLabel: "交流したい言語",
+    passwordLabel: "パスワード",
+    namePlaceholder: "山田 花子",
+    emailPlaceholder: "alex@example.com",
+    nativeLanguagePlaceholder: "英語、フランス語、中国語（標準語）...",
+    jpLevelNone: "学習を始めたばかり（単語0語）",
+    jpLevelBeginner: "初級（N5/N4）",
+    jpLevelConversational: "日常会話（N3）",
+    jpLevelIntermediate: "中級（N2）",
+    jpLevelFluent: "流暢（N1）",
+    jpLevelNative: "日本語ネイティブ",
+    bioPlaceholder: "来月東京に引っ越します。スペシャルティコーヒーとインディーズ音楽が好きです...",
+    meetupTitleExample: "例：中目黒リバーサイド・コーヒー＆バイリンガル交流",
+    meetupTitleJapaneseExample: "例：中目黒カフェ・日英交流会",
+    costNoteExample: "無料・ドリンクは各自注文",
+    tryDemoPersona: "デモアカウントを試す",
+    waitlistOpens: "空席が出ると、自動的に参加確定へ繰り上がります。",
   },
   "zh-CN": {
     discover: "发现活动",
@@ -1012,6 +1050,25 @@ const messages: Record<AppLocale, Record<string, string>> = {
     pinnedNote: "置顶留言",
     waitlistYou: "您已加入候补名单",
     cancelRsvp: "取消报名",
+    updating: "正在更新……",
+    cancelMyRsvp: "取消我的报名",
+    languagesToSpeakLabel: "您希望交流的语言",
+    passwordLabel: "密码",
+    namePlaceholder: "陈晓明",
+    emailPlaceholder: "alex@example.com",
+    nativeLanguagePlaceholder: "英语、法语、普通话……",
+    jpLevelNone: "刚开始学习（尚未掌握词汇）",
+    jpLevelBeginner: "初级（N5/N4）",
+    jpLevelConversational: "日常会话（N3）",
+    jpLevelIntermediate: "中级（N2）",
+    jpLevelFluent: "流利（N1）",
+    jpLevelNative: "日语母语者",
+    bioPlaceholder: "下个月搬到东京，喜欢精品咖啡和独立音乐……",
+    meetupTitleExample: "例如：中目黑河畔咖啡与双语交流",
+    meetupTitleJapaneseExample: "例如：中目黑咖啡馆・日英交流会",
+    costNoteExample: "免费 · 饮品请自行点单",
+    tryDemoPersona: "试用演示账号",
+    waitlistOpens: "如果有名额空出，您将自动从候补转为已确认参加。",
   },
   "zh-TW": {
     discover: "探索活動",
@@ -1348,6 +1405,25 @@ const messages: Record<AppLocale, Record<string, string>> = {
     pinnedNote: "置頂留言",
     waitlistYou: "您已加入候補名單",
     cancelRsvp: "取消報名",
+    updating: "正在更新……",
+    cancelMyRsvp: "取消我的報名",
+    languagesToSpeakLabel: "您希望交流的語言",
+    passwordLabel: "密碼",
+    namePlaceholder: "陳曉明",
+    emailPlaceholder: "alex@example.com",
+    nativeLanguagePlaceholder: "英語、法語、中文（普通話）……",
+    jpLevelNone: "剛開始學習（尚未掌握詞彙）",
+    jpLevelBeginner: "初級（N5/N4）",
+    jpLevelConversational: "日常會話（N3）",
+    jpLevelIntermediate: "中級（N2）",
+    jpLevelFluent: "流利（N1）",
+    jpLevelNative: "日語母語者",
+    bioPlaceholder: "下個月搬到東京，喜歡精品咖啡和獨立音樂……",
+    meetupTitleExample: "例如：中目黑河畔咖啡與雙語交流",
+    meetupTitleJapaneseExample: "例如：中目黑咖啡館・日英交流會",
+    costNoteExample: "免費 · 飲品請自行點單",
+    tryDemoPersona: "試用示範帳號",
+    waitlistOpens: "若有名額釋出，您將自動從候補轉為已確認參加。",
   }
 };
 
@@ -1360,13 +1436,15 @@ const LanguageContext = createContext<LanguageContextValue>({
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<AppLocale>("en");
   useEffect(() => {
-    const saved = window.localStorage.getItem("en-locale") as AppLocale | null;
+    const cookieLocale = document.cookie.split("; ").find((item) => item.startsWith("en-locale="))?.split("=")[1] as AppLocale | undefined;
+    const saved = (window.localStorage.getItem("en-locale") as AppLocale | null) ?? cookieLocale ?? null;
     if (saved && Object.prototype.hasOwnProperty.call(messages, saved)) { setLocaleState(saved); document.documentElement.lang = saved; }
   }, []);
   const setLocale = (next: AppLocale) => {
     if (!Object.prototype.hasOwnProperty.call(messages, next)) return;
     setLocaleState(next);
     window.localStorage.setItem("en-locale", next);
+    document.cookie = `en-locale=${next}; Path=/; Max-Age=31536000; SameSite=Lax`;
     document.documentElement.lang = next;
   };
   const value = useMemo(() => ({
