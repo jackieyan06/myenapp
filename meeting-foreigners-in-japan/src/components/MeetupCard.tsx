@@ -140,7 +140,7 @@ export function MeetupCard({
             >
               {isFull
                 ? `${t("waitlistCount")} (${meetup.waitlistCount})`
-                : `${spotsLeft} ${t(spotsLeft === 1 ? "spot" : "spots")} ${t("spotsLeft")}`}
+                : t(spotsLeft === 1 ? "oneSpotLeft" : "spotsLeftCount").replace("{count}", String(spotsLeft))}
             </span>
             <div className="mt-1 text-[11px] text-[#5A5D66]">
               {meetup.goingCount} / {meetup.maxAttendees} joined
