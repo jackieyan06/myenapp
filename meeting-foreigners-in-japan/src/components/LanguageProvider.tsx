@@ -295,6 +295,9 @@ const messages: Record<AppLocale, Record<string, string>> = {
     activityWalk: "Neighborhood Walk",
     activityCoworking: "Coworking Session",
     activityTravelTips: "Travel Tips / Local Advice",
+    demoHanaSubtitle: "Japanese Local · Tokyo (Shimokitazawa)",
+    demoLucasSubtitle: "Expat from Germany · Tokyo (Daikanyama)",
+    demoMayaSubtitle: "Traveler from Taiwan · Kyoto (Kawaramachi)",
   },
   "ja": {
     discover: "イベントを探す",
@@ -586,6 +589,9 @@ const messages: Record<AppLocale, Record<string, string>> = {
     activityWalk: "街歩き",
     activityCoworking: "コワーキング",
     activityTravelTips: "旅行情報・地域のおすすめ",
+    demoHanaSubtitle: "日本人・東京（下北沢）",
+    demoLucasSubtitle: "ドイツ出身・東京（代官山）",
+    demoMayaSubtitle: "台湾からの旅行者・京都（河原町）",
   },
   "zh-CN": {
     discover: "发现活动",
@@ -877,6 +883,9 @@ const messages: Record<AppLocale, Record<string, string>> = {
     activityWalk: "街区漫步",
     activityCoworking: "共享办公",
     activityTravelTips: "旅行建议／当地资讯",
+    demoHanaSubtitle: "日本当地居民 · 东京（下北泽）",
+    demoLucasSubtitle: "来自德国的外籍居民 · 东京（代官山）",
+    demoMayaSubtitle: "来自台湾的旅行者 · 京都（河原町）",
   },
   "zh-TW": {
     discover: "探索活動",
@@ -1168,6 +1177,9 @@ const messages: Record<AppLocale, Record<string, string>> = {
     activityWalk: "街區散步",
     activityCoworking: "共享辦公",
     activityTravelTips: "旅遊建議／在地資訊",
+    demoHanaSubtitle: "日本當地居民 · 東京（下北澤）",
+    demoLucasSubtitle: "來自德國的外籍居民 · 東京（代官山）",
+    demoMayaSubtitle: "來自台灣的旅人 · 京都（河原町）",
   }
 };
 
