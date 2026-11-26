@@ -34,6 +34,7 @@ import {
   formatShortTimestamp,
 } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
+import { useLocale } from "@/components/LocaleProvider";
 
 export function MeetupDetailClient({
   initialMeetup,
@@ -42,6 +43,7 @@ export function MeetupDetailClient({
 }) {
   const router = useRouter();
   const { user, openAuthModal } = useAuth();
+  const { t } = useLocale();
   const [meetup, setMeetup] = useState<MeetupDetail>(initialMeetup);
   const [saved, setSaved] = useState(initialMeetup.isSaved);
   const [copied, setCopied] = useState(false);
@@ -615,7 +617,7 @@ export function MeetupDetailClient({
                         <button
                           type="button"
                           onClick={() => handleDeleteComment(c.id)}
-                          aria-label="Delete message"
+                          aria-label={t("Delete message")}
                           className="rounded-lg p-1.5 text-[#5A5D66] hover:bg-red-50 hover:text-red-600"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
