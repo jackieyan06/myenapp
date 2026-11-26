@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
 import Link from "next/link";
 import { Check, Sparkles, ShieldCheck, CreditCard, ArrowRight } from "lucide-react";
 
@@ -12,13 +13,14 @@ const plans = {
 };
 
 const benefits = [
-  "Discover and join community meetups",
-  "Connect with international residents and Japanese locals",
-  "Create your cultural profile and share interests",
-  "Get updates about gatherings and community activities",
+  t("benefits1"),
+  t("benefits2"),
+  t("benefits3"),
+  t("benefits4"),
 ];
 
 export default function PricingPage() {
+  const { t } = useLanguage();
   const [selectedPlan, setSelectedPlan] = useState<Plan>("annual");
   const selected = plans[selectedPlan];
 
@@ -30,15 +32,15 @@ export default function PricingPage() {
             <Sparkles className="h-4 w-4" /> En Membership
           </div>
           <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-tight tracking-tight text-[#1A1D24] sm:text-5xl">
-            More meaningful connections.
-            <span className="block text-[#D94E34]">More of Japan, together.</span>
+            {t("pricingTitle")}
+            <span className="block text-[#D94E34]">{t("pricingSubtitle")}</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#5A5D66] sm:text-lg">
-            Find your people, discover local experiences, and make every encounter count.
+            {t("pricingIntro")}
             Choose a membership that fits the way you connect.
           </p>
           <div className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#24634A] shadow-sm">
-            <Check className="h-4 w-4" /> 7-day free trial on either plan
+            <Check className="h-4 w-4" /> {t("freeTrial")} on either plan
           </div>
         </div>
       </section>
@@ -49,7 +51,7 @@ export default function PricingPage() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm font-bold text-[#5A5D66]">MONTHLY</p>
-                <h2 className="mt-2 text-2xl font-extrabold text-[#1A1D24]">Stay flexible</h2>
+                <h2 className="mt-2 text-2xl font-extrabold text-[#1A1D24]">{t("stayFlexible")}</h2>
               </div>
               <div className="rounded-2xl bg-[#FAF1ED] p-3 text-[#D94E34]"><CreditCard className="h-6 w-6" /></div>
             </div>
@@ -57,7 +59,7 @@ export default function PricingPage() {
               <span className="text-4xl font-extrabold tracking-tight text-[#1A1D24]">¥980</span>
               <span className="pb-1 text-sm text-[#77736D]">/ month</span>
             </div>
-            <p className="mt-2 text-sm text-[#77736D]">Flexible, cancel anytime</p>
+            <p className="mt-2 text-sm text-[#77736D]">{t("billingMonthly")}</p>
             <ul className="mt-7 space-y-3">
               {benefits.map((benefit) => <li key={benefit} className="flex gap-3 text-sm text-[#454851]"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[#D94E34]" />{benefit}</li>)}
             </ul>
@@ -67,11 +69,11 @@ export default function PricingPage() {
           </article>
 
           <article className={`relative rounded-3xl border bg-white p-7 shadow-sm transition ${selectedPlan === "annual" ? "border-[#D94E34] ring-2 ring-[#D94E34]/10" : "border-[#E6E0D6]"}`}>
-            <div className="absolute -top-3 right-7 rounded-full bg-[#D94E34] px-3 py-1 text-xs font-bold text-white">BEST VALUE</div>
+            <div className="absolute -top-3 right-7 rounded-full bg-[#D94E34] px-3 py-1 text-xs font-bold text-white">{t("bestValue")}</div>
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm font-bold text-[#5A5D66]">ANNUAL</p>
-                <h2 className="mt-2 text-2xl font-extrabold text-[#1A1D24]">Make it a year</h2>
+                <h2 className="mt-2 text-2xl font-extrabold text-[#1A1D24]">{t("makeYear")}</h2>
               </div>
               <div className="rounded-2xl bg-[#FAF1ED] p-3 text-[#D94E34]"><Sparkles className="h-6 w-6" /></div>
             </div>
@@ -79,7 +81,7 @@ export default function PricingPage() {
               <span className="text-4xl font-extrabold tracking-tight text-[#1A1D24]">¥9,800</span>
               <span className="pb-1 text-sm text-[#77736D]">/ year</span>
             </div>
-            <p className="mt-2 text-sm font-semibold text-[#24634A]">Save ¥1,960 vs. monthly</p>
+            <p className="mt-2 text-sm font-semibold text-[#24634A]">{t("saveAnnual")}</p>
             <ul className="mt-7 space-y-3">
               {benefits.map((benefit) => <li key={benefit} className="flex gap-3 text-sm text-[#454851]"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[#D94E34]" />{benefit}</li>)}
             </ul>
@@ -103,8 +105,8 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="mt-6 rounded-2xl border border-dashed border-[#D8D0C4] bg-[#FAF8F4] p-4">
-            <p className="text-sm font-bold text-[#1A1D24]">Checkout preview — payments not connected yet</p>
-            <p className="mt-1 text-sm leading-6 text-[#5A5D66]">This is a demonstration of the membership selection. No payment details are collected and no charge can be made. Secure checkout will be enabled after the Stripe account is registered and connected.</p>
+            <p className="text-sm font-bold text-[#1A1D24]">{t("checkoutPreview")}</p>
+            <p className="mt-1 text-sm leading-6 text-[#5A5D66]">{t("noPayments")}</p>
             <button type="button" disabled className="mt-4 inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-[#BDB8AF] px-5 py-3 text-sm font-bold text-white">
               Continue to secure checkout <ArrowRight className="h-4 w-4" />
             </button>
