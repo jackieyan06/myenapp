@@ -595,7 +595,7 @@ export function MeetupDetailClient({
                             </span>
                             {c.isHost && (
                               <span className="rounded-full bg-[#D94E34] px-2 py-0.5 text-[10px] font-bold text-white">
-                                Host
+                                {t("hostLabel")}
                               </span>
                             )}
                             {c.isPinned && (
@@ -728,7 +728,7 @@ export function MeetupDetailClient({
                           onClick={() => setDeleteConfirm(false)}
                           className="flex-1 rounded-lg bg-white py-1.5 text-xs font-semibold text-[#1A1D24] border border-[#E6E0D6]"
                         >
-                          Keep
+                          {t("keep")}
                         </button>
                       </div>
                     </div>
