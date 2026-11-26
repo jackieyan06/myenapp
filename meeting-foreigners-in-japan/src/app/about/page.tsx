@@ -1,7 +1,7 @@
 import { InfoLayout } from "@/components/InfoLayout";
 
 export default function AboutPage() {
-  return <InfoLayout title="About EnJapan" intro="EnJapan (縁) brings people together through thoughtful, welcoming gatherings across Japan.">
+  return <InfoLayout pageKey="about" locale="en" title="About EnJapan" intro="EnJapan (縁) brings people together through thoughtful, welcoming gatherings across Japan.">
     <h2>Our idea</h2>
     <p>EnJapan is a community platform designed to make it easier for people from different backgrounds to meet, share experiences and build genuine friendships. We connect international residents, visitors and Japanese locals through small-group meetups, language exchanges, café gatherings, city walks and local experiences.</p>
     <h2>Why 縁?</h2>
