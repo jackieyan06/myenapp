@@ -330,7 +330,7 @@ export function CommunityDirectoryClient({
           <div className="w-full max-w-md rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-lg font-bold text-[#1A1D24]">
-                Invite {selectedMember.nationalityFlag} {selectedMember.name}
+                {t("inviteMember")} {selectedMember.nationalityFlag} {selectedMember.name}
               </h3>
               <button
                 type="button"
@@ -369,7 +369,7 @@ export function CommunityDirectoryClient({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Personal Message
+                  {t("personalMessage")}
                 </label>
                 <textarea
                   rows={3}
