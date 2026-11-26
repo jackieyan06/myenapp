@@ -15,7 +15,7 @@ import {
 import type { CommunityMember } from "@/lib/queries";
 import { JAPAN_CITIES, ROLE_LABELS } from "@/lib/constants";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 
 export function CommunityDirectoryClient({
   initialMembers,
@@ -156,7 +156,7 @@ export function CommunityDirectoryClient({
               <option value="All">{t("allRoles")}</option>
               {ROLE_LABELS.map((r) => (
                 <option key={r} value={r}>
-                  {r}
+                  {t(roleTranslationKey(r))}
                 </option>
               ))}
             </select>
@@ -233,7 +233,7 @@ export function CommunityDirectoryClient({
                         {member.nationalityFlag} {member.name}
                       </h2>
                       <div className="text-xs font-medium text-[#5A5D66]">
-                        {member.roleLabel} · {member.nationality}
+                        {t(roleTranslationKey(member.roleLabel))} · {member.nationality}
                       </div>
                     </div>
                   </div>
@@ -341,7 +341,7 @@ export function CommunityDirectoryClient({
               </button>
             </div>
             <p className="mt-1 text-xs text-[#5A5D66]">
-              {selectedMember.roleLabel} in {selectedMember.homeCity}
+              {t(roleTranslationKey(selectedMember.roleLabel))} · {selectedMember.homeCity}
             </p>
 
             {inviteError && (
@@ -360,11 +360,11 @@ export function CommunityDirectoryClient({
                   onChange={(e) => setInviteContext(e.target.value)}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                 >
-                  <option>Coffee &amp; Language Chat</option>
-                  <option>Lunch / Ramen Meet</option>
-                  <option>Neighborhood Walk</option>
-                  <option>Coworking Session</option>
-                  <option>Travel Tips / Local Advice</option>
+                  <option>{t("activityCoffeeChat")}</option>
+                  <option>{t("activityLunch")}</option>
+                  <option>{t("activityWalk")}</option>
+                  <option>{t("activityCoworking")}</option>
+                  <option>{t("activityTravelTips")}</option>
                 </select>
               </div>
               <div>
