@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { JAPAN_CITIES } from "@/lib/constants";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
   return (
@@ -51,27 +52,27 @@ export function Footer() {
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
               <li>
                 <Link href="/" className="hover:text-[#D94E34] transition">
-                  Browse Meetups
+                  {t("browseMeetups")}
                 </Link>
               </li>
               <li>
                 <Link href="/community" className="hover:text-[#D94E34] transition">
-                  Meet Expats & Locals
+                  {t("meetPeople")}
                 </Link>
               </li>
               <li>
                 <Link href="/host" className="hover:text-[#D94E34] transition">
-                  Host a Gathering
+                  {t("hostGathering")}
                 </Link>
               </li>
               <li>
                 <Link href="/guide" className="hover:text-[#D94E34] transition">
-                  Japan Etiquette & Phrases
+                  {t("etiquette")}
                 </Link>
               </li>
               <li>
                 <Link href="/pricing" className="hover:text-[#D94E34] transition">
-                  Membership & Pricing
+                  {t("pricing")}
                 </Link>
               </li>
             </ul>
