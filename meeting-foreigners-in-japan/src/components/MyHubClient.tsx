@@ -24,7 +24,7 @@ import {
   ROLE_LABELS,
 } from "@/lib/constants";
 import { formatShortTimestamp } from "@/lib/format";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 
 interface ConnectionItem {
   id: number;
