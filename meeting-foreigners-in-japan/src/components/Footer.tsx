@@ -96,6 +96,7 @@ export function Footer() {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">{t("footerConnect")}</h3>
             <p className="mt-3 text-sm leading-relaxed text-[#5A5D66]">{t("footerSocialComingSoon")}</p>
+            <Link href="/contact" className="mt-2 inline-flex text-sm font-semibold text-[#D94E34] transition hover:underline">{t("footerConnect")}</Link>
           </div>
         </div>
 
