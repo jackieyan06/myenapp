@@ -572,7 +572,7 @@ export function MyHubClient({
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Bio
+                {t("bio")}
               </label>
               <textarea
                 rows={3}
@@ -598,7 +598,7 @@ export function MyHubClient({
               className="inline-flex items-center gap-2 rounded-xl bg-[#D94E34] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#C04028] disabled:opacity-60"
             >
               {savingProfile && <Loader2 className="h-4 w-4 animate-spin" />}
-              Save Profile
+              {t("saveProfile")}
             </button>
           </form>
         )}
