@@ -262,54 +262,28 @@ const messages: Record<AppLocale, Record<string, string>> = {
   }
 };
 
-type LanguageContextValue = {
-  locale: AppLocale;
-  setLocale: (locale: AppLocale) => void;
-  t: (key: string) => string;
-};
+type LanguageContextValue = { locale: AppLocale; setLocale: (locale: AppLocale) => void; t: (key: string) => string };
 
 const LanguageContext = createContext<LanguageContextValue>({
-  locale: "en",
-  setLocale: () => undefined,
-  t: (key) => messages.en[key] ?? key,
+  locale: "en", setLocale: () => undefined, t: (key) => messages.en[key] ?? key,
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<AppLocale>("en");
-
   useEffect(() => {
     const saved = window.localStorage.getItem("en-locale") as AppLocale | null;
-    if (saved && saved in messages) {
-      setLocaleState(saved);
-      document.documentElement.lang = saved;
-    }
+    if (saved && saved in messages) { setLocaleState(saved); document.documentElement.lang = saved; }
   }, []);
-
   const setLocale = (next: AppLocale) => {
-    setLocaleState(next);
-    window.localStorage.setItem("en-locale", next);
-    document.documentElement.lang = next;
+    setLocaleState(next); window.localStorage.setItem("en-locale", next); document.documentElement.lang = next;
   };
-
-  const value = useMemo(
-    () => ({
-      locale,
-      setLocale,
-      t: (key: string) => messages[locale][key] ?? messages.en[key] ?? key,
-    }),
-    [locale],
-  );
-
+  const value = useMemo(() => ({
+    locale, setLocale, t: (key: string) => messages[locale][key] ?? messages.en[key] ?? key,
+  }), [locale]);
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
-
-export function useLanguage() {
-  return useContext(LanguageContext);
-}
-
+export function useLanguage() { return useContext(LanguageContext); }
 export const LANGUAGE_OPTIONS: { value: AppLocale; label: string }[] = [
-  { value: "en", label: "English" },
-  { value: "ja", label: "日本語" },
-  { value: "zh-CN", label: "简体中文" },
-  { value: "zh-TW", label: "繁體中文" },
+  { value: "en", label: "English" }, { value: "ja", label: "日本語" },
+  { value: "zh-CN", label: "简体中文" }, { value: "zh-TW", label: "繁體中文" },
 ];
