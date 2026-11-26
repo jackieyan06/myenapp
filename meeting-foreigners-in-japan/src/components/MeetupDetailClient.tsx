@@ -749,7 +749,7 @@ export function MeetupDetailClient({
                     onClick={handleCancelRsvp}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-xs font-semibold text-[#5A5D66] transition hover:border-red-300 hover:text-red-600"
                   >
-                    {rsvpLoading ? "Updating..." : "Cancel my RSVP"}
+                    {rsvpLoading ? t("updating") : t("cancelMyRsvp")}
                   </button>
                 </div>
               ) : meetup.viewerRsvpStatus === "waitlist" ? (
@@ -760,7 +760,6 @@ export function MeetupDetailClient({
                   </div>
                   <p className="text-xs text-[#5A5D66]">
                     {t("waitlistPromotion")}
-                    opens up.
                   </p>
                   <button
                     type="button"
@@ -787,7 +786,7 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                      Languages you&apos;d like to speak
+                      {t("languagesToSpeakLabel")}
                     </label>
                     <input
                       type="text"
@@ -830,7 +829,7 @@ export function MeetupDetailClient({
                     {meetup.host.nationalityFlag} {meetup.host.name}
                   </div>
                   <div className="text-xs text-[#5A5D66]">
-                    {meetup.host.roleLabel} · {meetup.host.homeCity}
+                    {t(roleTranslationKey(meetup.host.roleLabel))} · {meetup.host.homeCity}
                   </div>
                 </div>
               </div>
