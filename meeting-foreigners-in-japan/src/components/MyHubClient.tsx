@@ -107,7 +107,7 @@ export function MyHubClient({
           </p>
           <button
             type="button"
-            onClick={() => openAuthModal("Sign in to open My Hub")}
+            onClick={() => openAuthModal(t("signInToOpenHub"))}
             className="mt-6 rounded-2xl bg-[#D94E34] px-6 py-3 text-sm font-bold text-white hover:bg-[#C04028]"
           >
             {t("signInDemo")}
@@ -406,7 +406,7 @@ export function MyHubClient({
                             : "bg-amber-50 text-amber-800"
                         }`}
                       >
-                        {conn.status}
+                        {t(`status${conn.status.charAt(0).toUpperCase()}${conn.status.slice(1)}`)}
                       </span>
                     </div>
 
@@ -427,7 +427,7 @@ export function MyHubClient({
                               className="inline-flex items-center gap-1 rounded-lg border border-[#E6E0D6] px-2.5 py-1 font-semibold text-[#5A5D66] hover:bg-red-50 hover:text-red-600"
                             >
                               <X className="h-3 w-3" />
-                              Decline
+                              {t("decline")}
                             </button>
                             <button
                               type="button"
@@ -437,7 +437,7 @@ export function MyHubClient({
                               className="inline-flex items-center gap-1 rounded-lg bg-[#3E6B48] px-3 py-1 font-semibold text-white hover:bg-[#315539]"
                             >
                               <Check className="h-3 w-3" />
-                              Accept Coffee
+                              {t("acceptCoffee")}
                             </button>
                           </div>
                         )}
