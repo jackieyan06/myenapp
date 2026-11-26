@@ -134,7 +134,7 @@ export function Navbar() {
                       className="mt-1 flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[#1A1D24] hover:bg-[#FAF8F4]"
                     >
                       <CalendarHeart className="h-4 w-4 text-[#D94E34]" />
-                      My RSVPs & Coffee Waves
+                      {t("coffeeWaves")}
                     </Link>
                     <Link
                       href="/my-meetups?tab=profile"
@@ -142,7 +142,7 @@ export function Navbar() {
                       className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[#1A1D24] hover:bg-[#FAF8F4]"
                     >
                       <UserIcon className="h-4 w-4 text-[#2B4C7E]" />
-                      Edit Cultural Profile
+                      {t("editProfile")}
                     </Link>
                     <button
                       type="button"
@@ -175,7 +175,7 @@ export function Navbar() {
           type="button"
           onClick={() => setMobileOpen((prev) => !prev)}
           className="inline-flex items-center justify-center rounded-xl border border-[#E6E0D6] bg-white p-2 text-[#1A1D24] md:hidden"
-          aria-label="Toggle navigation menu"
+          aria-label={t("toggleMenu")}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
