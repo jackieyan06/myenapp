@@ -16,7 +16,7 @@ import type { MeetupSummary } from "@/lib/queries";
 import { getCategoryStyle, getCityJp } from "@/lib/constants";
 import { formatMeetupDate, formatMeetupTime } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
 
 export function MeetupCard({
   meetup,
@@ -260,7 +260,7 @@ export function MeetupCard({
           </div>
           <div className="flex items-center gap-1.5">
             <Globe2 className="h-3.5 w-3.5 shrink-0 text-[#3E6B48]" />
-            <span>{meetup.languageLevel}</span>
+            <span>{t(languageFocusTranslationKey(meetup.languageLevel))}</span>
             <span>·</span>
             <span className="truncate">{meetup.costNote}</span>
           </div>
