@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { X, Sparkles, Check, Loader2 } from "lucide-react";
 import type { PublicUser } from "@/lib/auth";
 import { JAPAN_CITIES, NATIONALITIES, ROLE_LABELS } from "@/lib/constants";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, roleTranslationKey } from "@/components/LanguageProvider";
 
 interface AuthContextValue {
   user: PublicUser | null;
@@ -419,7 +419,7 @@ export function AuthProvider({
                     >
                       {ROLE_LABELS.map((r) => (
                         <option key={r} value={r}>
-                          {r}
+                          {t(roleTranslationKey(r))}
                         </option>
                       ))}
                     </select>
