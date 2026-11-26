@@ -518,7 +518,7 @@ export function MeetupDetailClient({
                       </span>
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {att.roleLabel}
+                      {t(roleTranslationKey(att.roleLabel))}
                       {att.speakingLanguage ? ` · ${att.speakingLanguage}` : ""}
                     </div>
                     {att.introNote && (
