@@ -21,7 +21,7 @@ import {
   CURATED_COVERS,
 } from "@/lib/constants";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
 
 function getDefaultDateTimeLocal(): string {
   const d = new Date();
@@ -209,7 +209,7 @@ export function HostMeetupForm() {
               >
                 {MEETUP_CATEGORIES.map((c) => (
                   <option key={c.name} value={c.name}>
-                    {c.name} ({c.jp})
+                    {t(categoryTranslationKey(c.name))} ({c.jp})
                   </option>
                 ))}
               </select>
@@ -402,7 +402,7 @@ export function HostMeetupForm() {
               >
                 {LANGUAGE_FOCUSES.map((lf) => (
                   <option key={lf} value={lf}>
-                    {lf}
+                    {t(languageFocusTranslationKey(lf))}
                   </option>
                 ))}
               </select>
@@ -419,7 +419,7 @@ export function HostMeetupForm() {
               >
                 {LANGUAGE_LEVELS.map((ll) => (
                   <option key={ll} value={ll}>
-                    {ll}
+                    {t(languageFocusTranslationKey(ll))}
                   </option>
                 ))}
               </select>
