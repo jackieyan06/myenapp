@@ -153,7 +153,7 @@ export function Navbar() {
                       className="mt-1 flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                     >
                       <LogOut className="h-4 w-4" />
-                      Sign Out
+                      {t("signOut")}
                     </button>
                   </div>
                 </>
@@ -254,7 +254,7 @@ export function Navbar() {
                 }}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-sm font-semibold text-[#1A1D24]"
               >
-                {t("signIn")} / Try Demo Persona
+                {t("signIn")} / {t("tryDemoPersona")}
               </button>
             )}
           </div>
