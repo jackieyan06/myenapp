@@ -16,7 +16,7 @@ import type { MeetupSummary } from "@/lib/queries";
 import { getCategoryStyle, getCityJp } from "@/lib/constants";
 import { formatMeetupDate, formatMeetupTime } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
-import { useLanguage, categoryTranslationKey, languageFocusTranslationKey } from "@/components/LanguageProvider";
+import { useLanguage, categoryTranslationKey, languageFocusTranslationKey, roleTranslationKey } from "@/components/LanguageProvider";
 
 export function MeetupCard({
   meetup,
@@ -282,7 +282,7 @@ export function MeetupCard({
                   {meetup.host.nationalityFlag} {meetup.host.name}
                 </div>
                 <div className="truncate text-[10px] text-[#5A5D66]">
-                  {meetup.host.roleLabel}
+                  {t(roleTranslationKey(meetup.host.roleLabel))}
                 </div>
               </div>
             </div>
