@@ -61,26 +61,32 @@ export const CURATED_COVERS = [
   {
     url: "/images/meetup-language-shibuya.jpg",
     label: "Tokyo Café Language Table",
+    labelKey: "coverTokyoCafe",
   },
   {
     url: "/images/meetup-kyoto-walk.jpg",
     label: "Kyoto Lantern Evening Walk",
+    labelKey: "coverKyotoWalk",
   },
   {
     url: "/images/meetup-osaka-izakaya.jpg",
     label: "Osaka Izakaya Counter",
+    labelKey: "coverOsakaIzakaya",
   },
   {
     url: "/images/meetup-fukuoka-beach.jpg",
     label: "Fukuoka Seaside Picnic",
+    labelKey: "coverFukuokaPicnic",
   },
   {
     url: "/images/meetup-sapporo-craft.jpg",
     label: "Sapporo Cozy Lounge",
+    labelKey: "coverSapporoLounge",
   },
   {
     url: "/images/meetup-tokyo-tech.jpg",
     label: "Daikanyama Coworking Session",
+    labelKey: "coverDaikanyamaCoworking",
   },
 ] as const;
 
