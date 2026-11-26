@@ -106,13 +106,13 @@ export function HostMeetupForm() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "{t("Unable to create meetup.")}");
+        setError(data.error || "Unable to create meetup.");
       } else {
         router.push(`/meetups/${data.meetup.id}`);
         router.refresh();
       }
     } catch {
-      setError("{t("Network error while publishing meetup.")}");
+      setError("Network error while publishing meetup.");
     } finally {
       setSubmitting(false);
     }
@@ -234,7 +234,7 @@ export function HostMeetupForm() {
 
           <div>
             <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-              Description &amp; Vibe *
+              {t("Description & Vibe *")}
             </label>
             <textarea
               rows={4}
@@ -253,7 +253,7 @@ export function HostMeetupForm() {
           <div className="flex items-center gap-2">
             <TrainFront className="h-5 w-5 text-[#2B4C7E]" />
             <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-              2. Where in Japan &amp; Which Train Exit?
+              2. {t("2. Where in Japan & Which Train Exit?")}
             </h2>
           </div>
 
@@ -337,14 +337,14 @@ export function HostMeetupForm() {
           <div className="flex items-center gap-2">
             <Calendar className="h-5 w-5 text-[#D94E34]" />
             <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-              3. Schedule, Languages &amp; Group Size
+              3. {t("3. Schedule, Languages & Group Size")}
             </h2>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="sm:col-span-1">
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                Date &amp; Start Time (JST) *
+                {t("Date & Start Time (JST) *")}
               </label>
               <input
                 type="datetime-local"
