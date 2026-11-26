@@ -6,7 +6,8 @@ import { BookOpen, Copy, Check, Sparkles, Compass } from "lucide-react";
 import { JAPAN_PHRASES, JAPAN_ETIQUETTE_TIPS } from "@/lib/constants";
 import { useLocale } from "@/components/LocaleProvider";
 
-export function GuideClient() {\n  const { t } = useLocale();
+export function GuideClient() {
+  const { t } = useLocale();
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const handleCopy = async (text: string, idx: number) => {
