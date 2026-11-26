@@ -239,7 +239,7 @@ export function CommunityDirectoryClient({
                   </div>
                   {member.openToCoffee && (
                     <span
-                      title="{t("coffeeOnly")} chats"
+                      title={`${t("coffeeOnly")} chats`}
                       className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#3E6B48]"
                     >
                       <Coffee className="h-3 w-3" />
