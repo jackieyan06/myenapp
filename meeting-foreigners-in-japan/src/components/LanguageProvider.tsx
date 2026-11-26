@@ -392,6 +392,10 @@ const messages: Record<AppLocale, Record<string, string>> = {
     statusDeclined: "Declined",
     meetupHostedSingular: "meetup hosted",
     meetupHostedPlural: "meetups hosted",
+
+    membershipBrand: "En Membership",
+    notFoundHeading: "Gathering Not Found",
+    notFoundBody: "This meetup may have been cancelled by the host or the link is no longer available.",
 },
   "ja": {
     discover: "イベントを探す",
@@ -779,6 +783,10 @@ const messages: Record<AppLocale, Record<string, string>> = {
     createAccountFailed: "アカウントを作成できませんでした。",
     networkCreateAccountError: "アカウント作成中にネットワークエラーが発生しました。",
   
+
+    membershipBrand: "En メンバーシップ",
+    notFoundHeading: "イベントが見つかりません",
+    notFoundBody: "このイベントは主催者によってキャンセルされたか、リンクが無効になった可能性があります。",
 },
   "zh-CN": {
     discover: "发现活动",
@@ -1166,6 +1174,10 @@ const messages: Record<AppLocale, Record<string, string>> = {
     createAccountFailed: "无法创建账户。",
     networkCreateAccountError: "创建账户时发生网络错误。",
   
+
+    membershipBrand: "En 会员",
+    notFoundHeading: "未找到活动",
+    notFoundBody: "此活动可能已被主办方取消，或链接已失效。",
 },
   "zh-TW": {
     discover: "探索活動",
@@ -1553,6 +1565,10 @@ const messages: Record<AppLocale, Record<string, string>> = {
     createAccountFailed: "無法建立帳戶。",
     networkCreateAccountError: "建立帳戶時發生網路錯誤。",
   
+
+    membershipBrand: "En 會員",
+    notFoundHeading: "找不到聚會",
+    notFoundBody: "此聚會可能已由主辦人取消，或連結已失效。",
 }
 };
 
