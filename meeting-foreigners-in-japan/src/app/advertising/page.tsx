@@ -3,7 +3,7 @@ import { InfoLayout } from "@/components/InfoLayout";
 const channels = ["YouTube", "X", "Meta", "Instagram", "TikTok", "LinkedIn"];
 
 export default function AdvertisingPage() {
-  return <InfoLayout title="Advertising with EnJapan" intro="Reach an engaged community interested in meeting people, discovering local experiences and exploring life in Japan.">
+  return <InfoLayout pageKey="advertising" locale="en" title="Advertising with EnJapan" intro="Reach an engaged community interested in meeting people, discovering local experiences and exploring life in Japan.">
     <h2>Partner with EnJapan</h2>
     <p>EnJapan welcomes relevant brand partnerships, sponsored content, event collaborations and community-focused campaigns. We are interested in working with organisations whose products and services add value to international residents, visitors and Japanese communities.</p>
     <h2>Potential collaboration channels</h2>
