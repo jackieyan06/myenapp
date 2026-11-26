@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { JAPAN_CITIES } from "@/lib/constants";
+import { useLocale } from "@/components/LocaleProvider";
 
-export function Footer() {
+export function Footer() {\n  const { t } = useLocale();
   return (
     <footer className="mt-16 border-t border-[#E6E0D6] bg-[#F2EDE4]/60">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -28,7 +31,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
-              Explore Cities
+              {t("Explore Cities")}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
               {JAPAN_CITIES.map((city) => (
@@ -46,27 +49,27 @@ export function Footer() {
 
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
-              Community
+              {t("Community")}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
               <li>
                 <Link href="/" className="hover:text-[#D94E34] transition">
-                  Browse Meetups
+                  {t("Browse Meetups")}
                 </Link>
               </li>
               <li>
                 <Link href="/community" className="hover:text-[#D94E34] transition">
-                  Meet Expats & Locals
+                  {t("Meet Expats & Locals")}
                 </Link>
               </li>
               <li>
                 <Link href="/host" className="hover:text-[#D94E34] transition">
-                  Host a Gathering
+                  {t("Host a Gathering")}
                 </Link>
               </li>
               <li>
                 <Link href="/guide" className="hover:text-[#D94E34] transition">
-                  Japan Etiquette & Phrases
+                  {t("Japan Etiquette & Phrases")}
                 </Link>
               </li>
             </ul>
@@ -76,27 +79,27 @@ export function Footer() {
               EnJapan
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
-              <li><Link href="/about" className="hover:text-[#D94E34] transition">About us</Link></li>
-              <li><Link href="/terms" className="hover:text-[#D94E34] transition">Terms of Service</Link></li>
-              <li><Link href="/privacy" className="hover:text-[#D94E34] transition">Privacy Policy</Link></li>
-              <li><Link href="/commercial-disclosure" className="hover:text-[#D94E34] transition">Commercial Disclosure</Link></li>
-              <li><Link href="/advertising" className="hover:text-[#D94E34] transition">Advertising with EnJapan</Link></li>
+              <li><Link href="/about" className="hover:text-[#D94E34] transition">{t("About us")}</Link></li>
+              <li><Link href="/terms" className="hover:text-[#D94E34] transition">{t("Terms of Service")}</Link></li>
+              <li><Link href="/privacy" className="hover:text-[#D94E34] transition">{t("Privacy Policy")}</Link></li>
+              <li><Link href="/commercial-disclosure" className="hover:text-[#D94E34] transition">{t("Commercial Disclosure")}</Link></li>
+              <li><Link href="/advertising" className="hover:text-[#D94E34] transition">{t("Advertising with EnJapan")}</Link></li>
             </ul>
             <h3 className="mt-6 text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
-              Connect with us
+              {t("Connect with us")}
             </h3>
-            <p className="mt-3 text-sm text-[#5A5D66]">Follow our social channels as official accounts launch.</p>
-            <a href="mailto:enjapan.support@gmail.com" className="mt-2 inline-block text-sm font-semibold text-[#D94E34] hover:underline">Email EnJapan</a>
+            <p className="mt-3 text-sm text-[#5A5D66]">{t("Follow our social channels as official accounts launch.")}</p>
+            <a href="mailto:enjapan.support@gmail.com" className="mt-2 inline-block text-sm font-semibold text-[#D94E34] hover:underline">{t("Email EnJapan")}</a>
             <ul className="mt-2 space-y-1 text-sm text-[#5A5D66]">
-              {["YouTube", "X", "Meta", "Instagram", "TikTok", "LinkedIn"].map((name) => <li key={name}>{name} <span className="text-xs text-[#8B867D]">· Official link coming soon</span></li>)}
+              {["YouTube", "X", "Meta", "Instagram", "TikTok", "LinkedIn"].map((name) => <li key={name}>{name} <span className="text-xs text-[#8B867D]">· {t("Official link coming soon")}</span></li>)}
             </ul>
           </div>
 
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-[#E6E0D6] pt-6 text-xs text-[#5A5D66] sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} En (縁) Japan Community Platform</span>
-          <span>Made for respectful cross-cultural friendship in Japan</span>
+          <span>© {new Date().getFullYear()} En (縁) Japan {t("Community")} Platform</span>
+          <span>{t("Made for respectful cross-cultural friendship in Japan")}</span>
         </div>
       </div>
     </footer>
