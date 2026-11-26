@@ -269,6 +269,10 @@ const messages: Record<Locale, Record<string, string>> = {
     "Sign in to open My Hub": "マイページを開くにはログインしてください",
     "Choose a 1-Click Demo Persona or Sign Up": "デモアカウントを選択するか登録してください",
     "Sign in to send a coffee chat invite to": "コーヒー交流に誘うにはログインしてください",
+    "e.g., Shimokitazawa, Gion, Tenjin": "例：下北沢、祇園、天神",
+    "English:Native, Japanese:Conversational (N3)": "英語:ネイティブ、日本語:日常会話（N3）",
+    "Specialty Coffee, Hiking, Ramen, Film": "スペシャルティコーヒー、ハイキング、ラーメン、映画",
+    "Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.": "ログインするか、ワンクリックのデモアカウントを選択して、参加予定、主催イベント、保存した交流会、コーヒーのお誘いを確認しましょう。",
     "Language": "言語", "English": "英語", "Japanese": "日本語", "Simplified Chinese": "簡体字中国語", "Traditional Chinese": "繁体字中国語",
   },
   "zh-cn": {
@@ -527,6 +531,10 @@ const messages: Record<Locale, Record<string, string>> = {
     "Sign in to open My Hub": "登录后即可打开个人中心",
     "Choose a 1-Click Demo Persona or Sign Up": "选择一键演示身份或注册账号",
     "Sign in to send a coffee chat invite to": "登录后即可向对方发送咖啡邀约",
+    "e.g., Shimokitazawa, Gion, Tenjin": "例如：下北泽、祇园、天神",
+    "English:Native, Japanese:Conversational (N3)": "英语:母语，日语:日常会话（N3）",
+    "Specialty Coffee, Hiking, Ramen, Film": "精品咖啡、徒步、拉面、电影",
+    "Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.": "登录或选择一键演示身份，即可查看即将参加的活动、主办的聚会、收藏的活动和咖啡邀约。",
     "Language": "语言", "English": "英语", "Japanese": "日语", "Simplified Chinese": "简体中文", "Traditional Chinese": "繁体中文",
   },
   "zh-tw": {
@@ -785,6 +793,10 @@ const messages: Record<Locale, Record<string, string>> = {
     "Sign in to open My Hub": "登入後即可開啟個人中心",
     "Choose a 1-Click Demo Persona or Sign Up": "選擇一鍵示範身分或註冊帳號",
     "Sign in to send a coffee chat invite to": "登入後即可向對方傳送咖啡邀約",
+    "e.g., Shimokitazawa, Gion, Tenjin": "例如：下北澤、祇園、天神",
+    "English:Native, Japanese:Conversational (N3)": "英語:母語，日語:日常會話（N3）",
+    "Specialty Coffee, Hiking, Ramen, Film": "精品咖啡、健行、拉麵、電影",
+    "Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.": "登入或選擇一鍵示範身分，即可查看即將參加的活動、主辦的聚會、收藏的活動及咖啡邀約。",
     "Language": "語言", "English": "英文", "Japanese": "日文", "Simplified Chinese": "簡體中文", "Traditional Chinese": "繁體中文",
   },
 };
