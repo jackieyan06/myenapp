@@ -21,6 +21,7 @@ import {
 } from "@/lib/constants";
 import { MeetupCard } from "@/components/MeetupCard";
 import { useAuth } from "@/components/AuthProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export function HomeDiscoveryClient({
   initialMeetups,
@@ -32,6 +33,7 @@ export function HomeDiscoveryClient({
   totalMembers: number;
 }) {
   const { user, openAuthModal } = useAuth();
+  const { t } = useLanguage();
   const [savedOverrides, setSavedOverrides] = useState<Record<number, boolean>>({});
   const [city, setCity] = useState<string>(initialCity);
   const [category, setCategory] = useState<string>("All");
@@ -105,9 +107,9 @@ export function HomeDiscoveryClient({
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#D94E34]/25 bg-white/80 px-3.5 py-1 text-xs font-semibold text-[#D94E34] shadow-xs">
                 <Sparkles className="h-3.5 w-3.5" />
-                <span>{meetups.length} Upcoming Gatherings</span>
+                <span>{meetups.length} {t("upcoming")}</span>
                 <span className="text-[#E6E0D6]">•</span>
-                <span className="text-[#2B4C7E]">{totalMembers} Members in Japan</span>
+                <span className="text-[#2B4C7E]">{totalMembers} {t("members")}</span>
               </div>
 
               <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-[#1A1D24] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
@@ -130,7 +132,7 @@ export function HomeDiscoveryClient({
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search neighborhood, station (Shibuya, Gion), coffee, or language..."
+                    placeholder={t("searchPlaceholder")}
                     className="w-full rounded-2xl border border-[#E6E0D6] bg-white py-3 pl-10 pr-4 text-sm text-[#1A1D24] shadow-xs outline-none transition focus:border-[#D94E34] focus:ring-2 focus:ring-[#D94E34]/15"
                   />
                 </div>
@@ -139,7 +141,7 @@ export function HomeDiscoveryClient({
                   className="inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#1A1D24] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#D94E34]"
                 >
                   <Plus className="h-4 w-4" />
-                  Host a Gathering
+                  {t("hostGathering")}
                 </Link>
               </div>
 
@@ -154,7 +156,7 @@ export function HomeDiscoveryClient({
                       : "border border-[#E6E0D6] bg-white text-[#5A5D66] hover:border-[#1A1D24] hover:text-[#1A1D24]"
                   }`}
                 >
-                  All Cities
+                  {t("allCities")}
                 </button>
                 {JAPAN_CITIES.map((c) => {
                   const active = city === c.name;
