@@ -131,7 +131,7 @@ export function MeetupCard({
           <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#5A5D66]">
             <span className="inline-flex items-center gap-1 font-medium text-[#1A1D24]">
               <Calendar className="h-3.5 w-3.5 text-[#D94E34]" />
-              {formatMeetupDate(meetup.startsAt)} · {formatMeetupTime(meetup.startsAt)}
+              {formatMeetupDate(meetup.startsAt, locale)} · {formatMeetupTime(meetup.startsAt, locale)}
             </span>
             <span className="inline-flex items-center gap-1">
               <TrainFront className="h-3.5 w-3.5 text-[#2B4C7E]" />
@@ -221,12 +221,12 @@ export function MeetupCard({
 
           {isHost ? (
             <span className="rounded-full bg-[#D94E34] px-2.5 py-0.5 text-[11px] font-semibold text-white">
-              Hosting
+              {t("Hosting")}
             </span>
           ) : meetup.viewerRsvpStatus === "going" ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48] px-2.5 py-0.5 text-[11px] font-semibold text-white">
               <CheckCircle2 className="h-3 w-3" />
-              Going
+              {t("Going")}
             </span>
           ) : meetup.viewerRsvpStatus === "waitlist" ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-[#D98A2B] px-2.5 py-0.5 text-[11px] font-semibold text-white">
@@ -248,7 +248,7 @@ export function MeetupCard({
             {t(meetup.category)}
           </span>
           <span className="text-xs font-medium text-[#5A5D66]">
-            {formatMeetupDate(meetup.startsAt)} · {formatMeetupTime(meetup.startsAt)}
+            {formatMeetupDate(meetup.startsAt, locale)} · {formatMeetupTime(meetup.startsAt, locale)}
           </span>
         </div>
 
