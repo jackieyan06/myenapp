@@ -114,12 +114,12 @@ export function MeetupCard({
             {meetup.viewerRsvpStatus === "going" && (
               <span className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/12 px-2.5 py-0.5 text-[11px] font-semibold text-[#3E6B48]">
                 <CheckCircle2 className="h-3 w-3" />
-                Going
+              {t("Going")}
               </span>
             )}
             {isHost && (
               <span className="rounded-full bg-[#D94E34]/12 px-2.5 py-0.5 text-[11px] font-semibold text-[#D94E34]">
-                Hosting
+              {t("Hosting")}
               </span>
             )}
           </div>
@@ -231,7 +231,7 @@ export function MeetupCard({
           ) : meetup.viewerRsvpStatus === "waitlist" ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-[#D98A2B] px-2.5 py-0.5 text-[11px] font-semibold text-white">
               <Clock className="h-3 w-3" />
-              Waitlisted
+              {t("Waitlisted")}
             </span>
           ) : null}
         </div>
@@ -259,7 +259,7 @@ export function MeetupCard({
         )}
 
         <h3 className="mt-1 font-display text-lg font-bold leading-snug text-[#1A1D24] group-hover:text-[#D94E34] transition line-clamp-2">
-          {meetup.title}
+          {localizeMeetupText(meetup.title)}
         </h3>
 
         <div className="mt-3 space-y-1.5 text-xs text-[#5A5D66]">
