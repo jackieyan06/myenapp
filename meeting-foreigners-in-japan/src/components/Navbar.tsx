@@ -9,6 +9,7 @@ import {
   Compass,
   BookOpen,
   CalendarHeart,
+  CreditCard,
   LogOut,
   Menu,
   X,
@@ -29,6 +30,7 @@ export function Navbar() {
     { href: "/", label: "Discover", icon: Compass },
     { href: "/community", label: "People", icon: Users },
     { href: "/guide", label: "Japan Guide", icon: BookOpen },
+    { href: "/pricing", label: "Pricing", icon: CreditCard },
     ...(user
       ? [{ href: "/my-meetups", label: "My Hub", icon: CalendarHeart }]
       : []),
