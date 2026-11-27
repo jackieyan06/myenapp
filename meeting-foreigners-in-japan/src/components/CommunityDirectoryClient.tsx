@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { CommunityMember } from "@/lib/queries";
-import { JAPAN_CITIES, ROLE_LABELS } from "@/lib/constants";
+import { JAPAN_CITIES, ROLE_LABELS, getNationalities } from "@/lib/constants";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
 
@@ -23,7 +23,8 @@ export function CommunityDirectoryClient({
   initialMembers: CommunityMember[];
 }) {
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const nationalities = getNationalities(locale);
   const [city, setCity] = useState("All");
   const [roleLabel, setRoleLabel] = useState("All");
   const [search, setSearch] = useState("");
@@ -69,9 +70,13 @@ export function CommunityDirectoryClient({
       return;
     }
     setSelectedMember(member);
-    setInviteMessage(
-      `Hi ${member.name}! I saw your profile on En and would love to grab a coffee or practice languages around ${member.homeCity} soon.`
-    );
+    const inviteTemplates = {
+      en: `Hi ${member.name}! I saw your profile on EnJapan and would love to grab a coffee or practice languages around ${member.homeCity} soon.`,
+      ja: `こんにちは、${member.name}さん。EnJapanでプロフィールを拝見しました。${member.homeCity}周辺でコーヒーを飲みながら言語交流ができたらうれしいです。`,
+      "zh-cn": `你好，${member.name}！我在 EnJapan 看到了你的个人资料，希望有机会在${member.homeCity}附近一起喝咖啡或交流语言。`,
+      "zh-tw": `你好，${member.name}！我在 EnJapan 看到了你的個人資料，希望有機會在${member.homeCity}附近一起喝咖啡或交流語言。`,
+    };
+    setInviteMessage(inviteTemplates[locale]);
     setInviteError("");
   };
 
@@ -92,13 +97,13 @@ export function CommunityDirectoryClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setInviteError(data.error || "Unable to send invite.");
+        setInviteError(t(data.error || "Unable to send invite."));
       } else {
         setSentIds((prev) => [...prev, selectedMember.id]);
         setSelectedMember(null);
       }
     } catch {
-      setInviteError("Network error while sending invite.");
+      setInviteError(t("Network error while sending invite."));
     } finally {
       setSending(false);
     }
@@ -233,13 +238,13 @@ export function CommunityDirectoryClient({
                         {member.nationalityFlag} {member.name}
                       </h2>
                       <div className="text-xs font-medium text-[#5A5D66]">
-                        {member.roleLabel} · {member.nationality}
+                        {t(member.roleLabel)} · {nationalities.find((n) => n.name === member.nationality)?.label ?? t(member.nationality)}
                       </div>
                     </div>
                   </div>
                   {member.openToCoffee && (
                     <span
-                      title="Open to coffee chats"
+                      title={t("Open to coffee chats")}
                       className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#3E6B48]"
                     >
                       <Coffee className="h-3 w-3" />
@@ -251,7 +256,7 @@ export function CommunityDirectoryClient({
                 <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-[#2B4C7E]">
                   <MapPin className="h-3.5 w-3.5" />
                   <span>
-                    {member.homeCity}
+                    {t(member.homeCity)}
                     {member.neighborhood ? ` · ${member.neighborhood}` : ""}
                   </span>
                 </div>
@@ -291,7 +296,7 @@ export function CommunityDirectoryClient({
                 <div className="mt-auto pt-4">
                   <div className="flex items-center justify-between border-t border-[#E6E0D6] pt-3.5">
                     <span className="text-[11px] text-[#5A5D66]">
-                      {member.hostedCount} hosted · {member.goingCount} joined
+                      {member.hostedCount} {t("hosted")} · {member.goingCount} {t("joined")}
                     </span>
 
                     {isSelf ? (
@@ -330,7 +335,7 @@ export function CommunityDirectoryClient({
           <div className="w-full max-w-md rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-lg font-bold text-[#1A1D24]">
-                Invite {selectedMember.nationalityFlag} {selectedMember.name}
+                {t("Invite")} {selectedMember.nationalityFlag} {selectedMember.name}
               </h3>
               <button
                 type="button"
@@ -341,7 +346,7 @@ export function CommunityDirectoryClient({
               </button>
             </div>
             <p className="mt-1 text-xs text-[#5A5D66]">
-              {selectedMember.roleLabel} in {selectedMember.homeCity}
+              {t(selectedMember.roleLabel)} · {t(selectedMember.homeCity)}
             </p>
 
             {inviteError && (
@@ -360,11 +365,11 @@ export function CommunityDirectoryClient({
                   onChange={(e) => setInviteContext(e.target.value)}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                 >
-                  <option>Coffee &amp; Language Chat</option>
-                  <option>Lunch / Ramen Meet</option>
-                  <option>Neighborhood Walk</option>
-                  <option>Coworking Session</option>
-                  <option>Travel Tips / Local Advice</option>
+                  <option value="Coffee & Language Chat">{t("Coffee & Language Chat")}</option>
+                  <option value="Lunch / Ramen Meet">{t("Lunch / Ramen Meet")}</option>
+                  <option value="Neighborhood Walk">{t("Neighborhood Walk")}</option>
+                  <option value="Coworking Session">{t("Coworking Session")}</option>
+                  <option value="Travel Tips / Local Advice">{t("Travel Tips / Local Advice")}</option>
                 </select>
               </div>
               <div>

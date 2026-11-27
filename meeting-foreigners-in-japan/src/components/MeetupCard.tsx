@@ -17,6 +17,7 @@ import { getCategoryStyle, getCityJp } from "@/lib/constants";
 import { formatMeetupDate, formatMeetupTime } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
+import { localizeMeetupText as translateMeetupText } from "@/lib/meetup-localization";
 
 export function MeetupCard({
   meetup,
@@ -28,7 +29,8 @@ export function MeetupCard({
   onSaveToggle?: (meetupId: number, saved: boolean) => void;
 }) {
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const localizeMeetupText = (value: string) => translateMeetupText(value, locale);
   const [localSaved, setLocalSaved] = useState<{
     propVal: boolean;
     val: boolean;
@@ -83,7 +85,7 @@ export function MeetupCard({
             className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
           />
           <span className="absolute left-2 top-2 rounded-full bg-[#1A1D24]/80 px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm">
-            {t(meetup.city)} {getCityJp(meetup.city)}
+            {localizeMeetupText(meetup.city)}
           </span>
         </div>
 
@@ -103,12 +105,12 @@ export function MeetupCard({
             {meetup.viewerRsvpStatus === "going" && (
               <span className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/12 px-2.5 py-0.5 text-[11px] font-semibold text-[#3E6B48]">
                 <CheckCircle2 className="h-3 w-3" />
-                Going
+              {t("Going")}
               </span>
             )}
             {isHost && (
               <span className="rounded-full bg-[#D94E34]/12 px-2.5 py-0.5 text-[11px] font-semibold text-[#D94E34]">
-                Hosting
+              {t("Hosting")}
               </span>
             )}
           </div>
@@ -120,7 +122,7 @@ export function MeetupCard({
           <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#5A5D66]">
             <span className="inline-flex items-center gap-1 font-medium text-[#1A1D24]">
               <Calendar className="h-3.5 w-3.5 text-[#D94E34]" />
-              {formatMeetupDate(meetup.startsAt)} · {formatMeetupTime(meetup.startsAt)}
+              {formatMeetupDate(meetup.startsAt, locale)} · {formatMeetupTime(meetup.startsAt, locale)}
             </span>
             <span className="inline-flex items-center gap-1">
               <TrainFront className="h-3.5 w-3.5 text-[#2B4C7E]" />
@@ -210,17 +212,17 @@ export function MeetupCard({
 
           {isHost ? (
             <span className="rounded-full bg-[#D94E34] px-2.5 py-0.5 text-[11px] font-semibold text-white">
-              Hosting
+              {t("Hosting")}
             </span>
           ) : meetup.viewerRsvpStatus === "going" ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48] px-2.5 py-0.5 text-[11px] font-semibold text-white">
               <CheckCircle2 className="h-3 w-3" />
-              Going
+              {t("Going")}
             </span>
           ) : meetup.viewerRsvpStatus === "waitlist" ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-[#D98A2B] px-2.5 py-0.5 text-[11px] font-semibold text-white">
               <Clock className="h-3 w-3" />
-              Waitlisted
+              {t("Waitlisted")}
             </span>
           ) : null}
         </div>
@@ -237,32 +239,32 @@ export function MeetupCard({
             {t(meetup.category)}
           </span>
           <span className="text-xs font-medium text-[#5A5D66]">
-            {formatMeetupDate(meetup.startsAt)} · {formatMeetupTime(meetup.startsAt)}
+            {formatMeetupDate(meetup.startsAt, locale)} · {formatMeetupTime(meetup.startsAt, locale)}
           </span>
         </div>
 
-        {meetup.titleJp && (
+        {meetup.titleJp && locale !== "zh-cn" && locale !== "zh-tw" && (
           <p className="mt-2.5 font-jp text-[11px] font-medium text-[#8B867D] line-clamp-1">
             {meetup.titleJp}
           </p>
         )}
 
         <h3 className="mt-1 font-display text-lg font-bold leading-snug text-[#1A1D24] group-hover:text-[#D94E34] transition line-clamp-2">
-          {meetup.title}
+          {localizeMeetupText(meetup.title)}
         </h3>
 
         <div className="mt-3 space-y-1.5 text-xs text-[#5A5D66]">
           <div className="flex items-start gap-1.5">
             <TrainFront className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#2B4C7E]" />
             <span className="line-clamp-1 font-medium text-[#1A1D24]/85">
-              {meetup.neighborhood} · {meetup.station}
+              {localizeMeetupText(meetup.neighborhood)} · {localizeMeetupText(meetup.station)}
             </span>
           </div>
           <div className="flex items-center gap-1.5">
             <Globe2 className="h-3.5 w-3.5 shrink-0 text-[#3E6B48]" />
             <span>{t(meetup.languageLevel)}</span>
             <span>·</span>
-            <span className="truncate">{meetup.costNote}</span>
+            <span className="truncate">{localizeMeetupText(meetup.costNote)}</span>
           </div>
         </div>
 

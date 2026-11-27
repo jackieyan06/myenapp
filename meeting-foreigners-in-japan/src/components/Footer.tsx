@@ -6,7 +6,8 @@ import { JAPAN_CITIES } from "@/lib/constants";
 import { useLocale } from "@/components/LocaleProvider";
 
 export function Footer() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const infoHref = (slug: string) => locale === "en" ? `/${slug}` : `/${locale}/${slug}`;
   return (
     <footer className="mt-16 border-t border-[#E6E0D6] bg-[#F2EDE4]/60">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -78,11 +79,11 @@ export function Footer() {
               EnJapan
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
-              <li><Link href="/about" className="hover:text-[#D94E34] transition">{t("About us")}</Link></li>
-              <li><Link href="/terms" className="hover:text-[#D94E34] transition">{t("Terms of Service")}</Link></li>
-              <li><Link href="/privacy" className="hover:text-[#D94E34] transition">{t("Privacy Policy")}</Link></li>
-              <li><Link href="/commercial-disclosure" className="hover:text-[#D94E34] transition">{t("Commercial Disclosure")}</Link></li>
-              <li><Link href="/advertising" className="hover:text-[#D94E34] transition">{t("Advertising with EnJapan")}</Link></li>
+              <li><Link href={infoHref("about")} className="hover:text-[#D94E34] transition">{t("About us")}</Link></li>
+              <li><Link href={infoHref("terms")} className="hover:text-[#D94E34] transition">{t("Terms of Service")}</Link></li>
+              <li><Link href={infoHref("privacy")} className="hover:text-[#D94E34] transition">{t("Privacy Policy")}</Link></li>
+              <li><Link href={infoHref("commercial-disclosure")} className="hover:text-[#D94E34] transition">{t("Commercial Disclosure")}</Link></li>
+              <li><Link href={infoHref("advertising")} className="hover:text-[#D94E34] transition">{t("Advertising with EnJapan")}</Link></li>
             </ul>
             <h3 className="mt-6 text-xs font-bold uppercase tracking-wider text-[#1A1D24]">
               {t("Connect with us")}

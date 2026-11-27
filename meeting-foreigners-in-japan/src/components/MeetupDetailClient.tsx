@@ -35,6 +35,7 @@ import {
 } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
+import { localizeMeetupText } from "@/lib/meetup-localization";
 
 export function MeetupDetailClient({
   initialMeetup,
@@ -43,7 +44,7 @@ export function MeetupDetailClient({
 }) {
   const router = useRouter();
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [meetup, setMeetup] = useState<MeetupDetail>(initialMeetup);
   const [saved, setSaved] = useState(initialMeetup.isSaved);
   const [copied, setCopied] = useState(false);
@@ -98,7 +99,7 @@ export function MeetupDetailClient({
   const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to join this meetup");
+      openAuthModal(t("Sign in to join this meetup"));
       return;
     }
     setRsvpLoading(true);
@@ -114,12 +115,12 @@ export function MeetupDetailClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setRsvpFeedback(data.error || "Could not complete RSVP.");
+        setRsvpFeedback(t(data.error || "Could not complete RSVP."));
       } else {
         setRsvpFeedback(
           data.status === "waitlist"
-            ? "Added to waitlist! You'll automatically move up if a spot opens."
-            : "Spot confirmed! See you there."
+            ? t("Added to waitlist! You'll automatically move up if a spot opens.")
+            : t("Spot confirmed! See you there.")
         );
         setIntroNote("");
         await refreshDetail();
@@ -139,7 +140,7 @@ export function MeetupDetailClient({
         method: "DELETE",
       });
       if (res.ok) {
-        setRsvpFeedback("Your RSVP has been cancelled.");
+        setRsvpFeedback(t("Your RSVP has been cancelled."));
         await refreshDetail();
         router.refresh();
       }
@@ -150,7 +151,7 @@ export function MeetupDetailClient({
 
   const handleToggleSave = async () => {
     if (!user) {
-      openAuthModal("Sign in to save meetups");
+      openAuthModal(t("Sign in to save meetups"));
       return;
     }
     const res = await fetch(`/api/meetups/${meetup.id}/save`, {
@@ -175,7 +176,7 @@ export function MeetupDetailClient({
   const handlePostComment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to ask a question or say hello");
+      openAuthModal(t("Sign in to ask a question or say hello"));
       return;
     }
     if (!commentText.trim()) return;
@@ -237,7 +238,7 @@ export function MeetupDetailClient({
   const handleSendWave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to message the host");
+      openAuthModal(t("Sign in to message the host"));
       return;
     }
     setWaveLoading(true);
@@ -300,7 +301,7 @@ export function MeetupDetailClient({
             }`}
           >
             <Bookmark className={`h-3.5 w-3.5 ${saved ? "fill-current" : ""}`} />
-            {saved ? "Saved" : "Save"}
+            {saved ? t("Saved") : t("Save")}
           </button>
         </div>
       </div>
@@ -323,7 +324,7 @@ export function MeetupDetailClient({
                   <MapPin className="h-3.5 w-3.5 text-[#D94E34]" />
                   {t(meetup.city)}{" "}
                   <span className="font-jp">{getCityJp(meetup.city)}</span> ·{" "}
-                  {meetup.neighborhood}
+                  {t(meetup.neighborhood)}
                 </span>
                 <span className="rounded-full bg-[#1A1D24]/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                   {t(meetup.languageFocus)}
@@ -345,14 +346,14 @@ export function MeetupDetailClient({
                 </span>
               </div>
 
-              {meetup.titleJp && (
+              {meetup.titleJp && locale === "ja" && (
                 <p className="mt-3 font-jp text-sm font-medium text-[#8B867D]">
                   {meetup.titleJp}
                 </p>
               )}
 
               <h1 className="mt-1 font-display text-2xl font-extrabold tracking-tight text-[#1A1D24] sm:text-3xl">
-                {meetup.title}
+                {localizeMeetupText(meetup.title, locale)}
               </h1>
 
               {/* Logistics Grid */}
@@ -366,10 +367,10 @@ export function MeetupDetailClient({
                       {t("Date & Time")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {formatMeetupFullDate(meetup.startsAt)}
+                      {formatMeetupFullDate(meetup.startsAt, locale)}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {formatMeetupTime(meetup.startsAt)} ({meetup.durationMinutes} min)
+                      {formatMeetupTime(meetup.startsAt, locale)} ({meetup.durationMinutes} {t("minutes")})
                     </div>
                   </div>
                 </div>
@@ -380,13 +381,13 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                      Nearest Train Station
+                      {t("Nearest Train Station")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.station}
+                      {localizeMeetupText(meetup.station, locale)}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {meetup.neighborhood}, {meetup.city}
+                      {localizeMeetupText(meetup.neighborhood, locale)}, {localizeMeetupText(meetup.city, locale)}
                     </div>
                   </div>
                 </div>
@@ -400,11 +401,11 @@ export function MeetupDetailClient({
                       {t("Venue & Meeting Spot")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.venueName}
+                      {localizeMeetupText(meetup.venueName, locale)}
                     </div>
                     {meetup.meetingPoint && (
                       <div className="mt-0.5 text-xs text-[#5A5D66]">
-                        {meetup.meetingPoint}
+                        {localizeMeetupText(meetup.meetingPoint, locale)}
                       </div>
                     )}
                   </div>
@@ -416,10 +417,10 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                      Cost / Warikan Note
+                      {t("Cost / Warikan Note")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.costNote}
+                      {localizeMeetupText(meetup.costNote, locale)}
                     </div>
                   </div>
                 </div>
@@ -428,17 +429,17 @@ export function MeetupDetailClient({
               {/* Description */}
               <div className="mt-6">
                 <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-                  About this Gathering
+                  {t("About this Gathering")}
                 </h2>
                 <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed text-[#373A42]">
-                  {meetup.description}
+                  {localizeMeetupText(meetup.description, locale)}
                 </p>
 
                 {meetup.tags.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
                     {meetup.tags.map((tag) => (
                       <span
-                        key={tag}
+                        key={localizeMeetupText(tag, locale)}
                         className="rounded-full bg-[#F2EDE4] px-3 py-1 text-xs font-semibold text-[#5A5D66]"
                       >
                         #{tag}
@@ -456,12 +457,12 @@ export function MeetupDetailClient({
               <div className="flex items-center gap-2.5">
                 <Users className="h-5 w-5 text-[#D94E34]" />
                 <h2 className="font-display text-xl font-bold text-[#1A1D24]">
-                  Who&apos;s Coming ({meetup.goingCount} / {meetup.maxAttendees})
+                  {t("Who's Coming")} ({meetup.goingCount} / {meetup.maxAttendees})
                 </h2>
               </div>
               {meetup.waitlistCount > 0 && (
                 <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800">
-                  {meetup.waitlistCount} on waitlist
+                  {meetup.waitlistCount} {t("on waitlist")}
                 </span>
               )}
             </div>
@@ -485,7 +486,7 @@ export function MeetupDetailClient({
                     </span>
                   </div>
                   <div className="text-xs text-[#5A5D66]">
-                    {meetup.host.roleLabel} · {meetup.host.homeCity}
+                    {t(meetup.host.roleLabel)} · {t(meetup.host.homeCity)}
                   </div>
                   <div className="mt-1.5 flex flex-wrap gap-1">
                     {meetup.host.languages.slice(0, 3).map((l) => (
@@ -568,7 +569,7 @@ export function MeetupDetailClient({
             <div className="mt-5 space-y-3.5">
               {meetup.comments.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-[#E6E0D6] bg-[#FAF8F4] px-4 py-6 text-center text-sm text-[#5A5D66]">
-                  No messages yet. Be the first to say{" "}
+                  {t("No messages yet. Be the first to say")}{" "}
                   <span className="font-jp font-semibold">こんにちは!</span>
                 </div>
               ) : (
@@ -596,7 +597,7 @@ export function MeetupDetailClient({
                             </span>
                             {c.isHost && (
                               <span className="rounded-full bg-[#D94E34] px-2 py-0.5 text-[10px] font-bold text-white">
-                                Host
+                                {t("Host")}
                               </span>
                             )}
                             {c.isPinned && (
@@ -607,7 +608,7 @@ export function MeetupDetailClient({
                             )}
                           </div>
                           <div className="text-[11px] text-[#5A5D66]">
-                            {t(c.userRole)} · {formatShortTimestamp(c.createdAt)}
+                            {t(c.userRole)} · {formatShortTimestamp(c.createdAt, locale)}
                           </div>
                         </div>
                       </div>
@@ -640,8 +641,8 @@ export function MeetupDetailClient({
                   onChange={(e) => setCommentText(e.target.value)}
                   placeholder={
                     user
-                      ? "Write a question or say hello to the group..."
-                      : "Sign in to join the meetup discussion..."
+                      ? t("Write a question or say hello to the group...")
+                      : t("Sign in to join the meetup discussion...")
                   }
                   className="flex-1 rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                 />
@@ -670,8 +671,8 @@ export function MeetupDetailClient({
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-[#1A1D24]">
                   {isFull
-                    ? "Table is currently full"
-                    : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} remaining`}
+                    ? t("Table is currently full")
+                    : `${spotsLeft} ${t(spotsLeft === 1 ? "spot remaining" : "spots remaining")}`}
                 </span>
                 <span className="text-xs font-semibold text-[#5A5D66]">
                   {meetup.goingCount} / {meetup.maxAttendees}
@@ -743,11 +744,10 @@ export function MeetupDetailClient({
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-[#3E6B48]/12 px-4 py-3 text-sm font-bold text-[#3E6B48]">
                     <CheckCircle2 className="h-5 w-5" />
-                    You&apos;re Confirmed!
+                    {t("You're Confirmed!")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    Look for {meetup.host.name} at {meetup.venueName}. If your
-                    plans change, please cancel so someone else can join.
+                    {t("Look for the host at the venue. If your plans change, please cancel so someone else can join.")} {meetup.host.name} · {meetup.venueName}
                   </p>
                   <button
                     type="button"
@@ -755,18 +755,17 @@ export function MeetupDetailClient({
                     onClick={handleCancelRsvp}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-xs font-semibold text-[#5A5D66] transition hover:border-red-300 hover:text-red-600"
                   >
-                    {rsvpLoading ? "Updating..." : "Cancel my RSVP"}
+                    {rsvpLoading ? t("Updating...") : t("Cancel my RSVP")}
                   </button>
                 </div>
               ) : meetup.viewerRsvpStatus === "waitlist" ? (
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm font-bold text-amber-900">
                     <Clock className="h-5 w-5" />
-                    You&apos;re on the Waitlist
+                    {t("You're on the Waitlist")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    You&apos;ll automatically be promoted to Going if a spot
-                    opens up.
+                    {t("You'll automatically be promoted to Going if a spot opens up.")}
                   </p>
                   <button
                     type="button"
@@ -787,7 +786,7 @@ export function MeetupDetailClient({
                       rows={2}
                       value={introNote}
                       onChange={(e) => setIntroNote(e.target.value)}
-                      placeholder="Hi! Visiting from Canada / living in Tokyo, excited to chat!"
+                      placeholder={t("Hi! Visiting from Canada / living in Tokyo, excited to chat!")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2 text-xs text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                     />
                   </div>
@@ -799,7 +798,7 @@ export function MeetupDetailClient({
                       type="text"
                       value={speakingLang}
                       onChange={(e) => setSpeakingLang(e.target.value)}
-                      placeholder="e.g. English / Japanese (N4)"
+                      placeholder={t("e.g. English / Japanese (N4)") }
                       className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2 text-xs text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                     />
                   </div>
@@ -813,7 +812,7 @@ export function MeetupDetailClient({
                     }`}
                   >
                     {rsvpLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                    {isFull ? "Join Waitlist" : "Join This Meetup"}
+                    {isFull ? t("Join Waitlist") : t("Join This Meetup")}
                   </button>
                 </form>
               )}
@@ -822,7 +821,7 @@ export function MeetupDetailClient({
             {/* Host Card */}
             <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6">
               <div className="text-xs font-bold uppercase tracking-wider text-[#5A5D66]">
-                Hosted By
+                {t("Hosted By")}
               </div>
               <div className="mt-3 flex items-center gap-3">
                 <span
@@ -852,22 +851,21 @@ export function MeetupDetailClient({
                     className="inline-flex items-center gap-1 rounded-full border border-[#E6E0D6] bg-[#FAF8F4] px-2.5 py-0.5 text-[11px] font-medium text-[#1A1D24]"
                   >
                     <Globe2 className="h-3 w-3 text-[#2B4C7E]" />
-                    {l.lang} · {l.level}
+                    {t(l.lang)} · {t(l.level)}
                   </span>
                 ))}
               </div>
 
               <div className="mt-4 flex items-center justify-between border-t border-[#E6E0D6] pt-3.5 text-xs">
                 <span className="font-semibold text-[#5A5D66]">
-                  {meetup.host.hostedCount} meetup
-                  {meetup.host.hostedCount === 1 ? "" : "s"} hosted
+                  {meetup.host.hostedCount} {t("meetup")} {t("hosted")}
                 </span>
                 {!isHost && (
                   <button
                     type="button"
                     onClick={() => {
                       if (!user) {
-                        openAuthModal("Sign in to wave to the host");
+                        openAuthModal(t("Sign in to wave to the host"));
                         return;
                       }
                       setWaveOpen(true);
@@ -894,7 +892,7 @@ export function MeetupDetailClient({
                 {JAPAN_PHRASES[0].romaji}
               </div>
               <div className="mt-1 text-xs text-[#1A1D24]">
-                &ldquo;{JAPAN_PHRASES[0].en}&rdquo;
+                &ldquo;{t(JAPAN_PHRASES[0].en)}&rdquo;
               </div>
               <Link
                 href="/guide"
@@ -926,7 +924,7 @@ export function MeetupDetailClient({
             <form onSubmit={handleSaveEdit} className="mt-4 space-y-3.5">
               <div>
                 <label className="mb-1 block text-xs font-semibold text-[#5A5D66]">
-                  Title
+                  {t("Title")}
                 </label>
                 <input
                   type="text"
@@ -1039,7 +1037,7 @@ export function MeetupDetailClient({
                   disabled={editLoading}
                   className="rounded-xl bg-[#D94E34] px-5 py-2 text-sm font-semibold text-white hover:bg-[#C04028]"
                 >
-                  {editLoading ? "Saving..." : "Save Changes"}
+                  {editLoading ? t("Saving...") : t("Save Changes")}
                 </button>
               </div>
             </form>
@@ -1053,7 +1051,7 @@ export function MeetupDetailClient({
           <div className="w-full max-w-md rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-lg font-bold text-[#1A1D24]">
-                Send a Wave to {meetup.host.nationalityFlag} {meetup.host.name}
+                {t("Send a Wave to")} {meetup.host.nationalityFlag} {meetup.host.name}
               </h3>
               <button
                 type="button"
@@ -1069,12 +1067,12 @@ export function MeetupDetailClient({
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
                 <p className="text-sm text-[#1A1D24]">
-                  Your message was sent! You can track it in{" "}
+                  {t("Your message was sent! You can track it in")}{" "}
                   <Link
                     href="/my-meetups?tab=connections"
                     className="font-semibold text-[#D94E34] underline"
                   >
-                    My Hub
+                    {t("My Hub")}
                   </Link>
                   .
                 </p>
@@ -1089,8 +1087,8 @@ export function MeetupDetailClient({
             ) : (
               <form onSubmit={handleSendWave} className="mt-4 space-y-3">
                 <p className="text-xs text-[#5A5D66]">
-                  Introduce yourself or ask about grabbing a coffee around{" "}
-                  {meetup.host.homeCity}.
+                  {t("Introduce yourself or ask about grabbing a coffee around")}{" "}
+                  {t(meetup.host.homeCity)}.
                 </p>
                 <textarea
                   rows={3}
@@ -1098,7 +1096,7 @@ export function MeetupDetailClient({
                   minLength={5}
                   value={waveMsg}
                   onChange={(e) => setWaveMsg(e.target.value)}
-                  placeholder={`Hi ${meetup.host.name}! I'm interested in your ${meetup.city} meetup...`}
+                  placeholder={t("Write a friendly message to the host")}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3.5 py-2.5 text-sm outline-none focus:border-[#D94E34]"
                 />
                 <button

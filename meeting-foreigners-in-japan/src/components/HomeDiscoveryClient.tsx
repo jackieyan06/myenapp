@@ -198,7 +198,7 @@ export function HomeDiscoveryClient({
                       東京・京都・大阪・福岡・札幌・横浜
                     </div>
                     <div className="mt-0.5 text-sm font-bold">
-                      Real conversations over matcha, coffee &amp; yakitori
+                      {t("Real conversations over matcha, coffee & yakitori")}
                     </div>
                   </div>
                 </div>
@@ -233,8 +233,8 @@ export function HomeDiscoveryClient({
               <span className="font-semibold text-[#2B4C7E]">
                 {t("Visiting or new in Japan?")}
               </span>{" "}
-              Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or
-              Kyoto Traveler) to RSVP, post questions, or host your own meetup.
+              {t("Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or Kyoto Traveler) to RSVP, post questions, or host your own meetup.")}
+
             </div>
             <button
               type="button"
@@ -382,7 +382,7 @@ export function HomeDiscoveryClient({
                 className="inline-flex items-center gap-1.5 rounded-xl bg-[#D94E34] px-4 py-2 text-sm font-semibold text-white hover:bg-[#C04028]"
               >
                 <Plus className="h-4 w-4" />
-                Host a Meetup
+                {t("Host a Meetup")}
               </Link>
             </div>
           </div>

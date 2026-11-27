@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { X, Sparkles, Check, Loader2 } from "lucide-react";
 import type { PublicUser } from "@/lib/auth";
-import { JAPAN_CITIES, NATIONALITIES, ROLE_LABELS } from "@/lib/constants";
+import { JAPAN_CITIES, NATIONALITIES, getNationalities, ROLE_LABELS } from "@/lib/constants";
 import { useLocale } from "@/components/LocaleProvider";
 
 interface AuthContextValue {
@@ -59,7 +59,8 @@ export function AuthProvider({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const nationalities = getNationalities(locale);
   const [user, setUser] = useState<PublicUser | null>(initialUser);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalReason, setModalReason] = useState<string | undefined>();
@@ -436,9 +437,9 @@ export function AuthProvider({
                       onChange={(e) => setRegNationality(e.target.value)}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                     >
-                      {NATIONALITIES.map((n) => (
+                      {nationalities.map((n) => (
                         <option key={n.name} value={n.name}>
-                          {n.flag} {t(n.name)}
+                          {n.flag} {n.label}
                         </option>
                       ))}
                     </select>

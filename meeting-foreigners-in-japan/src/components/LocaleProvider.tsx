@@ -1,7 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { usePathname } from "next/navigation";
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export type Locale = "en" | "ja" | "zh-cn" | "zh-tw";
 
@@ -302,6 +302,50 @@ const messages: Record<Locale, Record<string, string>> = {
     "Send a Wave to the host": "主催者に挨拶を送る",
     "Introduce yourself or ask about grabbing a coffee around": "自己紹介をしたり、近くでコーヒーを飲みませんかと誘ったりしましょう：",
     "Language": "言語", "English": "英語", "Japanese": "日本語", "Simplified Chinese": "簡体字中国語", "Traditional Chinese": "繁体字中国語",
+    "hosted": "主催",
+    "Invite": "招待",
+    "Coffee & Language Chat": "コーヒー・言語交流",
+    "Lunch / Ramen Meet": "ランチ・ラーメン会",
+    "Neighborhood Walk": "近所の散策",
+    "Coworking Session": "コワーキング",
+    "Travel Tips / Local Advice": "旅行情報・地域案内",
+    "You haven't joined any upcoming meetups yet": "参加予定の交流会はまだありません",
+    "You aren't hosting any meetups yet": "主催している交流会はまだありません",
+    "meet foreigners and locals in your neighborhood!": "近所の外国人や地元の人と交流しましょう！",
+    "Show “Open to Coffee Chats” badge on my directory card": "プロフィールに「コーヒー交流歓迎」バッジを表示",
+    "Real conversations over matcha, coffee & yakitori": "抹茶、コーヒー、焼き鳥を囲んで自然な会話を",
+    "Delete message": "メッセージを削除",
+    "Spot confirmed! See you there.": "参加が確定しました！当日お会いしましょう。",
+    "Your RSVP has been cancelled.": "参加登録をキャンセルしました。",
+    "Sign in to save meetups": "ログインして交流会を保存してください",
+    "Sign in to ask a question or say hello": "ログインして質問や挨拶を送ってください",
+    "Sign in to message the host": "ログインして主催者にメッセージを送ってください",
+    "Sign in to wave to the host": "ログインして主催者に挨拶を送りましょう",
+    "Hi! Visiting from Canada / living in Tokyo, excited to chat!": "こんにちは！東京在住／カナダから来ました。お話しできるのを楽しみにしています！",
+    "You're automatically promoted to Going if a spot opens up.": "空席ができると、自動的に参加確定へ繰り上がります。",
+    "Attending": "参加予定",
+    "Coffee Waves": "コーヒーのお誘い",
+    "Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!": "4〜8人のカフェ交流会を主催すれば、近所の外国人や地元の人と気軽につながれます！",
+    "Visit the People directory to say hello and invite someone for a coffee chat.": "メンバー一覧で挨拶して、コーヒー交流に誘ってみましょう。",
+    "Invited you": "あなたを招待しました",
+    "You invited": "あなたが招待しました",
+    "accepted": "承認済み",
+    "declined": "辞退",
+    "pending": "保留中",
+    "Shibuya": "渋谷",
+    "Open to coffee chats": "コーヒー交流歓迎",
+    "Unable to send invite.": "招待を送信できませんでした。",
+    "Network error while sending invite.": "招待の送信中にネットワークエラーが発生しました。",
+    "Could not complete RSVP.": "参加登録を完了できませんでした。",
+    "Profile updated!": "プロフィールを更新しました！",
+    "Tokyo Recommendations": "東京のおすすめ情報",
+    "Who's Coming": "参加予定のメンバー",
+    "on waitlist": "人がキャンセル待ち",
+    "spots remaining": "空席",
+    "Write a friendly message to the host": "主催者へのメッセージを入力してください",
+    "Send a Wave to": "挨拶を送る：",
+    "minutes": "分",
+    "e.g. English / Japanese (N4)": "例：英語／日本語（N4）",
   },
   "zh-cn": {
     "Discover": "发现", "People": "社区成员", "Japan Guide": "日本指南", "My Hub": "个人中心",
@@ -591,6 +635,49 @@ const messages: Record<Locale, Record<string, string>> = {
     "Send a Wave to the host": "向主办人发送问候",
     "Introduce yourself or ask about grabbing a coffee around": "介绍一下自己，或询问是否可以在附近一起喝咖啡：",
     "Language": "语言", "English": "英语", "Japanese": "日语", "Simplified Chinese": "简体中文", "Traditional Chinese": "繁体中文",
+    "hosted": "场已主办",
+    "Invite": "邀请",
+    "Coffee & Language Chat": "咖啡与语言交流",
+    "Lunch / Ramen Meet": "午餐／拉面聚会",
+    "Neighborhood Walk": "街区漫步",
+    "Coworking Session": "联合办公交流",
+    "Travel Tips / Local Advice": "旅行建议／当地资讯",
+    "You haven't joined any upcoming meetups yet": "您尚未报名参加任何即将举行的聚会",
+    "You aren't hosting any meetups yet": "您还没有主办任何聚会",
+    "meet foreigners and locals in your neighborhood!": "与您所在街区的外国居民和当地人交流！",
+    "Show “Open to Coffee Chats” badge on my directory card": "在个人资料卡上显示“欢迎咖啡交流”标记",
+    "Real conversations over matcha, coffee & yakitori": "围绕抹茶、咖啡和烤鸡串展开真诚交流",
+    "Delete message": "删除留言",
+    "Spot confirmed! See you there.": "报名成功！现场见！",
+    "Your RSVP has been cancelled.": "您的报名已取消。",
+    "Sign in to save meetups": "登录后即可收藏聚会",
+    "Sign in to ask a question or say hello": "登录后即可提问或打招呼",
+    "Sign in to message the host": "登录后即可给主办人发送消息",
+    "Sign in to wave to the host": "登录后即可向主办人发送问候",
+    "Hi! Visiting from Canada / living in Tokyo, excited to chat!": "你好！我来自加拿大／目前住在东京，很期待和你交流！",
+    "Attending": "已报名",
+    "Coffee Waves": "咖啡邀约",
+    "Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!": "主办一场 4 至 8 人的咖啡聚会，是认识附近外国居民和当地人的轻松方式！",
+    "Visit the People directory to say hello and invite someone for a coffee chat.": "前往成员目录打个招呼，并邀请对方一起喝咖啡交流。",
+    "Invited you": "邀请了您",
+    "You invited": "您已邀请",
+    "accepted": "已接受",
+    "declined": "已拒绝",
+    "pending": "待处理",
+    "Shibuya": "涩谷",
+    "Open to coffee chats": "欢迎咖啡交流",
+    "Unable to send invite.": "无法发送邀请。",
+    "Network error while sending invite.": "发送邀请时发生网络错误。",
+    "Could not complete RSVP.": "无法完成报名。",
+    "Profile updated!": "个人资料已更新！",
+    "Tokyo Recommendations": "东京推荐",
+    "Who's Coming": "参加成员",
+    "on waitlist": "人候补中",
+    "spots remaining": "个剩余名额",
+    "Write a friendly message to the host": "给主办人写一条友好消息",
+    "Send a Wave to": "向主办人发送问候：",
+    "minutes": "分钟",
+    "e.g. English / Japanese (N4)": "例如：英语／日语（N4）",
   },
   "zh-tw": {
     "Discover": "探索", "People": "社群成員", "Japan Guide": "日本指南", "My Hub": "個人中心",
@@ -880,6 +967,50 @@ const messages: Record<Locale, Record<string, string>> = {
     "Send a Wave to the host": "向主辦人傳送問候",
     "Introduce yourself or ask about grabbing a coffee around": "自我介紹，或詢問是否能在附近一起喝杯咖啡：",
     "Language": "語言", "English": "英文", "Japanese": "日文", "Simplified Chinese": "簡體中文", "Traditional Chinese": "繁體中文",
+    "hosted": "場已主辦",
+    "Invite": "邀請",
+    "Coffee & Language Chat": "咖啡與語言交流",
+    "Lunch / Ramen Meet": "午餐／拉麵聚會",
+    "Neighborhood Walk": "街區散步",
+    "Coworking Session": "共同工作交流",
+    "Travel Tips / Local Advice": "旅遊建議／在地資訊",
+    "You haven't joined any upcoming meetups yet": "您尚未報名參加任何即將舉行的聚會",
+    "You aren't hosting any meetups yet": "您還沒有主辦任何聚會",
+    "meet foreigners and locals in your neighborhood!": "與您所在街區的外國居民及在地居民交流！",
+    "Show “Open to Coffee Chats” badge on my directory card": "在個人資料卡上顯示「歡迎咖啡交流」標記",
+    "Real conversations over matcha, coffee & yakitori": "圍繞抹茶、咖啡與烤雞串展開真誠交流",
+    "Delete message": "刪除留言",
+    "Spot confirmed! See you there.": "報名成功！現場見！",
+    "Your RSVP has been cancelled.": "您的報名已取消。",
+    "Sign in to save meetups": "登入後即可收藏聚會",
+    "Sign in to ask a question or say hello": "登入後即可提問或打招呼",
+    "Sign in to message the host": "登入後即可傳送訊息給主辦人",
+    "Sign in to wave to the host": "登入後即可向主辦人傳送問候",
+    "Hi! Visiting from Canada / living in Tokyo, excited to chat!": "你好！我來自加拿大／目前住在東京，很期待和你交流！",
+    "Attending": "已報名",
+    "Coffee Waves": "咖啡邀約",
+    "Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!": "主辦一場 4 至 8 人的咖啡聚會，是認識附近外國居民與在地居民的輕鬆方式！",
+    "Visit the People directory to say hello and invite someone for a coffee chat.": "前往成員目錄打聲招呼，並邀請對方一起喝咖啡交流。",
+    "Invited you": "邀請了您",
+    "You invited": "您已邀請",
+    "accepted": "已接受",
+    "declined": "已拒絕",
+    "pending": "待處理",
+    "Shibuya": "澀谷",
+    "Open to coffee chats": "歡迎咖啡交流",
+    "Unable to send invite.": "無法傳送邀請。",
+    "Network error while sending invite.": "傳送邀請時發生網路錯誤。",
+    "Could not complete RSVP.": "無法完成報名。",
+    "Profile updated!": "個人資料已更新！",
+    "Tokyo Recommendations": "東京推薦",
+    "Who's Coming": "參加成員",
+    "on waitlist": "人候補中",
+    "spots remaining": "個剩餘名額",
+    "Write a friendly message to the host": "寫一則友善訊息給主辦人",
+    "Send a Wave to": "向主辦人傳送問候：",
+    "minutes": "分鐘",
+    "e.g. English / Japanese (N4)": "例如：英語／日語（N4）",
+
   },
 };
 
@@ -904,23 +1035,44 @@ export function LocaleProvider({
 }) {
   const [selectedLocale, setLocaleState] = useState<Locale>(initialLocale);
   const pathname = usePathname();
+  const router = useRouter();
+  const pendingLocalePath = useRef<string | null>(null);
   const routeLocale = pathname.split("/")[1];
   const locale: Locale = routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw" ? routeLocale : selectedLocale;
 
   // Keep the shared navigation/footer language in sync with localized info-page URLs.
   // This also persists the route locale so returning to the home page keeps that language.
   useEffect(() => {
+    if (pendingLocalePath.current && pathname !== pendingLocalePath.current) {
+      document.documentElement.lang = selectedLocale;
+      return;
+    }
+    if (pendingLocalePath.current === pathname) pendingLocalePath.current = null;
+
     if (routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw") {
+      setLocaleState(routeLocale);
       document.cookie = `en-locale=${routeLocale}; path=/; max-age=31536000; samesite=lax`;
       document.documentElement.lang = routeLocale;
+    } else {
+      document.documentElement.lang = selectedLocale;
     }
-  }, [pathname]);
+  }, [pathname, routeLocale, selectedLocale]);
 
   const setLocale = (next: Locale) => {
     setLocaleState(next);
     document.cookie = `en-locale=${next}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = next;
-    window.location.reload();
+
+    const localizedRoute = pathname.match(/^\/(ja|zh-cn|zh-tw)(?=\/|$)/);
+    const unlocalizedPath = localizedRoute
+      ? pathname.replace(/^\/(?:ja|zh-cn|zh-tw)(?=\/|$)/, "") || "/"
+      : pathname;
+    const infoSlugs = ["/about", "/terms", "/privacy", "/commercial-disclosure", "/advertising"];
+    if (infoSlugs.includes(unlocalizedPath)) {
+      const nextPath = next === "en" ? unlocalizedPath : `/${next}${unlocalizedPath}`;
+      pendingLocalePath.current = nextPath;
+      router.replace(nextPath);
+    }
   };
 
   const value = useMemo(
