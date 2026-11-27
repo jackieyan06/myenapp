@@ -113,7 +113,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Publish Meetup": "交流会を公開",
     "Unable to create meetup.": "交流会を作成できませんでした。",
     "Network error while publishing meetup.": "公開中にネットワークエラーが発生しました。",
-    "Whether it’s a 6-person kissaten coffee morning, an English–Japanese language exchange, or an izakaya evening—share the exact station exit so newcomers find you easily.": "6人ほどの喫茶店でのコーヒー交流会、日英ランゲージエクスチェンジ、居酒屋での夕べなど、初めての方にもわかるよう駅の出口を詳しく案内しましょう。",
+    "Create social, cultural or professional gatherings—from expatriate networking and business partnerships to language exchange.": "在住外国人のネットワーキングやビジネスパートナー探しから、文化交流や言語交換まで、さまざまな交流会を開催できます。",
     "Going": "参加予定",
     "Hosting": "主催中",
     "Waitlist": "キャンセル待ち",
