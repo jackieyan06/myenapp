@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { CommunityMember } from "@/lib/queries";
-import { JAPAN_CITIES, ROLE_LABELS } from "@/lib/constants";
+import { JAPAN_CITIES, ROLE_LABELS, getNationalities } from "@/lib/constants";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
 
@@ -24,6 +24,7 @@ export function CommunityDirectoryClient({
 }) {
   const { user, openAuthModal } = useAuth();
   const { t, locale } = useLocale();
+  const nationalities = getNationalities(locale);
   const [city, setCity] = useState("All");
   const [roleLabel, setRoleLabel] = useState("All");
   const [search, setSearch] = useState("");
@@ -237,7 +238,7 @@ export function CommunityDirectoryClient({
                         {member.nationalityFlag} {member.name}
                       </h2>
                       <div className="text-xs font-medium text-[#5A5D66]">
-                        {t(member.roleLabel)} · {t(member.nationality)}
+                        {t(member.roleLabel)} · {nationalities.find((n) => n.name === member.nationality)?.label ?? t(member.nationality)}
                       </div>
                     </div>
                   </div>
