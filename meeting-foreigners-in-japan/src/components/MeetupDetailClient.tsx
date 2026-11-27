@@ -353,7 +353,7 @@ export function MeetupDetailClient({
               )}
 
               <h1 className="mt-1 font-display text-2xl font-extrabold tracking-tight text-[#1A1D24] sm:text-3xl">
-                {meetup.title}
+                {localizeMeetupText(meetup.title, locale)}
               </h1>
 
               {/* Logistics Grid */}
