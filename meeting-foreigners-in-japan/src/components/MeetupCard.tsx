@@ -28,7 +28,18 @@ export function MeetupCard({
   onSaveToggle?: (meetupId: number, saved: boolean) => void;
 }) {
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const localizeMeetupText = (value: string) => {
+    const translations: Record<string, Partial<Record<"ja" | "zh-cn" | "zh-tw", string>>> = {
+      "Shibuya": { ja: "渋谷", "zh-cn": "涩谷", "zh-tw": "澀谷" },
+      "Shibuya Station (Hachiko Exit, 4 min walk)": { ja: "渋谷駅（ハチ公口から徒歩4分）", "zh-cn": "涩谷站（八公出口，步行4分钟）", "zh-tw": "澀谷站（八公出口，步行4分鐘）" },
+      "Shibuya Morning Coffee & 50/50 Language Table": { ja: "渋谷モーニング・日英カフェ交流", "zh-cn": "涩谷晨间咖啡与英语日语交流", "zh-tw": "澀谷晨間咖啡與英日語交流" },
+      "渋谷モーニング・日英カフェ交流": { ja: "渋谷モーニング・日英カフェ交流", "zh-cn": "涩谷晨间咖啡与英语日语交流", "zh-tw": "澀谷晨間咖啡與英日語交流" },
+      "Free · Order your own drink (~¥650)": { ja: "無料・飲み物は各自注文（約650円）", "zh-cn": "免费·饮品各自点单（约650日元）", "zh-tw": "免費・飲品各自點單（約650日圓）" },
+      "Free · Order your own drink": { ja: "無料・飲み物は各自注文", "zh-cn": "免费·饮品各自点单", "zh-tw": "免費・飲品各自點單" },
+    };
+    return translations[value]?.[locale as "ja" | "zh-cn" | "zh-tw"] ?? value;
+  };
   const [localSaved, setLocalSaved] = useState<{
     propVal: boolean;
     val: boolean;
@@ -83,7 +94,7 @@ export function MeetupCard({
             className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
           />
           <span className="absolute left-2 top-2 rounded-full bg-[#1A1D24]/80 px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm">
-            {t(meetup.city)} {getCityJp(meetup.city)}
+            {localizeMeetupText(meetup.city)}
           </span>
         </div>
 
@@ -241,7 +252,7 @@ export function MeetupCard({
           </span>
         </div>
 
-        {meetup.titleJp && (
+        {meetup.titleJp && locale !== "zh-cn" && locale !== "zh-tw" && (
           <p className="mt-2.5 font-jp text-[11px] font-medium text-[#8B867D] line-clamp-1">
             {meetup.titleJp}
           </p>
@@ -255,14 +266,14 @@ export function MeetupCard({
           <div className="flex items-start gap-1.5">
             <TrainFront className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#2B4C7E]" />
             <span className="line-clamp-1 font-medium text-[#1A1D24]/85">
-              {meetup.neighborhood} · {meetup.station}
+              {localizeMeetupText(meetup.neighborhood)} · {localizeMeetupText(meetup.station)}
             </span>
           </div>
           <div className="flex items-center gap-1.5">
             <Globe2 className="h-3.5 w-3.5 shrink-0 text-[#3E6B48]" />
             <span>{t(meetup.languageLevel)}</span>
             <span>·</span>
-            <span className="truncate">{meetup.costNote}</span>
+            <span className="truncate">{localizeMeetupText(meetup.costNote)}</span>
           </div>
         </div>
 
