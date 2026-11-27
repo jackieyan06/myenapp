@@ -337,7 +337,6 @@ const messages: Record<Locale, Record<string, string>> = {
     "Unable to send invite.": "招待を送信できませんでした。",
     "Network error while sending invite.": "招待の送信中にネットワークエラーが発生しました。",
     "Could not complete RSVP.": "参加登録を完了できませんでした。",
-  },
     "Profile updated!": "プロフィールを更新しました！",
     "Tokyo Recommendations": "東京のおすすめ情報",
     "Who's Coming": "参加予定のメンバー",
@@ -347,6 +346,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Send a Wave to": "挨拶を送る：",
     "minutes": "分",
     "e.g. English / Japanese (N4)": "例：英語／日本語（N4）",
+  },
   "zh-cn": {
     "Discover": "发现", "People": "社区成员", "Japan Guide": "日本指南", "My Hub": "个人中心",
     "Host Meetup": "发起聚会", "Host a Meetup": "发起聚会", "Host a Gathering": "组织活动",
@@ -669,7 +669,6 @@ const messages: Record<Locale, Record<string, string>> = {
     "Unable to send invite.": "无法发送邀请。",
     "Network error while sending invite.": "发送邀请时发生网络错误。",
     "Could not complete RSVP.": "无法完成报名。",
-  },
     "Profile updated!": "个人资料已更新！",
     "Tokyo Recommendations": "东京推荐",
     "Who's Coming": "参加成员",
@@ -679,6 +678,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Send a Wave to": "向主办人发送问候：",
     "minutes": "分钟",
     "e.g. English / Japanese (N4)": "例如：英语／日语（N4）",
+  },
   "zh-tw": {
     "Discover": "探索", "People": "社群成員", "Japan Guide": "日本指南", "My Hub": "個人中心",
     "Host Meetup": "發起聚會", "Host a Meetup": "發起聚會", "Host a Gathering": "舉辦活動",
@@ -1011,6 +1011,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "minutes": "分鐘",
     "e.g. English / Japanese (N4)": "例如：英語／日語（N4）",
 
+  },
 };
 
 interface LocaleContextValue {
