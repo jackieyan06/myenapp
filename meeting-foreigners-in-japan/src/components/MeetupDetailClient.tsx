@@ -300,7 +300,7 @@ export function MeetupDetailClient({
             }`}
           >
             <Bookmark className={`h-3.5 w-3.5 ${saved ? "fill-current" : ""}`} />
-            {saved ? "Saved" : "Save"}
+            {saved ? t("Saved") : t("Save")}
           </button>
         </div>
       </div>
@@ -323,7 +323,7 @@ export function MeetupDetailClient({
                   <MapPin className="h-3.5 w-3.5 text-[#D94E34]" />
                   {t(meetup.city)}{" "}
                   <span className="font-jp">{getCityJp(meetup.city)}</span> ·{" "}
-                  {meetup.neighborhood}
+                  {t(meetup.neighborhood)}
                 </span>
                 <span className="rounded-full bg-[#1A1D24]/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                   {t(meetup.languageFocus)}
@@ -347,7 +347,7 @@ export function MeetupDetailClient({
 
               {meetup.titleJp && (
                 <p className="mt-3 font-jp text-sm font-medium text-[#8B867D]">
-                  {meetup.titleJp}
+                  {locale === "ja" ? meetup.titleJp : t(meetup.titleJp)}
                 </p>
               )}
 
@@ -383,10 +383,10 @@ export function MeetupDetailClient({
                       {t("Nearest Train Station")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.station}
+                      {t(meetup.station)}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {meetup.neighborhood}, {meetup.city}
+                      {t(meetup.neighborhood)}, {t(meetup.city)}
                     </div>
                   </div>
                 </div>
@@ -400,11 +400,11 @@ export function MeetupDetailClient({
                       {t("Venue & Meeting Spot")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.venueName}
+                      {t(meetup.venueName)}
                     </div>
                     {meetup.meetingPoint && (
                       <div className="mt-0.5 text-xs text-[#5A5D66]">
-                        {meetup.meetingPoint}
+                        {t(meetup.meetingPoint)}
                       </div>
                     )}
                   </div>
@@ -419,7 +419,7 @@ export function MeetupDetailClient({
                       {t("Cost / Warikan Note")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.costNote}
+                      {t(meetup.costNote)}
                     </div>
                   </div>
                 </div>
@@ -431,7 +431,7 @@ export function MeetupDetailClient({
                   {t("About this Gathering")}
                 </h2>
                 <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed text-[#373A42]">
-                  {meetup.description}
+                  {t(meetup.description)}
                 </p>
 
                 {meetup.tags.length > 0 && (
