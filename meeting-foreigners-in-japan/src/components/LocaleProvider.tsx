@@ -967,7 +967,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "Send a Wave to the host": "向主辦人傳送問候",
     "Introduce yourself or ask about grabbing a coffee around": "自我介紹，或詢問是否能在附近一起喝杯咖啡：",
     "Language": "語言", "English": "英文", "Japanese": "日文", "Simplified Chinese": "簡體中文", "Traditional Chinese": "繁體中文",
-  },    "hosted": "場已主辦",
+    "hosted": "場已主辦",
     "Invite": "邀請",
     "Coffee & Language Chat": "咖啡與語言交流",
     "Lunch / Ramen Meet": "午餐／拉麵聚會",
