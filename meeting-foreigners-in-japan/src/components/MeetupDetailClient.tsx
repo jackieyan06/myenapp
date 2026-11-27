@@ -346,9 +346,9 @@ export function MeetupDetailClient({
                 </span>
               </div>
 
-              {meetup.titleJp && (
+              {meetup.titleJp && locale === "ja" && (
                 <p className="mt-3 font-jp text-sm font-medium text-[#8B867D]">
-                  {locale === "ja" ? meetup.titleJp : t(meetup.titleJp)}
+                  {meetup.titleJp}
                 </p>
               )}
 
@@ -432,14 +432,14 @@ export function MeetupDetailClient({
                   {t("About this Gathering")}
                 </h2>
                 <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed text-[#373A42]">
-                  {t(meetup.description)}
+                  {localizeMeetupText(meetup.description, locale)}
                 </p>
 
                 {meetup.tags.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
                     {meetup.tags.map((tag) => (
                       <span
-                        key={tag}
+                        key={t(tag)}
                         className="rounded-full bg-[#F2EDE4] px-3 py-1 text-xs font-semibold text-[#5A5D66]"
                       >
                         #{tag}
