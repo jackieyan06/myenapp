@@ -22,6 +22,7 @@ import { useLocale } from "@/components/LocaleProvider";
 import {
   JAPAN_CITIES,
   NATIONALITIES,
+  getNationalities,
   ROLE_LABELS,
 } from "@/lib/constants";
 import { formatShortTimestamp } from "@/lib/format";
@@ -58,7 +59,8 @@ export function MyHubClient({
 }) {
   const router = useRouter();
   const { user, setUser, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const nationalities = getNationalities(locale);
   const [tab, setTab] = useState(initialTab);
   const [statusOverrides, setStatusOverrides] = useState<
     Record<number, string>
@@ -507,9 +509,9 @@ export function MyHubClient({
                   onChange={(e) => setNationality(e.target.value)}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2 text-sm outline-none focus:border-[#D94E34] focus:bg-white"
                 >
-                  {NATIONALITIES.map((n) => (
+                  {nationalities.map((n) => (
                     <option key={n.name} value={n.name}>
-                      {n.flag} {n.name}
+                      {n.flag} {n.label}
                     </option>
                   ))}
                 </select>
