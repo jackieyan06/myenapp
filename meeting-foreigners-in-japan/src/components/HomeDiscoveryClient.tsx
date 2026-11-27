@@ -113,13 +113,11 @@ export function HomeDiscoveryClient({
               </div>
 
               <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-[#1A1D24] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
-                {t("Meet friendly")}{" "}
-                <span className="text-[#D94E34]">{t("foreigners & locals")}</span>{" "}
-                {t("across Japan.")}
+                {t("Connecting people, professionals & opportunities in Japan.")}
               </h1>
 
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#5A5D66]">
-                {t("Small-table coffee mornings, 50/50 Japanese–English language exchanges, neighborhood walks, and welcoming izakaya nights—with exact train station exits and zero awkwardness.")}
+                {t("Meet expatriates, international professionals, entrepreneurs, investors and Japanese locals. Build friendships, exchange knowledge, explore partnerships and discover opportunities in Japan through welcoming community gatherings.")}
               </p>
 
               {/* Search Input */}
