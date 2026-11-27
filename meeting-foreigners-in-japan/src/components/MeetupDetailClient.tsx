@@ -380,7 +380,7 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                      Nearest Train Station
+                      {t("Nearest Train Station")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
                       {meetup.station}
@@ -428,7 +428,7 @@ export function MeetupDetailClient({
               {/* Description */}
               <div className="mt-6">
                 <h2 className="font-display text-lg font-bold text-[#1A1D24]">
-                  About this Gathering
+                  {t("About this Gathering")}
                 </h2>
                 <p className="mt-2.5 whitespace-pre-line text-[15px] leading-relaxed text-[#373A42]">
                   {meetup.description}
@@ -743,7 +743,7 @@ export function MeetupDetailClient({
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-[#3E6B48]/12 px-4 py-3 text-sm font-bold text-[#3E6B48]">
                     <CheckCircle2 className="h-5 w-5" />
-                    You&apos;re Confirmed!
+                    {t("You're Confirmed!")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
                     Look for {meetup.host.name} at {meetup.venueName}. If your
@@ -762,7 +762,7 @@ export function MeetupDetailClient({
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm font-bold text-amber-900">
                     <Clock className="h-5 w-5" />
-                    You&apos;re on the Waitlist
+                    {t("You're on the Waitlist")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
                     You&apos;ll automatically be promoted to Going if a spot
