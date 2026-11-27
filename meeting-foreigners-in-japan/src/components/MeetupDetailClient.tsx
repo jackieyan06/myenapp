@@ -607,7 +607,7 @@ export function MeetupDetailClient({
                             )}
                           </div>
                           <div className="text-[11px] text-[#5A5D66]">
-                            {t(c.userRole)} · {formatShortTimestamp(c.createdAt)}
+                            {t(c.userRole)} · {formatShortTimestamp(c.createdAt, locale)}
                           </div>
                         </div>
                       </div>
