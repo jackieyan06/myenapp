@@ -382,7 +382,7 @@ export function HomeDiscoveryClient({
                 className="inline-flex items-center gap-1.5 rounded-xl bg-[#D94E34] px-4 py-2 text-sm font-semibold text-white hover:bg-[#C04028]"
               >
                 <Plus className="h-4 w-4" />
-                Host a Meetup
+                {t("Host a Meetup")}
               </Link>
             </div>
           </div>
