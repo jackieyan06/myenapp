@@ -23,7 +23,7 @@ export function CommunityDirectoryClient({
   initialMembers: CommunityMember[];
 }) {
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [city, setCity] = useState("All");
   const [roleLabel, setRoleLabel] = useState("All");
   const [search, setSearch] = useState("");
@@ -69,9 +69,13 @@ export function CommunityDirectoryClient({
       return;
     }
     setSelectedMember(member);
-    setInviteMessage(
-      `Hi ${member.name}! I saw your profile on En and would love to grab a coffee or practice languages around ${member.homeCity} soon.`
-    );
+    const inviteTemplates = {
+      en: `Hi ${member.name}! I saw your profile on EnJapan and would love to grab a coffee or practice languages around ${member.homeCity} soon.`,
+      ja: `こんにちは、${member.name}さん。EnJapanでプロフィールを拝見しました。${member.homeCity}周辺でコーヒーを飲みながら言語交流ができたらうれしいです。`,
+      "zh-cn": `你好，${member.name}！我在 EnJapan 看到了你的个人资料，希望有机会在${member.homeCity}附近一起喝咖啡或交流语言。`,
+      "zh-tw": `你好，${member.name}！我在 EnJapan 看到了你的個人資料，希望有機會在${member.homeCity}附近一起喝咖啡或交流語言。`,
+    };
+    setInviteMessage(inviteTemplates[locale]);
     setInviteError("");
   };
 
@@ -92,13 +96,13 @@ export function CommunityDirectoryClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setInviteError(data.error || "Unable to send invite.");
+        setInviteError(t(data.error || "Unable to send invite."));
       } else {
         setSentIds((prev) => [...prev, selectedMember.id]);
         setSelectedMember(null);
       }
     } catch {
-      setInviteError("Network error while sending invite.");
+      setInviteError(t("Network error while sending invite."));
     } finally {
       setSending(false);
     }
@@ -239,7 +243,7 @@ export function CommunityDirectoryClient({
                   </div>
                   {member.openToCoffee && (
                     <span
-                      title="Open to coffee chats"
+                      title={t("Open to coffee chats")}
                       className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#3E6B48]"
                     >
                       <Coffee className="h-3 w-3" />
