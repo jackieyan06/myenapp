@@ -340,6 +340,11 @@ const messages: Record<Locale, Record<string, string>> = {
   },
     "Profile updated!": "プロフィールを更新しました！",
     "Tokyo Recommendations": "東京のおすすめ情報",
+    "Who's Coming": "参加予定のメンバー",
+    "on waitlist": "人がキャンセル待ち",
+    "spots remaining": "空席",
+    "Write a friendly message to the host": "主催者へのメッセージを入力してください",
+    "Send a Wave to": "挨拶を送る：",
   "zh-cn": {
     "Discover": "发现", "People": "社区成员", "Japan Guide": "日本指南", "My Hub": "个人中心",
     "Host Meetup": "发起聚会", "Host a Meetup": "发起聚会", "Host a Gathering": "组织活动",
@@ -665,6 +670,11 @@ const messages: Record<Locale, Record<string, string>> = {
   },
     "Profile updated!": "个人资料已更新！",
     "Tokyo Recommendations": "东京推荐",
+    "Who's Coming": "参加成员",
+    "on waitlist": "人候补中",
+    "spots remaining": "个剩余名额",
+    "Write a friendly message to the host": "给主办人写一条友好消息",
+    "Send a Wave to": "向主办人发送问候：",
   "zh-tw": {
     "Discover": "探索", "People": "社群成員", "Japan Guide": "日本指南", "My Hub": "個人中心",
     "Host Meetup": "發起聚會", "Host a Meetup": "發起聚會", "Host a Gathering": "舉辦活動",
@@ -989,6 +999,11 @@ const messages: Record<Locale, Record<string, string>> = {
     "Could not complete RSVP.": "無法完成報名。",
     "Profile updated!": "個人資料已更新！",
     "Tokyo Recommendations": "東京推薦",
+    "Who's Coming": "參加成員",
+    "on waitlist": "人候補中",
+    "spots remaining": "個剩餘名額",
+    "Write a friendly message to the host": "寫一則友善訊息給主辦人",
+    "Send a Wave to": "向主辦人傳送問候：",
 
 };
 
