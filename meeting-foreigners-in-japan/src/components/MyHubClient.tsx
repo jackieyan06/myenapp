@@ -284,13 +284,13 @@ export function MyHubClient({
                   {t("You haven't joined any upcoming meetups yet")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
-                  Explore coffee mornings, language tables, and city walks across Japan.
+                  {t("Explore coffee mornings, language tables, and city walks across Japan.")}
                 </p>
                 <Link
                   href="/"
                   className="mt-4 inline-block rounded-xl bg-[#D94E34] px-5 py-2.5 text-sm font-semibold text-white"
                 >
-                  Discover Meetups
+                  {t("Discover Meetups") }
                 </Link>
               </div>
             ) : (
@@ -319,7 +319,7 @@ export function MyHubClient({
                   className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-[#D94E34] px-5 py-2.5 text-sm font-semibold text-white"
                 >
                   <Plus className="h-4 w-4" />
-                  Host Your First Meetup
+                  {t("Host Your First Meetup") }
                 </Link>
               </div>
             ) : (
@@ -337,13 +337,13 @@ export function MyHubClient({
             {hubData.saved.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  No bookmarked meetups yet
+                  {t("No bookmarked meetups yet") }
                 </p>
                 <Link
                   href="/"
                   className="mt-4 inline-block rounded-xl bg-[#1A1D24] px-5 py-2.5 text-sm font-semibold text-white"
                 >
-                  Browse Meetups
+                  {t("Browse Meetups") }
                 </Link>
               </div>
             ) : (
@@ -361,7 +361,7 @@ export function MyHubClient({
             {connectionsList.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  No coffee waves or invites yet
+                  {t("No coffee waves or invites yet") }
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
                   Visit the People directory to say hello and invite someone for
@@ -371,7 +371,7 @@ export function MyHubClient({
                   href="/community"
                   className="mt-4 inline-block rounded-xl bg-[#2B4C7E] px-5 py-2.5 text-sm font-semibold text-white"
                 >
-                  Explore People Directory
+                  {t("Explore People Directory") }
                 </Link>
               </div>
             ) : (
@@ -419,7 +419,7 @@ export function MyHubClient({
                     </p>
 
                     <div className="mt-3 flex items-center justify-between text-[11px] text-[#5A5D66]">
-                      <span>{formatShortTimestamp(conn.createdAt)}</span>
+                      <span>{formatShortTimestamp(conn.createdAt, locale)}</span>
                       {conn.direction === "incoming" &&
                         conn.status === "pending" && (
                           <div className="flex gap-2">
@@ -431,7 +431,7 @@ export function MyHubClient({
                               className="inline-flex items-center gap-1 rounded-lg border border-[#E6E0D6] px-2.5 py-1 font-semibold text-[#5A5D66] hover:bg-red-50 hover:text-red-600"
                             >
                               <X className="h-3 w-3" />
-                              Decline
+                              {t("Decline") }
                             </button>
                             <button
                               type="button"
@@ -441,7 +441,7 @@ export function MyHubClient({
                               className="inline-flex items-center gap-1 rounded-lg bg-[#3E6B48] px-3 py-1 font-semibold text-white hover:bg-[#315539]"
                             >
                               <Check className="h-3 w-3" />
-                              Accept Coffee
+                              {t("Accept Coffee") }
                             </button>
                           </div>
                         )}
@@ -472,7 +472,7 @@ export function MyHubClient({
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Display Name
+                  {t("Display Name") }
                 </label>
                 <input
                   type="text"
@@ -485,7 +485,7 @@ export function MyHubClient({
 
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Role in Japan
+                  {t("Role in Japan") }
                 </label>
                 <select
                   value={roleLabel}
@@ -502,7 +502,7 @@ export function MyHubClient({
 
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Country / Origin
+                  {t("Country / Origin") }
                 </label>
                 <select
                   value={nationality}
@@ -519,7 +519,7 @@ export function MyHubClient({
 
               <div>
                 <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                  Base City in Japan
+                  {t("Base City in Japan") }
                 </label>
                 <select
                   value={homeCity}
