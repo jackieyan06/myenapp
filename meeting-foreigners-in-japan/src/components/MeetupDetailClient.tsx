@@ -457,12 +457,12 @@ export function MeetupDetailClient({
               <div className="flex items-center gap-2.5">
                 <Users className="h-5 w-5 text-[#D94E34]" />
                 <h2 className="font-display text-xl font-bold text-[#1A1D24]">
-                  Who&apos;s Coming ({meetup.goingCount} / {meetup.maxAttendees})
+                  {t("Who's Coming")} ({meetup.goingCount} / {meetup.maxAttendees})
                 </h2>
               </div>
               {meetup.waitlistCount > 0 && (
                 <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800">
-                  {meetup.waitlistCount} on waitlist
+                  {meetup.waitlistCount} {t("on waitlist")}
                 </span>
               )}
             </div>
@@ -569,7 +569,7 @@ export function MeetupDetailClient({
             <div className="mt-5 space-y-3.5">
               {meetup.comments.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-[#E6E0D6] bg-[#FAF8F4] px-4 py-6 text-center text-sm text-[#5A5D66]">
-                  No messages yet. Be the first to say{" "}
+                  {t("No messages yet. Be the first to say")}{" "}
                   <span className="font-jp font-semibold">こんにちは!</span>
                 </div>
               ) : (
@@ -597,7 +597,7 @@ export function MeetupDetailClient({
                             </span>
                             {c.isHost && (
                               <span className="rounded-full bg-[#D94E34] px-2 py-0.5 text-[10px] font-bold text-white">
-                                Host
+                                {t("Host")}
                               </span>
                             )}
                             {c.isPinned && (
@@ -641,8 +641,8 @@ export function MeetupDetailClient({
                   onChange={(e) => setCommentText(e.target.value)}
                   placeholder={
                     user
-                      ? "Write a question or say hello to the group..."
-                      : "Sign in to join the meetup discussion..."
+                      ? t("Write a question or say hello to the group...")
+                      : t("Sign in to join the meetup discussion...")
                   }
                   className="flex-1 rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                 />
@@ -671,8 +671,8 @@ export function MeetupDetailClient({
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-[#1A1D24]">
                   {isFull
-                    ? "Table is currently full"
-                    : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} remaining`}
+                    ? t("Table is currently full")
+                    : `${spotsLeft} ${t(spotsLeft === 1 ? "spot remaining" : "spots remaining")}`}
                 </span>
                 <span className="text-xs font-semibold text-[#5A5D66]">
                   {meetup.goingCount} / {meetup.maxAttendees}
@@ -1038,7 +1038,7 @@ export function MeetupDetailClient({
                   disabled={editLoading}
                   className="rounded-xl bg-[#D94E34] px-5 py-2 text-sm font-semibold text-white hover:bg-[#C04028]"
                 >
-                  {editLoading ? "Saving..." : "Save Changes"}
+                  {editLoading ? t("Saving...") : t("Save Changes")}
                 </button>
               </div>
             </form>
@@ -1052,7 +1052,7 @@ export function MeetupDetailClient({
           <div className="w-full max-w-md rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-lg font-bold text-[#1A1D24]">
-                Send a Wave to {meetup.host.nationalityFlag} {meetup.host.name}
+                {t("Send a Wave to")} {meetup.host.nationalityFlag} {meetup.host.name}
               </h3>
               <button
                 type="button"
@@ -1068,12 +1068,12 @@ export function MeetupDetailClient({
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
                 <p className="text-sm text-[#1A1D24]">
-                  Your message was sent! You can track it in{" "}
+                  {t("Your message was sent! You can track it in")}{" "}
                   <Link
                     href="/my-meetups?tab=connections"
                     className="font-semibold text-[#D94E34] underline"
                   >
-                    My Hub
+                    {t("My Hub")}
                   </Link>
                   .
                 </p>
@@ -1088,8 +1088,8 @@ export function MeetupDetailClient({
             ) : (
               <form onSubmit={handleSendWave} className="mt-4 space-y-3">
                 <p className="text-xs text-[#5A5D66]">
-                  Introduce yourself or ask about grabbing a coffee around{" "}
-                  {meetup.host.homeCity}.
+                  {t("Introduce yourself or ask about grabbing a coffee around")}{" "}
+                  {t(meetup.host.homeCity)}.
                 </p>
                 <textarea
                   rows={3}
