@@ -153,9 +153,7 @@ export function HostMeetupForm() {
           {t("Create a Meetup in Japan")}
         </h1>
         <p className="mt-1.5 text-sm text-[#5A5D66]">
-          Whether it&apos;s a 6-person kissaten coffee morning, an English–Japanese
-          language exchange, or an izakaya evening—share the exact station exit
-          so newcomers find you easily.
+          {textFor("intro")}
         </p>
       </div>
 
