@@ -7,10 +7,10 @@ type PageCopy = { title: string; intro: string; sections: Section[] };
 
 const copy: Record<Locale, Record<string, PageCopy>> = {
   ja: {
-    about: { title: "EnJapanについて", intro: "EnJapan（縁）は、日本各地で人々が自然につながり、交流できる場を提供するコミュニティプラットフォームです。", sections: [
-      { heading: "私たちの理念", paragraphs: ["EnJapanは、異なる文化や背景を持つ人々が出会い、経験を共有し、友情を育むためのサービスです。外国人居住者、旅行者、日本の地域の方々を、少人数の交流会、言語交換、カフェでの集まり、街歩きなどを通じてつなぎます。"] },
+    about: { title: "EnJapanについて", intro: "EnJapan（縁）は、人々、プロフェッショナル、そして日本での新たな機会をつなぐコミュニティプラットフォームです。", sections: [
+      { heading: "私たちの理念", paragraphs: ["EnJapanは、在住外国人、海外からの訪問者、日本の地域の方々に加え、国際的なプロフェッショナル、起業家、投資家、ビジネスリーダーをつなぎます。交流会や専門的なネットワーキングを通じて、友情、知識共有、協業、ビジネス機会を探せる場を目指します。"] },
       { heading: "「縁」に込めた思い", paragraphs: ["「縁」は、人と人とのつながりやご縁を意味します。「一期一会」の精神を大切にし、一つひとつの出会いを大切にします。"] },
-      { heading: "大切にしていること", paragraphs: ["文化の違いを尊重した交流、地域に根ざしたイベント、参加者が判断しやすい明確な情報、プライバシーと安全への配慮を重視します。"] },
+      { heading: "大切にしていること", paragraphs: ["文化交流、専門的なネットワーキング、起業・投資に関する対話、日本市場や国際協業に関する情報交換を歓迎します。明確なイベント情報、プライバシー、安全への配慮を重視します。"] },
       { heading: "お問い合わせ", paragraphs: ["ご質問、ご提案、協業のご相談は enjapan.support@gmail.com までご連絡ください。"] }
     ]},
     terms: { title: "利用規約", intro: "本規約は、EnJapanコミュニティプラットフォームの利用条件を定めるものです。", sections: [
@@ -50,10 +50,10 @@ const copy: Record<Locale, Record<string, PageCopy>> = {
     ]}
   },
   "zh-cn": {
-    about: { title: "关于 EnJapan", intro: "EnJapan（縁）是一个社区平台，帮助人们在日本各地自然相识、交流并建立联系。", sections: [
-      { heading: "我们的理念", paragraphs: ["EnJapan 致力于让不同文化背景的人们相聚、分享经历并建立真诚友谊。我们通过小型聚会、语言交流、咖啡馆活动和城市漫步，连接在日国际居民、游客与日本当地居民。"] },
+    about: { title: "关于 EnJapan", intro: "EnJapan（縁）连接人与人、专业人士及日本的发展机遇，汇聚在日国际居民、访客、创业者、投资者与日本本地社群。", sections: [
+      { heading: "我们的理念", paragraphs: ["EnJapan 不仅帮助不同文化背景的人们建立友谊，也连接在日外籍人士、国际专业人士、企业家、投资者和日本本地人士。通过社群聚会与专业交流，成员可以分享知识、拓展人脉、探索合作伙伴关系及日本市场机遇。"] },
       { heading: "“縁”的含义", paragraphs: ["“縁”代表人与人之间的缘分、联系与关系。我们珍惜“一期一会”的精神，相信每一次相遇都值得珍视。"] },
-      { heading: "我们的原则", paragraphs: ["尊重跨文化交流，支持社区主导的活动，提供清晰的活动信息，并重视隐私与安全。"] },
+      { heading: "我们的原则", paragraphs: ["我们欢迎文化交流、专业人脉拓展、创业与投资交流，以及日本市场与跨境合作讨论；同时重视清晰的活动信息、隐私与安全。"] },
       { heading: "联系我们", paragraphs: ["如有问题、建议或合作意向，请发送邮件至 enjapan.support@gmail.com。"] }
     ]},
     terms: { title: "服务条款", intro: "本条款规定您访问和使用 EnJapan 社区平台时适用的条件。", sections: [
@@ -92,10 +92,10 @@ const copy: Record<Locale, Record<string, PageCopy>> = {
     ]}
   },
   "zh-tw": {
-    about: { title: "關於 EnJapan", intro: "EnJapan（縁）是一個社群平台，協助人們在日本各地自然相識、交流並建立連結。", sections: [
-      { heading: "我們的理念", paragraphs: ["EnJapan 致力於讓不同文化背景的人們相聚、分享經驗並建立真誠友誼。我們透過小型聚會、語言交流、咖啡館活動及城市漫步，連結在日國際居民、旅客與日本當地居民。"] },
+    about: { title: "關於 EnJapan", intro: "EnJapan（縁）連結人與人、專業人士，以及在日本的各種機會，匯聚在日國際居民、訪客、創業家、投資人與日本在地社群。", sections: [
+      { heading: "我們的理念", paragraphs: ["EnJapan 不僅協助不同文化背景的人們建立友誼，也連結在日外籍人士、國際專業人士、創業家、投資人及日本在地人士。透過社群聚會與專業交流，成員可以分享知識、拓展人脈、探索合作夥伴關係及日本市場機會。"] },
       { heading: "「縁」的意義", paragraphs: ["「縁」代表人與人之間的緣分、連結與關係。我們珍惜「一期一會」的精神，相信每一次相遇都值得珍惜。"] },
-      { heading: "我們重視的事", paragraphs: ["尊重跨文化交流、支持社群主導的活動、提供清楚的活動資訊，並重視隱私與安全。"] },
+      { heading: "我們重視的事", paragraphs: ["我們歡迎文化交流、專業人脈拓展、創業與投資交流，以及日本市場與跨境合作討論；同時重視清楚的活動資訊、隱私與安全。"] },
       { heading: "聯絡我們", paragraphs: ["如有問題、建議或合作洽詢，請寄信至 enjapan.support@gmail.com。"] }
     ]},
     terms: { title: "服務條款", intro: "本條款規範您存取及使用 EnJapan 社群平台時適用的條件。", sections: [
