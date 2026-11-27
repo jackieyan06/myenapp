@@ -8,7 +8,7 @@ import {
   savedMeetups,
 } from "@/db/schema";
 import { hashPassword } from "@/lib/auth";
-import { count } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 
 let seedPromise: Promise<void> | null = null;
 
@@ -27,7 +27,22 @@ export async function ensureSeeded() {
       const [{ value: userCount }] = await db
         .select({ value: count() })
         .from(users);
-      if (Number(userCount) > 0) return;
+      if (Number(userCount) > 0) {
+        // Upgrade the earlier fictional coworking demo without touching host-created events.
+        await db.update(meetups).set({
+          title: "Tokyo International Business & Expat Networking",
+          titleJp: "東京・国際ビジネス＆在住外国人ネットワーキング",
+          category: "Business Networking",
+          neighborhood: "Area to be confirmed",
+          station: "To be announced",
+          venueName: "Venue to be announced",
+          meetingPoint: "",
+          description: "Meet expatriate professionals, international entrepreneurs, investors and Japanese business representatives. Share experiences of working and doing business in Japan, exchange ideas, explore potential partnerships and build meaningful professional relationships. Open to professionals at different career stages and people interested in cross-border opportunities. The exact venue and meeting point will be announced by the host once confirmed.",
+          tags: ["Expat Professionals", "Business Partnerships", "International Networking"],
+          startsAt: addDays(new Date(), 5, 18, 30),
+        }).where(eq(meetups.title, "Daikanyama Remote Workers & Creators Coworking Coffee"));
+        return;
+      }
 
       const demoPassHash = hashPassword("demo1234");
       const now = new Date();
