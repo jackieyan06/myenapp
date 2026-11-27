@@ -17,6 +17,7 @@ import { getCategoryStyle, getCityJp } from "@/lib/constants";
 import { formatMeetupDate, formatMeetupTime } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
+import { localizeMeetupText as translateMeetupText } from "@/lib/meetup-localization";
 
 export function MeetupCard({
   meetup,
@@ -29,17 +30,7 @@ export function MeetupCard({
 }) {
   const { user, openAuthModal } = useAuth();
   const { t, locale } = useLocale();
-  const localizeMeetupText = (value: string) => {
-    const translations: Record<string, Partial<Record<"ja" | "zh-cn" | "zh-tw", string>>> = {
-      "Shibuya": { ja: "渋谷", "zh-cn": "涩谷", "zh-tw": "澀谷" },
-      "Shibuya Station (Hachiko Exit, 4 min walk)": { ja: "渋谷駅（ハチ公口から徒歩4分）", "zh-cn": "涩谷站（八公出口，步行4分钟）", "zh-tw": "澀谷站（八公出口，步行4分鐘）" },
-      "Shibuya Morning Coffee & 50/50 Language Table": { ja: "渋谷モーニング・日英カフェ交流", "zh-cn": "涩谷晨间咖啡与英语日语交流", "zh-tw": "澀谷晨間咖啡與英日語交流" },
-      "渋谷モーニング・日英カフェ交流": { ja: "渋谷モーニング・日英カフェ交流", "zh-cn": "涩谷晨间咖啡与英语日语交流", "zh-tw": "澀谷晨間咖啡與英日語交流" },
-      "Free · Order your own drink (~¥650)": { ja: "無料・飲み物は各自注文（約650円）", "zh-cn": "免费·饮品各自点单（约650日元）", "zh-tw": "免費・飲品各自點單（約650日圓）" },
-      "Free · Order your own drink": { ja: "無料・飲み物は各自注文", "zh-cn": "免费·饮品各自点单", "zh-tw": "免費・飲品各自點單" },
-    };
-    return translations[value]?.[locale as "ja" | "zh-cn" | "zh-tw"] ?? value;
-  };
+  const localizeMeetupText = (value: string) => translateMeetupText(value, locale);
   const [localSaved, setLocalSaved] = useState<{
     propVal: boolean;
     val: boolean;
