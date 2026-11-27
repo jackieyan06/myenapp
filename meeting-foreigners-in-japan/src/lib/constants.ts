@@ -14,6 +14,10 @@ export const MEETUP_CATEGORIES = [
   { name: "City Walk & Culture", jp: "街歩き・文化", badgeColor: "bg-[#3E6B48]/12 text-[#3E6B48] border-[#3E6B48]/25" },
   { name: "Outdoor & Hiking", jp: "アウトドア", badgeColor: "bg-[#3E6B48]/12 text-[#3E6B48] border-[#3E6B48]/25" },
   { name: "Coworking & Tech", jp: "コワーキング", badgeColor: "bg-[#1A1D24]/8 text-[#1A1D24] border-[#1A1D24]/15" },
+  { name: "Business Networking", jp: "ビジネス交流", badgeColor: "bg-[#2B4C7E]/10 text-[#2B4C7E] border-[#2B4C7E]/20" },
+  { name: "Entrepreneurship & Investment", jp: "起業・投資", badgeColor: "bg-[#7B4B94]/10 text-[#6B3A84] border-[#7B4B94]/20" },
+  { name: "Japan Market Entry", jp: "日本市場進出", badgeColor: "bg-[#3E6B48]/12 text-[#3E6B48] border-[#3E6B48]/25" },
+  { name: "Expat & Professional Networking", jp: "在日外国人・プロフェッショナル交流", badgeColor: "bg-[#D98A2B]/15 text-[#9C5C14] border-[#D98A2B]/30" },
   { name: "Board Games", jp: "ボードゲーム", badgeColor: "bg-[#7B4B94]/10 text-[#6B3A84] border-[#7B4B94]/20" },
 ] as const;
 
@@ -80,7 +84,7 @@ export const CURATED_COVERS = [
   },
   {
     url: "/images/meetup-tokyo-tech.jpg",
-    label: "Daikanyama Coworking Session",
+    label: "Tokyo Professional Networking",
   },
 ] as const;
 
