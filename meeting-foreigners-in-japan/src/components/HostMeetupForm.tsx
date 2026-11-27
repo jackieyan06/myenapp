@@ -183,7 +183,7 @@ export function HostMeetupForm() {
                 minLength={5}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Nakameguro Riverside Coffee & Bilingual Chat"
+                placeholder="e.g., Tokyo International Business & Expat Networking"
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -277,42 +277,39 @@ export function HostMeetupForm() {
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                {t("Neighborhood / Area *")}
+                {t("Neighborhood / Area (optional)")}
               </label>
               <input
                 type="text"
-                required
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="e.g., Nakameguro, Gion, Umeda"
+                placeholder="Optional — e.g. Shibuya, central Tokyo"
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                {t("Nearest Train Station + Exit *")}
+                {t("Nearest Train Station + Exit (optional)")}
               </label>
               <input
                 type="text"
-                required
                 value={station}
                 onChange={(e) => setStation(e.target.value)}
-                placeholder="e.g., Nakameguro Station (Main Exit, 3 min walk)"
+                placeholder="Add once the venue is confirmed"
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
 
             <div>
               <label className="mb-1.5 block text-xs font-bold text-[#5A5D66]">
-                {t("Café, Venue or Park Name *")}
+                {t("Venue Name (optional until confirmed)")}
               </label>
               <input
                 type="text"
-                required
                 value={venueName}
                 onChange={(e) => setVenueName(e.target.value)}
-                placeholder="e.g., Streamer Coffee Company"
+                placeholder="Leave blank until confirmed"
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>

@@ -323,7 +323,7 @@ export function MeetupDetailClient({
                   <MapPin className="h-3.5 w-3.5 text-[#D94E34]" />
                   {t(meetup.city)}{" "}
                   <span className="font-jp">{getCityJp(meetup.city)}</span> ·{" "}
-                  {meetup.neighborhood}
+                  {meetup.neighborhood && meetup.neighborhood !== "Area to be confirmed" ? meetup.neighborhood : t("Area to be confirmed")}
                 </span>
                 <span className="rounded-full bg-[#1A1D24]/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                   {t(meetup.languageFocus)}
@@ -383,10 +383,10 @@ export function MeetupDetailClient({
                       Nearest Train Station
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.station}
+                      {meetup.station && meetup.station !== "To be announced" ? meetup.station : t("To be announced")}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {meetup.neighborhood}, {meetup.city}
+                      {meetup.neighborhood && meetup.neighborhood !== "Area to be confirmed" ? meetup.neighborhood : t("Area to be confirmed")}, {t(meetup.city)}
                     </div>
                   </div>
                 </div>
@@ -400,7 +400,7 @@ export function MeetupDetailClient({
                       {t("Venue & Meeting Spot")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {meetup.venueName}
+                      {meetup.venueName && meetup.venueName !== "Venue to be announced" ? meetup.venueName : t("Venue to be announced")}
                     </div>
                     {meetup.meetingPoint && (
                       <div className="mt-0.5 text-xs text-[#5A5D66]">
@@ -746,8 +746,7 @@ export function MeetupDetailClient({
                     You&apos;re Confirmed!
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    Look for {meetup.host.name} at {meetup.venueName}. If your
-                    plans change, please cancel so someone else can join.
+                    {meetup.venueName && meetup.venueName !== "Venue to be announced" ? `Look for ${meetup.host.name} at ${meetup.venueName}. ` : "The host will share the confirmed venue and meeting details before the event. "}{t("If your plans change, please cancel so someone else can join.")}
                   </p>
                   <button
                     type="button"

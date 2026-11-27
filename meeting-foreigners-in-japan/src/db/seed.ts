@@ -8,7 +8,7 @@ import {
   savedMeetups,
 } from "@/db/schema";
 import { hashPassword } from "@/lib/auth";
-import { count } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 
 let seedPromise: Promise<void> | null = null;
 
@@ -27,7 +27,22 @@ export async function ensureSeeded() {
       const [{ value: userCount }] = await db
         .select({ value: count() })
         .from(users);
-      if (Number(userCount) > 0) return;
+      if (Number(userCount) > 0) {
+        // Upgrade the earlier fictional coworking demo without touching host-created events.
+        await db.update(meetups).set({
+          title: "Tokyo International Business & Expat Networking",
+          titleJp: "東京・国際ビジネス＆在住外国人ネットワーキング",
+          category: "Business Networking",
+          neighborhood: "Area to be confirmed",
+          station: "To be announced",
+          venueName: "Venue to be announced",
+          meetingPoint: "",
+          description: "Meet expatriate professionals, international entrepreneurs, investors and Japanese business representatives. Share experiences of working and doing business in Japan, exchange ideas, explore potential partnerships and build meaningful professional relationships. Open to professionals at different career stages and people interested in cross-border opportunities. The exact venue and meeting point will be announced by the host once confirmed.",
+          tags: ["Expat Professionals", "Business Partnerships", "International Networking"],
+          startsAt: addDays(new Date(), 5, 18, 30),
+        }).where(eq(meetups.title, "Daikanyama Remote Workers & Creators Coworking Coffee"));
+        return;
+      }
 
       const demoPassHash = hashPassword("demo1234");
       const now = new Date();
@@ -313,24 +328,23 @@ export async function ensureSeeded() {
           },
           {
             hostId: lucas.id,
-            title: "Daikanyama Remote Workers & Creators Coworking Coffee",
-            titleJp: "代官山コワーキング＆クリエイター交流",
-            category: "Coworking & Tech",
+            title: "Tokyo International Business & Expat Networking",
+            titleJp: "東京・国際ビジネス＆在住外国人ネットワーキング",
+            category: "Business Networking",
             city: "Tokyo",
-            neighborhood: "Daikanyama",
-            station: "Daikanyama Station (Central Exit, 3 min walk)",
-            venueName: "Atelier Cedar Lounge (near T-Site)",
-            meetingPoint:
-              "Large concrete-and-oak lounge table near the courtyard window. Ask the barista for Lucas's group.",
-            startsAt: addDays(now, 5, 14, 0),
+            neighborhood: "Area to be confirmed",
+            station: "To be announced",
+            venueName: "Venue to be announced",
+            meetingPoint: "",
+            startsAt: addDays(now, 5, 18, 30),
             durationMinutes: 180,
             maxAttendees: 10,
             costNote: "Free entry · ¥600–¥1,000 café order",
             languageFocus: "English & International",
             languageLevel: "All Levels Welcome",
             description:
-              "Bring your laptop, sketchbook, or current side project! We spend the first 90 minutes in focused quiet coworking (great Wi-Fi & outlets) followed by casual roundtable intros and coffee chats. Ideal for expats, remote workers, and Japanese designers/engineers looking to expand their network.",
-            tags: ["Fast Wi-Fi", "Remote Work", "Design & Tech"],
+              "Meet expatriate professionals, international entrepreneurs, investors and Japanese business representatives. Share experiences of working and doing business in Japan, exchange ideas, explore potential partnerships and build meaningful professional relationships. Open to professionals at different career stages and people interested in cross-border opportunities. The exact venue and meeting point will be announced by the host once confirmed.",
+            tags: ["Expat Professionals", "Business Partnerships", "International Networking"],
             coverImage: "/images/meetup-tokyo-tech.jpg",
             status: "upcoming",
           },

@@ -50,9 +50,9 @@ export async function POST(request: NextRequest) {
     const titleJp = String(body.titleJp ?? "").trim();
     const category = String(body.category ?? "").trim();
     const city = String(body.city ?? "").trim();
-    const neighborhood = String(body.neighborhood ?? "").trim();
-    const station = String(body.station ?? "").trim();
-    const venueName = String(body.venueName ?? "").trim();
+    const neighborhood = String(body.neighborhood ?? "").trim() || "Area to be confirmed";
+    const station = String(body.station ?? "").trim() || "To be announced";
+    const venueName = String(body.venueName ?? "").trim() || "Venue to be announced";
     const meetingPoint = String(body.meetingPoint ?? "").trim();
     const startsAtRaw = String(body.startsAt ?? "").trim();
     const durationMinutes = Number(body.durationMinutes ?? 120);
@@ -80,11 +80,11 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    if (!category || !city || !neighborhood || !station || !venueName) {
+    if (!category || !city) {
       return NextResponse.json(
         {
           error:
-            "City, category, neighborhood, nearest train station, and venue are required.",
+            "Please select a city and meetup category.",
         },
         { status: 400 }
       );
