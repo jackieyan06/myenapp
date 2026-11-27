@@ -345,6 +345,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "spots remaining": "空席",
     "Write a friendly message to the host": "主催者へのメッセージを入力してください",
     "Send a Wave to": "挨拶を送る：",
+    "minutes": "分",
+    "e.g. English / Japanese (N4)": "例：英語／日本語（N4）",
   "zh-cn": {
     "Discover": "发现", "People": "社区成员", "Japan Guide": "日本指南", "My Hub": "个人中心",
     "Host Meetup": "发起聚会", "Host a Meetup": "发起聚会", "Host a Gathering": "组织活动",
@@ -675,6 +677,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "spots remaining": "个剩余名额",
     "Write a friendly message to the host": "给主办人写一条友好消息",
     "Send a Wave to": "向主办人发送问候：",
+    "minutes": "分钟",
+    "e.g. English / Japanese (N4)": "例如：英语／日语（N4）",
   "zh-tw": {
     "Discover": "探索", "People": "社群成員", "Japan Guide": "日本指南", "My Hub": "個人中心",
     "Host Meetup": "發起聚會", "Host a Meetup": "發起聚會", "Host a Gathering": "舉辦活動",
@@ -1004,6 +1008,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "spots remaining": "個剩餘名額",
     "Write a friendly message to the host": "寫一則友善訊息給主辦人",
     "Send a Wave to": "向主辦人傳送問候：",
+    "minutes": "分鐘",
+    "e.g. English / Japanese (N4)": "例如：英語／日語（N4）",
 
 };
 
