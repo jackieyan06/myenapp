@@ -53,6 +53,15 @@ export function HostMeetupForm() {
     cancel: { en: "Cancel", ja: "キャンセル", "zh-cn": "取消", "zh-tw": "取消" }
   } as const;
   const textFor = (key: keyof typeof copy) => copy[key][locale] || copy[key].en;
+  const coverLabels: Record<string, Record<string, string>> = {
+    "Tokyo Café Language Table": { en: "Tokyo Café Language Table", ja: "東京カフェでの言語交流会", "zh-cn": "东京咖啡馆语言交流会", "zh-tw": "東京咖啡館語言交流會" },
+    "Kyoto Lantern Evening Walk": { en: "Kyoto Lantern Evening Walk", ja: "京都の灯籠が彩る夕暮れ散歩", "zh-cn": "京都灯笼夜间漫步", "zh-tw": "京都燈籠夜間漫步" },
+    "Osaka Izakaya Counter": { en: "Osaka Izakaya Counter", ja: "大阪の居酒屋カウンター", "zh-cn": "大阪居酒屋吧台", "zh-tw": "大阪居酒屋吧台" },
+    "Fukuoka Seaside Picnic": { en: "Fukuoka Seaside Picnic", ja: "福岡の海辺ピクニック", "zh-cn": "福冈海滨野餐", "zh-tw": "福岡海濱野餐" },
+    "Sapporo Cozy Lounge": { en: "Sapporo Cozy Lounge", ja: "札幌のくつろぎラウンジ", "zh-cn": "札幌温馨休闲空间", "zh-tw": "札幌溫馨休憩空間" },
+    "Daikanyama Coworking Session": { en: "Daikanyama Coworking Session", ja: "代官山のコワーキング交流会", "zh-cn": "代官山联合办公交流会", "zh-tw": "代官山共享辦公交流會" },
+  };
+  const coverLabel = (label: string) => coverLabels[label]?.[locale] ?? coverLabels[label]?.en ?? label;
 
   const [title, setTitle] = useState("");
   const [titleJp, setTitleJp] = useState("");
@@ -484,7 +493,7 @@ export function HostMeetupForm() {
                     />
                   </div>
                   <div className="bg-white px-2.5 py-2 text-xs font-semibold text-[#1A1D24]">
-                    {cov.label}
+                    {coverLabel(cov.label)}
                   </div>
                   {selected && (
                     <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#D94E34] text-white shadow">
