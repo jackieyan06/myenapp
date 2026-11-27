@@ -124,7 +124,7 @@ export function MeetupCard({
             </span>
             <span className="inline-flex items-center gap-1">
               <TrainFront className="h-3.5 w-3.5 text-[#2B4C7E]" />
-              {meetup.station}
+              {meetup.station && meetup.station !== "To be announced" ? meetup.station : `${meetup.city} · Venue to be announced`}
             </span>
           </div>
         </div>
