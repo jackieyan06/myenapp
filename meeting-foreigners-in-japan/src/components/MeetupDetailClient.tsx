@@ -370,7 +370,7 @@ export function MeetupDetailClient({
                       {formatMeetupFullDate(meetup.startsAt, locale)}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {formatMeetupTime(meetup.startsAt, locale)} ({meetup.durationMinutes} min)
+                      {formatMeetupTime(meetup.startsAt, locale)} ({meetup.durationMinutes} {t("minutes")})
                     </div>
                   </div>
                 </div>
@@ -798,7 +798,7 @@ export function MeetupDetailClient({
                       type="text"
                       value={speakingLang}
                       onChange={(e) => setSpeakingLang(e.target.value)}
-                      placeholder="e.g. English / Japanese (N4)"
+                      placeholder={t("e.g. English / Japanese (N4)") }
                       className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2 text-xs text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                     />
                   </div>
