@@ -233,7 +233,7 @@ export function CommunityDirectoryClient({
                         {member.nationalityFlag} {member.name}
                       </h2>
                       <div className="text-xs font-medium text-[#5A5D66]">
-                        {member.roleLabel} · {member.nationality}
+                        {t(member.roleLabel)} · {t(member.nationality)}
                       </div>
                     </div>
                   </div>
@@ -251,7 +251,7 @@ export function CommunityDirectoryClient({
                 <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-[#2B4C7E]">
                   <MapPin className="h-3.5 w-3.5" />
                   <span>
-                    {member.homeCity}
+                    {t(member.homeCity)}
                     {member.neighborhood ? ` · ${member.neighborhood}` : ""}
                   </span>
                 </div>
@@ -291,7 +291,7 @@ export function CommunityDirectoryClient({
                 <div className="mt-auto pt-4">
                   <div className="flex items-center justify-between border-t border-[#E6E0D6] pt-3.5">
                     <span className="text-[11px] text-[#5A5D66]">
-                      {member.hostedCount} hosted · {member.goingCount} joined
+                      {member.hostedCount} {t("hosted")} · {member.goingCount} {t("joined")}
                     </span>
 
                     {isSelf ? (
@@ -330,7 +330,7 @@ export function CommunityDirectoryClient({
           <div className="w-full max-w-md rounded-3xl border border-[#E6E0D6] bg-[#FAF8F4] p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h3 className="font-display text-lg font-bold text-[#1A1D24]">
-                Invite {selectedMember.nationalityFlag} {selectedMember.name}
+                {t("Invite")} {selectedMember.nationalityFlag} {selectedMember.name}
               </h3>
               <button
                 type="button"
@@ -341,7 +341,7 @@ export function CommunityDirectoryClient({
               </button>
             </div>
             <p className="mt-1 text-xs text-[#5A5D66]">
-              {selectedMember.roleLabel} in {selectedMember.homeCity}
+              {t(selectedMember.roleLabel)} · {t(selectedMember.homeCity)}
             </p>
 
             {inviteError && (
@@ -360,11 +360,11 @@ export function CommunityDirectoryClient({
                   onChange={(e) => setInviteContext(e.target.value)}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                 >
-                  <option>Coffee &amp; Language Chat</option>
-                  <option>Lunch / Ramen Meet</option>
-                  <option>Neighborhood Walk</option>
-                  <option>Coworking Session</option>
-                  <option>Travel Tips / Local Advice</option>
+                  <option value="Coffee & Language Chat">{t("Coffee & Language Chat")}</option>
+                  <option value="Lunch / Ramen Meet">{t("Lunch / Ramen Meet")}</option>
+                  <option value="Neighborhood Walk">{t("Neighborhood Walk")}</option>
+                  <option value="Coworking Session">{t("Coworking Session")}</option>
+                  <option value="Travel Tips / Local Advice">{t("Travel Tips / Local Advice")}</option>
                 </select>
               </div>
               <div>
