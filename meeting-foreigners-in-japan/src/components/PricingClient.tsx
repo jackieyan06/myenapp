@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, Sparkles, Users, CalendarDays, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { Check, Sparkles, Users, ShieldCheck } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
 
