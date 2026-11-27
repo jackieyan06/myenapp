@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export type Locale = "en" | "ja" | "zh-cn" | "zh-tw";
 
@@ -1042,6 +1042,7 @@ export function LocaleProvider({
 }) {
   const [selectedLocale, setLocaleState] = useState<Locale>(initialLocale);
   const pathname = usePathname();
+  const router = useRouter();
   const routeLocale = pathname.split("/")[1];
   const locale: Locale = routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw" ? routeLocale : selectedLocale;
 
@@ -1049,16 +1050,27 @@ export function LocaleProvider({
   // This also persists the route locale so returning to the home page keeps that language.
   useEffect(() => {
     if (routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw") {
+      setLocaleState(routeLocale);
       document.cookie = `en-locale=${routeLocale}; path=/; max-age=31536000; samesite=lax`;
       document.documentElement.lang = routeLocale;
+    } else {
+      document.documentElement.lang = selectedLocale;
     }
-  }, [pathname]);
+  }, [pathname, routeLocale, selectedLocale]);
 
   const setLocale = (next: Locale) => {
     setLocaleState(next);
     document.cookie = `en-locale=${next}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = next;
-    window.location.reload();
+
+    const localizedRoute = pathname.match(/^\/(ja|zh-cn|zh-tw)(?=\/|$)/);
+    if (localizedRoute) {
+      const unlocalizedPath = pathname.replace(/^\/(?:ja|zh-cn|zh-tw)(?=\/|$)/, "") || "/";
+      const nextPath = next === "en"
+        ? unlocalizedPath
+        : `/${next}${unlocalizedPath === "/" ? "" : unlocalizedPath}`;
+      router.replace(nextPath);
+    }
   };
 
   const value = useMemo(
