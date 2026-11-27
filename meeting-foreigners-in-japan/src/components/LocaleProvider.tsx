@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 export type Locale = "en" | "ja" | "zh-cn" | "zh-tw";
@@ -1043,12 +1043,19 @@ export function LocaleProvider({
   const [selectedLocale, setLocaleState] = useState<Locale>(initialLocale);
   const pathname = usePathname();
   const router = useRouter();
+  const pendingLocalePath = useRef<string | null>(null);
   const routeLocale = pathname.split("/")[1];
   const locale: Locale = routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw" ? routeLocale : selectedLocale;
 
   // Keep the shared navigation/footer language in sync with localized info-page URLs.
   // This also persists the route locale so returning to the home page keeps that language.
   useEffect(() => {
+    if (pendingLocalePath.current && pathname !== pendingLocalePath.current) {
+      document.documentElement.lang = selectedLocale;
+      return;
+    }
+    if (pendingLocalePath.current === pathname) pendingLocalePath.current = null;
+
     if (routeLocale === "ja" || routeLocale === "zh-cn" || routeLocale === "zh-tw") {
       setLocaleState(routeLocale);
       document.cookie = `en-locale=${routeLocale}; path=/; max-age=31536000; samesite=lax`;
@@ -1069,6 +1076,7 @@ export function LocaleProvider({
       const nextPath = next === "en"
         ? unlocalizedPath
         : `/${next}${unlocalizedPath === "/" ? "" : unlocalizedPath}`;
+      pendingLocalePath.current = nextPath;
       router.replace(nextPath);
     }
   };
