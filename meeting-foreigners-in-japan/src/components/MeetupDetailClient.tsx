@@ -35,6 +35,7 @@ import {
 } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
 import { useLocale } from "@/components/LocaleProvider";
+import { localizeMeetupText } from "@/lib/meetup-localization";
 
 export function MeetupDetailClient({
   initialMeetup,
@@ -383,10 +384,10 @@ export function MeetupDetailClient({
                       {t("Nearest Train Station")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {t(meetup.station)}
+                      {localizeMeetupText(meetup.station, locale)}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {t(meetup.neighborhood)}, {t(meetup.city)}
+                      {localizeMeetupText(meetup.neighborhood, locale)}, {localizeMeetupText(meetup.city, locale)}
                     </div>
                   </div>
                 </div>
@@ -400,11 +401,11 @@ export function MeetupDetailClient({
                       {t("Venue & Meeting Spot")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {t(meetup.venueName)}
+                      {localizeMeetupText(meetup.venueName, locale)}
                     </div>
                     {meetup.meetingPoint && (
                       <div className="mt-0.5 text-xs text-[#5A5D66]">
-                        {t(meetup.meetingPoint)}
+                        {localizeMeetupText(meetup.meetingPoint, locale)}
                       </div>
                     )}
                   </div>
@@ -419,7 +420,7 @@ export function MeetupDetailClient({
                       {t("Cost / Warikan Note")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {t(meetup.costNote)}
+                      {localizeMeetupText(meetup.costNote, locale)}
                     </div>
                   </div>
                 </div>
