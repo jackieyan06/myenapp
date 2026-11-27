@@ -746,8 +746,7 @@ export function MeetupDetailClient({
                     {t("You're Confirmed!")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    Look for {meetup.host.name} at {meetup.venueName}. If your
-                    plans change, please cancel so someone else can join.
+                    {t("Look for the host at the venue. If your plans change, please cancel so someone else can join.")} {meetup.host.name} · {meetup.venueName}
                   </p>
                   <button
                     type="button"
@@ -765,8 +764,7 @@ export function MeetupDetailClient({
                     {t("You're on the Waitlist")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    You&apos;ll automatically be promoted to Going if a spot
-                    opens up.
+                    {t("You'll automatically be promoted to Going if a spot opens up.")}
                   </p>
                   <button
                     type="button"
