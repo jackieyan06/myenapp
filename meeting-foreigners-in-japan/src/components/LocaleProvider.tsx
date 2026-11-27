@@ -1064,11 +1064,12 @@ export function LocaleProvider({
     document.documentElement.lang = next;
 
     const localizedRoute = pathname.match(/^\/(ja|zh-cn|zh-tw)(?=\/|$)/);
-    if (localizedRoute) {
-      const unlocalizedPath = pathname.replace(/^\/(?:ja|zh-cn|zh-tw)(?=\/|$)/, "") || "/";
-      const nextPath = next === "en"
-        ? unlocalizedPath
-        : `/${next}${unlocalizedPath === "/" ? "" : unlocalizedPath}`;
+    const unlocalizedPath = localizedRoute
+      ? pathname.replace(/^\/(?:ja|zh-cn|zh-tw)(?=\/|$)/, "") || "/"
+      : pathname;
+    const infoSlugs = ["/about", "/terms", "/privacy", "/commercial-disclosure", "/advertising"];
+    if (infoSlugs.includes(unlocalizedPath)) {
+      const nextPath = next === "en" ? unlocalizedPath : `/${next}${unlocalizedPath}`;
       pendingLocalePath.current = nextPath;
       router.replace(nextPath);
     }
