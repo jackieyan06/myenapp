@@ -43,7 +43,7 @@ export function MeetupDetailClient({
 }) {
   const router = useRouter();
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [meetup, setMeetup] = useState<MeetupDetail>(initialMeetup);
   const [saved, setSaved] = useState(initialMeetup.isSaved);
   const [copied, setCopied] = useState(false);
@@ -366,10 +366,10 @@ export function MeetupDetailClient({
                       {t("Date & Time")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
-                      {formatMeetupFullDate(meetup.startsAt)}
+                      {formatMeetupFullDate(meetup.startsAt, locale)}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {formatMeetupTime(meetup.startsAt)} ({meetup.durationMinutes} min)
+                      {formatMeetupTime(meetup.startsAt, locale)} ({meetup.durationMinutes} min)
                     </div>
                   </div>
                 </div>
