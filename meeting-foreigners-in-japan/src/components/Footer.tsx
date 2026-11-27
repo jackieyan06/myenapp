@@ -79,6 +79,7 @@ export function Footer() {
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-[#5A5D66]">
               <li><Link href="/about" className="hover:text-[#D94E34] transition">{t("About us")}</Link></li>
+              <li><Link href="/pricing" className="hover:text-[#D94E34] transition">{t("Pricing")}</Link></li>
               <li><Link href="/terms" className="hover:text-[#D94E34] transition">{t("Terms of Service")}</Link></li>
               <li><Link href="/privacy" className="hover:text-[#D94E34] transition">{t("Privacy Policy")}</Link></li>
               <li><Link href="/commercial-disclosure" className="hover:text-[#D94E34] transition">{t("Commercial Disclosure")}</Link></li>

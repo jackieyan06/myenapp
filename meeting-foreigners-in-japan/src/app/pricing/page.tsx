@@ -1,0 +1,107 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { useLocale } from "@/components/LocaleProvider";
+
+const copy = {
+  en: {
+    eyebrow: "Simple, transparent pricing",
+    title: "The EnJapan community is free.",
+    intro: "Join EnJapan, discover people and gatherings, build friendships and exchange ideas without a membership fee.",
+    freeTitle: "Free for everyone",
+    freeIntro: "Everyday community features remain free:",
+    freeItems: ["Create an account and build your profile", "Discover and join social meetups", "Language exchange and cultural activities", "Meet locals, expatriates and international professionals", "Community participation and connections"],
+    paidTitle: "Business Networking",
+    paidIntro: "A participation fee may apply to designated Business Networking events and business-focused sessions.",
+    paidItems: ["The event fee will be clearly shown before you RSVP or pay.", "There is no general monthly or annual membership subscription.", "You only pay when you choose to join a paid Business Networking event."],
+    note: "Meetup hosts may separately note venue, food, drink or other shared expenses. Those costs are not an EnJapan membership fee and should be explained in the event details.",
+    cta: "Explore meetups",
+    host: "Host a gathering",
+  },
+  ja: {
+    eyebrow: "シンプルで分かりやすい料金体系",
+    title: "EnJapanのコミュニティは無料です。",
+    intro: "会員費なしでEnJapanに登録し、交流会を探し、友人をつくり、さまざまなアイデアを交換できます。",
+    freeTitle: "すべての方が無料で利用可能",
+    freeIntro: "日常的なコミュニティ機能は無料です。",
+    freeItems: ["アカウント作成とプロフィール登録", "一般交流会の検索・参加", "言語交換や文化交流イベント", "日本の地元の方、在住外国人、国際的なプロフェッショナルとの交流", "コミュニティへの参加とつながりづくり"],
+    paidTitle: "ビジネスネットワーキング",
+    paidIntro: "ビジネスネットワーキング専用イベントやビジネス交流セッションでは、参加費がかかる場合があります。",
+    paidItems: ["参加費は、参加登録または支払いの前に明確に表示します。", "一般向けの月額・年額会員サブスクリプションはありません。", "有料のビジネスネットワーキングイベントに参加する場合のみお支払いください。"],
+    note: "会場費、飲食代などの実費は、主催者が別途設定する場合があります。これらはEnJapanの会員費ではなく、イベント詳細に明記されます。",
+    cta: "交流会を探す",
+    host: "交流会を主催する",
+  },
+  "zh-cn": {
+    eyebrow: "简单透明的收费方式",
+    title: "EnJapan 社区对所有人免费。",
+    intro: "无需支付会员费即可加入 EnJapan、认识新朋友、参加聚会、建立友谊并交流想法。",
+    freeTitle: "所有人均可免费使用",
+    freeIntro: "日常社区功能全部免费：",
+    freeItems: ["创建账户并完善个人资料", "浏览并参加一般社交聚会", "语言交流与文化活动", "结识日本当地居民、外籍人士及国际专业人士", "参与社区活动并建立联系"],
+    paidTitle: "商务交流活动",
+    paidIntro: "指定的商务交流活动及商务主题交流环节可能收取活动参加费。",
+    paidItems: ["参加费用会在报名或付款前清楚显示。", "没有面向所有用户的月度或年度会员订阅费。", "只有选择参加收费商务交流活动时才需要付款。"],
+    note: "活动主办方可能另行收取场地、餐饮或其他共同费用。这些费用并非 EnJapan 会员费，并应在活动详情中说明。",
+    cta: "浏览聚会",
+    host: "发起聚会",
+  },
+  "zh-tw": {
+    eyebrow: "簡單透明的收費方式",
+    title: "EnJapan 社群對所有人免費。",
+    intro: "無須支付會員費即可加入 EnJapan、認識新朋友、參加聚會、建立友誼並交流想法。",
+    freeTitle: "所有人皆可免費使用",
+    freeIntro: "日常社群功能全部免費：",
+    freeItems: ["建立帳戶並完善個人資料", "瀏覽並參加一般社交聚會", "語言交流與文化活動", "認識日本在地居民、外籍人士及國際專業人士", "參與社群活動並建立連結"],
+    paidTitle: "商務交流活動",
+    paidIntro: "指定的商務交流活動及商務主題交流時段可能收取活動參加費。",
+    paidItems: ["參加費用會在報名或付款前清楚顯示。", "沒有面向所有使用者的月費或年費會員訂閱。", "只有選擇參加收費商務交流活動時才需要付款。"],
+    note: "活動主辦人可能另行收取場地、餐飲或其他共同費用。這些費用並非 EnJapan 會員費，並應在活動詳情中說明。",
+    cta: "瀏覽聚會",
+    host: "發起聚會",
+  },
+};
+
+export default function PricingPage() {
+  const { locale } = useLocale();
+  const text = copy[locale] ?? copy.en;
+
+  return (
+    <main className="min-h-screen bg-[#FAF8F4] px-4 py-14 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl">
+        <header className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D94E34]">{text.eyebrow}</p>
+          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-[#1A1D24] sm:text-5xl">{text.title}</h1>
+          <p className="mt-5 text-base leading-8 text-[#5A5D66]">{text.intro}</p>
+        </header>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <section className="rounded-3xl border border-[#D8E4D8] bg-white p-7 shadow-sm sm:p-9">
+            <span className="inline-flex rounded-full bg-[#EAF3EA] px-3 py-1 text-xs font-bold text-[#32613B]">¥0</span>
+            <h2 className="mt-5 text-2xl font-bold text-[#1A1D24]">{text.freeTitle}</h2>
+            <p className="mt-3 text-sm leading-6 text-[#5A5D66]">{text.freeIntro}</p>
+            <ul className="mt-6 space-y-3">
+              {text.freeItems.map((item) => <li key={item} className="flex gap-3 text-sm leading-6 text-[#343943]"><span className="font-bold text-[#3E6B48]">✓</span><span>{item}</span></li>)}
+            </ul>
+          </section>
+
+          <section className="rounded-3xl border border-[#E7D7C9] bg-white p-7 shadow-sm sm:p-9">
+            <span className="inline-flex rounded-full bg-[#F8EDE5] px-3 py-1 text-xs font-bold text-[#9A4B2D]">{locale === "ja" ? "イベントごとに表示" : locale.startsWith("zh") ? "按活动显示" : "Priced per event"}</span>
+            <h2 className="mt-5 text-2xl font-bold text-[#1A1D24]">{text.paidTitle}</h2>
+            <p className="mt-3 text-sm leading-6 text-[#5A5D66]">{text.paidIntro}</p>
+            <ul className="mt-6 space-y-3">
+              {text.paidItems.map((item) => <li key={item} className="flex gap-3 text-sm leading-6 text-[#343943]"><span className="font-bold text-[#D94E34]">•</span><span>{item}</span></li>)}
+            </ul>
+          </section>
+        </div>
+
+        <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[#77736C]">{text.note}</p>
+        <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <Link href="/" className="rounded-2xl bg-[#D94E34] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#C04028]">{text.cta}</Link>
+          <Link href="/host" className="rounded-2xl border border-[#D8D1C7] bg-white px-6 py-3 text-sm font-bold text-[#343943] transition hover:border-[#D94E34]">{text.host}</Link>
+        </div>
+      </div>
+    </main>
+  );
+}
