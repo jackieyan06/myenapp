@@ -15,6 +15,8 @@ export const LOCALES: { code: Locale; label: string; nativeLabel: string }[] = [
 const messages: Record<Locale, Record<string, string>> = {
   en: {},
   ja: {
+    "Connecting people, professionals & opportunities in Japan.": "人と人、プロフェッショナル、そして日本での新たな可能性をつなぐ。",
+    "Meet expatriates, international professionals, entrepreneurs, investors and Japanese locals. Build friendships, exchange knowledge, explore partnerships and discover opportunities in Japan through welcoming community gatherings.": "在住外国人、国際的なプロフェッショナル、起業家、投資家、日本の人々が集い、友情を育み、知識を共有し、パートナーシップや日本での新たな機会を探せる交流の場です。",
     "Discover": "見つける", "People": "メンバー", "Japan Guide": "日本ガイド", "My Hub": "マイページ",
     "Host Meetup": "交流会を開催", "Host a Meetup": "交流会を開催", "Host a Gathering": "集まりを主催",
     "Sign In": "ログイン", "Sign Out": "ログアウト", "Sign In / Try Demo Persona": "ログイン／デモを試す",
@@ -304,6 +306,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Language": "言語", "English": "英語", "Japanese": "日本語", "Simplified Chinese": "簡体字中国語", "Traditional Chinese": "繁体字中国語",
   },
   "zh-cn": {
+    "Connecting people, professionals & opportunities in Japan.": "连接人与人、专业人士与日本的发展机遇。",
+    "Meet expatriates, international professionals, entrepreneurs, investors and Japanese locals. Build friendships, exchange knowledge, explore partnerships and discover opportunities in Japan through welcoming community gatherings.": "在友好的社群活动中结识在日外籍人士、国际专业人士、创业者、投资者和日本本地人士，建立友谊、交流经验、探索合作伙伴关系及日本的发展机遇。",
     "Discover": "发现", "People": "社区成员", "Japan Guide": "日本指南", "My Hub": "个人中心",
     "Host Meetup": "发起聚会", "Host a Meetup": "发起聚会", "Host a Gathering": "组织活动",
     "Sign In": "登录", "Sign Out": "退出登录", "Sign In / Try Demo Persona": "登录／试用演示账号",
@@ -593,6 +597,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Language": "语言", "English": "英语", "Japanese": "日语", "Simplified Chinese": "简体中文", "Traditional Chinese": "繁体中文",
   },
   "zh-tw": {
+    "Connecting people, professionals & opportunities in Japan.": "連結人與人、專業人士，以及在日本的各種機會。",
+    "Meet expatriates, international professionals, entrepreneurs, investors and Japanese locals. Build friendships, exchange knowledge, explore partnerships and discover opportunities in Japan through welcoming community gatherings.": "透過友善的社群活動，認識在日外籍人士、國際專業人士、創業家、投資人及日本在地人士，建立友誼、交流經驗、探索合作夥伴關係與日本的發展機會。",
     "Discover": "探索", "People": "社群成員", "Japan Guide": "日本指南", "My Hub": "個人中心",
     "Host Meetup": "發起聚會", "Host a Meetup": "發起聚會", "Host a Gathering": "舉辦活動",
     "Sign In": "登入", "Sign Out": "登出", "Sign In / Try Demo Persona": "登入／試用示範帳號",
