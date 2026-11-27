@@ -386,7 +386,7 @@ export function MeetupDetailClient({
                       {meetup.station && meetup.station !== "To be announced" ? meetup.station : t("To be announced")}
                     </div>
                     <div className="text-xs text-[#5A5D66]">
-                      {meetup.neighborhood}, {meetup.city}
+                      {meetup.neighborhood && meetup.neighborhood !== "Area to be confirmed" ? meetup.neighborhood : t("Area to be confirmed")}, {t(meetup.city)}
                     </div>
                   </div>
                 </div>
