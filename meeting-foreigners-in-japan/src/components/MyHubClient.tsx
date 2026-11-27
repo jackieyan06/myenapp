@@ -102,7 +102,7 @@ export function MyHubClient({
             <CalendarHeart className="h-7 w-7" />
           </div>
           <h1 className="mt-4 font-display text-2xl font-extrabold text-[#1A1D24]">
-            Your Japan Meetup Hub
+            {t("Your Japan Meetup Hub")}
           </h1>
           <p className="mt-2 text-sm text-[#5A5D66]">
             {t("Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.")}
@@ -112,7 +112,7 @@ export function MyHubClient({
             onClick={() => openAuthModal("Sign in to open My Hub")}
             className="mt-6 rounded-2xl bg-[#D94E34] px-6 py-3 text-sm font-bold text-white hover:bg-[#C04028]"
           >
-            Sign In / Choose Demo Account
+            {t("Sign In / Choose Demo Account")}
           </button>
         </div>
       </div>
@@ -281,7 +281,7 @@ export function MyHubClient({
             {hubData.attending.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  You haven&apos;t joined any upcoming meetups yet
+                  {t("You haven't joined any upcoming meetups yet")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
                   Explore coffee mornings, language tables, and city walks across Japan.
@@ -308,11 +308,11 @@ export function MyHubClient({
             {hubData.hosting.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-[#E6E0D6] bg-white p-12 text-center">
                 <p className="font-display text-lg font-bold text-[#1A1D24]">
-                  You aren&apos;t hosting any meetups yet
+                  {t("You aren't hosting any meetups yet")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
                   Hosting a 4–8 person café meetup is one of the easiest ways to
-                  meet foreigners and locals in your neighborhood!
+                  {t("meet foreigners and locals in your neighborhood!")}
                 </p>
                 <Link
                   href="/host"
