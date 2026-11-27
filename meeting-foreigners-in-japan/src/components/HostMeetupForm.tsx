@@ -36,7 +36,23 @@ function getDefaultDateTimeLocal(): string {
 export function HostMeetupForm() {
   const router = useRouter();
   const { user, openAuthModal } = useAuth();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const copy = {
+    intro: { en: "Whether it’s a 6-person kissaten coffee morning, an English–Japanese language exchange, or an izakaya evening—share the exact station exit so newcomers find you easily.", ja: "6人で楽しむ喫茶店の朝のコーヒー会、日英言語交換、居酒屋での夕べなど、初めての方にも分かるように駅の出口を正確に記載してください。", "zh-cn": "无论是6人咖啡馆早晨聚会、英日语言交流，还是居酒屋之夜，请注明具体的车站出口，方便新朋友轻松找到集合地点。", "zh-tw": "無論是6人咖啡館早晨聚會、英日語言交流，還是居酒屋之夜，請註明確切的車站出口，方便新朋友輕鬆找到集合地點。" },
+    almost: { en: "Sign in (or choose a 1-click Demo Persona) so guests know who is hosting.", ja: "ログイン（またはワンクリックのデモアカウントを選択）して、参加者に主催者が分かるようにしましょう。", "zh-cn": "请登录（或选择一键体验身份），让参加者知道活动由谁发起。", "zh-tw": "請登入（或選擇一鍵體驗身分），讓參加者知道活動由誰發起。" },
+    signIn: { en: "Sign In / Try Demo", ja: "ログイン／デモを試す", "zh-cn": "登录／体验示范账号", "zh-tw": "登入／體驗示範帳號" },
+    titlePlaceholder: { en: "e.g., Nakameguro Riverside Coffee & Bilingual Chat", ja: "例：中目黒の川沿いカフェで日英交流", "zh-cn": "例如：中目黑河畔咖啡与双语交流", "zh-tw": "例如：中目黑河畔咖啡與雙語交流" },
+    tagsPlaceholder: { en: "Beginner Friendly, Matcha, Walk", ja: "例：初心者歓迎、抹茶、散歩", "zh-cn": "例如：欢迎初学者、抹茶、散步", "zh-tw": "例如：歡迎初學者、抹茶、散步" },
+    descriptionPlaceholder: { en: "Share what the meetup feels like, whether beginners are welcome, and how you organize conversation...", ja: "交流会の雰囲気、初心者の参加可否、会話の進め方などを紹介してください…", "zh-cn": "请介绍活动氛围、是否欢迎初学者，以及交流活动将如何进行……", "zh-tw": "請介紹活動氛圍、是否歡迎初學者，以及交流活動將如何進行……" },
+    neighborhoodPlaceholder: { en: "e.g., Nakameguro, Gion, Umeda", ja: "例：中目黒、祇園、梅田", "zh-cn": "例如：中目黑、祇园、梅田", "zh-tw": "例如：中目黑、祇園、梅田" },
+    stationPlaceholder: { en: "e.g., Nakameguro Station (Main Exit, 3 min walk)", ja: "例：中目黒駅（正面改札口、徒歩3分）", "zh-cn": "例如：中目黑站（主要出口，步行3分钟）", "zh-tw": "例如：中目黑站（主要出口，步行3分鐘）" },
+    venuePlaceholder: { en: "e.g., Streamer Coffee Company", ja: "例：Streamer Coffee Company", "zh-cn": "例如：Streamer Coffee Company 咖啡馆", "zh-tw": "例如：Streamer Coffee Company 咖啡館" },
+    meetingPointPlaceholder: { en: "e.g., I’ll sit at the long wooden table near the window with a small blue notebook", ja: "例：窓際の長い木のテーブルで青いノートを持っています", "zh-cn": "例如：我会坐在靠窗的长木桌旁，桌上放着一本蓝色小笔记本", "zh-tw": "例如：我會坐在靠窗的長木桌旁，桌上放著一本藍色小筆記本" },
+    costPlaceholder: { en: "Free · Order your own drink", ja: "無料・飲み物は各自注文", "zh-cn": "免费·饮品请各自点单", "zh-tw": "免費・飲品請各自點單" },
+    publish: { en: "Publish Meetup", ja: "交流会を公開", "zh-cn": "发布聚会", "zh-tw": "發布聚會" },
+    cancel: { en: "Cancel", ja: "キャンセル", "zh-cn": "取消", "zh-tw": "取消" }
+  } as const;
+  const textFor = (key: keyof typeof copy) => copy[key][locale] || copy[key].en;
 
   const [title, setTitle] = useState("");
   const [titleJp, setTitleJp] = useState("");
@@ -154,7 +170,7 @@ export function HostMeetupForm() {
             onClick={() => openAuthModal("Sign in to host a meetup")}
             className="shrink-0 rounded-xl bg-[#D94E34] px-4 py-2 text-xs font-bold text-white hover:bg-[#C04028]"
           >
-            Sign In / Try Demo
+            {textFor("signIn")}
           </button>
         </div>
       )}
@@ -183,7 +199,7 @@ export function HostMeetupForm() {
                 minLength={5}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Nakameguro Riverside Coffee & Bilingual Chat"
+                placeholder={textFor("titlePlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -226,7 +242,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
-                placeholder="Beginner Friendly, Matcha, Walk"
+                placeholder={textFor("tagsPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -242,7 +258,7 @@ export function HostMeetupForm() {
               minLength={20}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Share what the meetup feels like, whether beginners are welcome, and how you organize conversation..."
+              placeholder={textFor("descriptionPlaceholder")}
               className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-3 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
             />
           </div>
@@ -269,7 +285,7 @@ export function HostMeetupForm() {
               >
                 {JAPAN_CITIES.map((c) => (
                   <option key={c.name} value={c.name}>
-                    {c.name} ({c.jp})
+                    {t(c.name)}{locale === "ja" ? ` (${c.jp})` : ""}
                   </option>
                 ))}
               </select>
@@ -284,7 +300,7 @@ export function HostMeetupForm() {
                 required
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="e.g., Nakameguro, Gion, Umeda"
+                placeholder={textFor("neighborhoodPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -298,7 +314,7 @@ export function HostMeetupForm() {
                 required
                 value={station}
                 onChange={(e) => setStation(e.target.value)}
-                placeholder="e.g., Nakameguro Station (Main Exit, 3 min walk)"
+                placeholder={textFor("stationPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -312,7 +328,7 @@ export function HostMeetupForm() {
                 required
                 value={venueName}
                 onChange={(e) => setVenueName(e.target.value)}
-                placeholder="e.g., Streamer Coffee Company"
+                placeholder={textFor("venuePlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -325,7 +341,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={meetingPoint}
                 onChange={(e) => setMeetingPoint(e.target.value)}
-                placeholder="e.g., I'll sit at the long wooden table near the window with a small blue notebook"
+                placeholder={textFor("meetingPointPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -436,7 +452,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={costNote}
                 onChange={(e) => setCostNote(e.target.value)}
-                placeholder="Free · Order your own drink"
+                placeholder={textFor("costPlaceholder")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -488,7 +504,7 @@ export function HostMeetupForm() {
             href="/"
             className="rounded-2xl border border-[#E6E0D6] bg-white px-5 py-3 text-sm font-semibold text-[#5A5D66] hover:text-[#1A1D24]"
           >
-            {t("Cancel")}
+            {textFor("cancel")}
           </Link>
           <button
             type="submit"
@@ -496,7 +512,7 @@ export function HostMeetupForm() {
             className="inline-flex items-center gap-2 rounded-2xl bg-[#D94E34] px-7 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#C04028] disabled:opacity-60"
           >
             {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
-            {t("Publish Meetup")}
+            {textFor("publish")}
           </button>
         </div>
       </form>
