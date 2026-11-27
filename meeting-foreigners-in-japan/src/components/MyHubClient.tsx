@@ -396,7 +396,7 @@ export function MyHubClient({
                             {conn.direction === "incoming"
                               ? t("Invited you")
                               : t("You invited")}{" "}
-                            · {conn.meetupContext}
+                            · {t(conn.meetupContext)}
                           </div>
                         </div>
                       </div>
@@ -464,7 +464,7 @@ export function MyHubClient({
             {profileSavedMsg && (
               <div className="flex items-center gap-2 rounded-xl bg-[#3E6B48]/12 px-4 py-2.5 text-sm font-semibold text-[#3E6B48]">
                 <CheckCircle2 className="h-4 w-4" />
-                {profileSavedMsg}
+                {t(profileSavedMsg)}
               </div>
             )}
 
