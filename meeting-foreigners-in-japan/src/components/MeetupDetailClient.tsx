@@ -98,7 +98,7 @@ export function MeetupDetailClient({
   const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to join this meetup");
+      openAuthModal(t("Sign in to join this meetup"));
       return;
     }
     setRsvpLoading(true);
@@ -114,12 +114,12 @@ export function MeetupDetailClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setRsvpFeedback(data.error || "Could not complete RSVP.");
+        setRsvpFeedback(t(data.error || "Could not complete RSVP."));
       } else {
         setRsvpFeedback(
           data.status === "waitlist"
-            ? "Added to waitlist! You'll automatically move up if a spot opens."
-            : "Spot confirmed! See you there."
+            ? t("Added to waitlist! You'll automatically move up if a spot opens.")
+            : t("Spot confirmed! See you there.")
         );
         setIntroNote("");
         await refreshDetail();
@@ -139,7 +139,7 @@ export function MeetupDetailClient({
         method: "DELETE",
       });
       if (res.ok) {
-        setRsvpFeedback("Your RSVP has been cancelled.");
+        setRsvpFeedback(t("Your RSVP has been cancelled."));
         await refreshDetail();
         router.refresh();
       }
@@ -150,7 +150,7 @@ export function MeetupDetailClient({
 
   const handleToggleSave = async () => {
     if (!user) {
-      openAuthModal("Sign in to save meetups");
+      openAuthModal(t("Sign in to save meetups"));
       return;
     }
     const res = await fetch(`/api/meetups/${meetup.id}/save`, {
@@ -175,7 +175,7 @@ export function MeetupDetailClient({
   const handlePostComment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to ask a question or say hello");
+      openAuthModal(t("Sign in to ask a question or say hello"));
       return;
     }
     if (!commentText.trim()) return;
@@ -237,7 +237,7 @@ export function MeetupDetailClient({
   const handleSendWave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to message the host");
+      openAuthModal(t("Sign in to message the host"));
       return;
     }
     setWaveLoading(true);
@@ -416,7 +416,7 @@ export function MeetupDetailClient({
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-[#5A5D66]">
-                      Cost / Warikan Note
+                      {t("Cost / Warikan Note")}
                     </div>
                     <div className="mt-0.5 text-sm font-bold text-[#1A1D24]">
                       {meetup.costNote}
@@ -755,7 +755,7 @@ export function MeetupDetailClient({
                     onClick={handleCancelRsvp}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-xs font-semibold text-[#5A5D66] transition hover:border-red-300 hover:text-red-600"
                   >
-                    {rsvpLoading ? "Updating..." : "Cancel my RSVP"}
+                    {rsvpLoading ? t("Updating...") : t("Cancel my RSVP")}
                   </button>
                 </div>
               ) : meetup.viewerRsvpStatus === "waitlist" ? (
@@ -787,7 +787,7 @@ export function MeetupDetailClient({
                       rows={2}
                       value={introNote}
                       onChange={(e) => setIntroNote(e.target.value)}
-                      placeholder="Hi! Visiting from Canada / living in Tokyo, excited to chat!"
+                      placeholder={t("Hi! Visiting from Canada / living in Tokyo, excited to chat!")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2 text-xs text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                     />
                   </div>
@@ -813,7 +813,7 @@ export function MeetupDetailClient({
                     }`}
                   >
                     {rsvpLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                    {isFull ? "Join Waitlist" : "Join This Meetup"}
+                    {isFull ? t("Join Waitlist") : t("Join This Meetup")}
                   </button>
                 </form>
               )}
@@ -867,7 +867,7 @@ export function MeetupDetailClient({
                     type="button"
                     onClick={() => {
                       if (!user) {
-                        openAuthModal("Sign in to wave to the host");
+                        openAuthModal(t("Sign in to wave to the host"));
                         return;
                       }
                       setWaveOpen(true);
