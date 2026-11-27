@@ -190,28 +190,28 @@ export function MyHubClient({
   const tabs = [
     {
       id: "attending",
-      label: `Attending (${hubData.attending.length})`,
+      label: `${t("Attending")} (${hubData.attending.length})`,
       icon: CalendarHeart,
     },
     {
       id: "hosting",
-      label: `Hosting (${hubData.hosting.length})`,
+      label: `${t("Hosting")} (${hubData.hosting.length})`,
       icon: Sparkles,
     },
     {
       id: "saved",
-      label: `Saved (${hubData.saved.length})`,
+      label: `${t("Saved")} (${hubData.saved.length})`,
       icon: Bookmark,
     },
     {
       id: "connections",
-      label: `Coffee Waves (${connectionsList.length})`,
+      label: `${t("Coffee Waves")} (${connectionsList.length})`,
       badge: pendingIncomingCount,
       icon: Coffee,
     },
     {
       id: "profile",
-      label: "Edit Profile",
+      label: t("Edit Profile"),
       icon: UserIcon,
     },
   ];
@@ -232,7 +232,7 @@ export function MyHubClient({
               {user.nationalityFlag} {user.name}
             </h1>
             <p className="text-sm text-[#5A5D66]">
-              {user.roleLabel} · {user.homeCity}
+              {t(user.roleLabel)} · {t(user.homeCity)}
               {user.neighborhood ? ` (${user.neighborhood})` : ""}
             </p>
           </div>
@@ -242,7 +242,7 @@ export function MyHubClient({
           className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-[#D94E34] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#C04028]"
         >
           <Plus className="h-4 w-4" />
-          Host New Meetup
+          {t("Host New Meetup")}
         </Link>
       </div>
 
@@ -311,8 +311,8 @@ export function MyHubClient({
                   {t("You aren't hosting any meetups yet")}
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
-                  Hosting a 4–8 person café meetup is one of the easiest ways to
-                  {t("meet foreigners and locals in your neighborhood!")}
+                  {t("Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!")}
+
                 </p>
                 <Link
                   href="/host"
@@ -364,8 +364,7 @@ export function MyHubClient({
                   {t("No coffee waves or invites yet") }
                 </p>
                 <p className="mt-1 text-sm text-[#5A5D66]">
-                  Visit the People directory to say hello and invite someone for
-                  a coffee chat.
+                  {t("Visit the People directory to say hello and invite someone for a coffee chat.")}
                 </p>
                 <Link
                   href="/community"
@@ -395,8 +394,8 @@ export function MyHubClient({
                           </div>
                           <div className="text-xs text-[#5A5D66]">
                             {conn.direction === "incoming"
-                              ? "Invited you"
-                              : "You invited"}{" "}
+                              ? t("Invited you")
+                              : t("You invited")}{" "}
                             · {conn.meetupContext}
                           </div>
                         </div>
@@ -410,7 +409,7 @@ export function MyHubClient({
                             : "bg-amber-50 text-amber-800"
                         }`}
                       >
-                        {conn.status}
+                        {t(conn.status)}
                       </span>
                     </div>
 
@@ -459,7 +458,7 @@ export function MyHubClient({
             className="max-w-2xl rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8 space-y-4"
           >
             <h2 className="font-display text-xl font-bold text-[#1A1D24]">
-              Edit Cultural Profile
+              {t("Edit Cultural Profile")}
             </h2>
 
             {profileSavedMsg && (
@@ -494,7 +493,7 @@ export function MyHubClient({
                 >
                   {ROLE_LABELS.map((r) => (
                     <option key={r} value={r}>
-                      {r}
+                      {t(r)}
                     </option>
                   ))}
                 </select>
@@ -537,7 +536,7 @@ export function MyHubClient({
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Favorite Neighborhood
+                {t("Favorite Neighborhood")}
               </label>
               <input
                 type="text"
@@ -550,7 +549,7 @@ export function MyHubClient({
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Languages (format: Language:Level, comma separated)
+                {t("Languages (format: Language:Level, comma separated)")}
               </label>
               <input
                 type="text"
@@ -563,7 +562,7 @@ export function MyHubClient({
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Interests (comma separated)
+                {t("Interests (comma separated)")}
               </label>
               <input
                 type="text"
@@ -576,7 +575,7 @@ export function MyHubClient({
 
             <div>
               <label className="mb-1 block text-xs font-bold text-[#5A5D66]">
-                Bio
+                {t("Bio")}
               </label>
               <textarea
                 rows={3}
@@ -593,7 +592,7 @@ export function MyHubClient({
                 onChange={(e) => setOpenToCoffee(e.target.checked)}
                 className="accent-[#D94E34]"
               />
-              Show &ldquo;Open to Coffee Chats&rdquo; badge on my directory card
+              {t('Show “Open to Coffee Chats” badge on my directory card')}
             </label>
 
             <button
@@ -602,7 +601,7 @@ export function MyHubClient({
               className="inline-flex items-center gap-2 rounded-xl bg-[#D94E34] px-6 py-2.5 text-sm font-bold text-white hover:bg-[#C04028] disabled:opacity-60"
             >
               {savingProfile && <Loader2 className="h-4 w-4 animate-spin" />}
-              Save Profile
+              {t("Save Profile")}
             </button>
           </form>
         )}
