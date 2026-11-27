@@ -347,6 +347,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Could not complete RSVP.": "参加登録を完了できませんでした。",
     "You'll automatically be promoted to Going if a spot opens up.": "空席ができると、自動的に参加確定へ繰り上がります。",
   },
+    "Profile updated!": "プロフィールを更新しました！",
+    "Tokyo Recommendations": "東京のおすすめ情報",
   "zh-cn": {
     "Discover": "发现", "People": "社区成员", "Japan Guide": "日本指南", "My Hub": "个人中心",
     "Host Meetup": "发起聚会", "Host a Meetup": "发起聚会", "Host a Gathering": "组织活动",
@@ -680,6 +682,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Could not complete RSVP.": "无法完成报名。",
     "You'll automatically be promoted to Going if a spot opens up.": "如有空位，您将自动转为已确认参加。",
   },
+    "Profile updated!": "个人资料已更新！",
+    "Tokyo Recommendations": "东京推荐",
   "zh-tw": {
     "Discover": "探索", "People": "社群成員", "Japan Guide": "日本指南", "My Hub": "個人中心",
     "Host Meetup": "發起聚會", "Host a Meetup": "發起聚會", "Host a Gathering": "舉辦活動",
@@ -1012,6 +1016,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Network error while sending invite.": "傳送邀請時發生網路錯誤。",
     "Could not complete RSVP.": "無法完成報名。",
     "You'll automatically be promoted to Going if a spot opens up.": "若有名額，您將自動轉為已確認參加。",
+    "Profile updated!": "個人資料已更新！",
+    "Tokyo Recommendations": "東京推薦",
 
 };
 
