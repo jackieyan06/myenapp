@@ -439,7 +439,7 @@ export function MeetupDetailClient({
                   <div className="mt-4 flex flex-wrap gap-2">
                     {meetup.tags.map((tag) => (
                       <span
-                        key={t(tag)}
+                        key={localizeMeetupText(tag, locale)}
                         className="rounded-full bg-[#F2EDE4] px-3 py-1 text-xs font-semibold text-[#5A5D66]"
                       >
                         #{tag}
