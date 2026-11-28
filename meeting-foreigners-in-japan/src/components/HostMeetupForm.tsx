@@ -68,7 +68,7 @@ export function HostMeetupForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to publish your meetup");
+      openAuthModal(t("Sign in to publish your meetup"));
       return;
     }
 
@@ -151,7 +151,7 @@ export function HostMeetupForm() {
           </div>
           <button
             type="button"
-            onClick={() => openAuthModal("Sign in to host a meetup")}
+            onClick={() => openAuthModal(t("Sign in to host a meetup"))}
             className="shrink-0 rounded-xl bg-[#D94E34] px-4 py-2 text-xs font-bold text-white hover:bg-[#C04028]"
           >
             Sign In / Try Demo
@@ -183,7 +183,7 @@ export function HostMeetupForm() {
                 minLength={5}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Tokyo International Business & Expat Networking"
+                placeholder={t("e.g., Tokyo International Business & Expat Networking")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -196,7 +196,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={titleJp}
                 onChange={(e) => setTitleJp(e.target.value)}
-                placeholder="e.g., 中目黒カフェ・日英交流会"
+                placeholder={t("e.g., 中目黒カフェ・日英交流会")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 font-jp text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -226,7 +226,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
-                placeholder="Beginner Friendly, Matcha, Walk"
+                placeholder={t("Beginner Friendly, Matcha, Walk")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -242,7 +242,7 @@ export function HostMeetupForm() {
               minLength={20}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Share what the meetup feels like, whether beginners are welcome, and how you organize conversation..."
+              placeholder={t("Share what the meetup feels like, whether beginners are welcome, and how you organize conversation...")}
               className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-3 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
             />
           </div>
@@ -283,7 +283,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="Optional — e.g. Shibuya, central Tokyo"
+                placeholder={t("Optional — e.g. Shibuya, central Tokyo")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -296,7 +296,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={station}
                 onChange={(e) => setStation(e.target.value)}
-                placeholder="Add once the venue is confirmed"
+                placeholder={t("Add once the venue is confirmed")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -309,7 +309,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={venueName}
                 onChange={(e) => setVenueName(e.target.value)}
-                placeholder="Leave blank until confirmed"
+                placeholder={t("Leave blank until confirmed")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -322,7 +322,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={meetingPoint}
                 onChange={(e) => setMeetingPoint(e.target.value)}
-                placeholder="e.g., I'll sit at the long wooden table near the window with a small blue notebook"
+                placeholder={t("e.g., I'll sit at the long wooden table near the window with a small blue notebook")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
@@ -433,7 +433,7 @@ export function HostMeetupForm() {
                 type="text"
                 value={costNote}
                 onChange={(e) => setCostNote(e.target.value)}
-                placeholder="Free · Order your own drink"
+                placeholder={t("Free · Order your own drink")}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3.5 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
               />
             </div>
