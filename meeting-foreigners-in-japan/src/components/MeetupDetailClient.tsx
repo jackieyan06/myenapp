@@ -485,7 +485,7 @@ export function MeetupDetailClient({
                     </span>
                   </div>
                   <div className="text-xs text-[#5A5D66]">
-                    {meetup.host.roleLabel} · {meetup.host.homeCity}
+                    {t(meetup.host.roleLabel)} · {t(meetup.host.homeCity)}
                   </div>
                   <div className="mt-1.5 flex flex-wrap gap-1">
                     {meetup.host.languages.slice(0, 3).map((l) => (
