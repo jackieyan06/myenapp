@@ -231,12 +231,11 @@ export function HomeDiscoveryClient({
               <span className="font-semibold text-[#2B4C7E]">
                 {t("Visiting or new in Japan?")}
               </span>{" "}
-              Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or
-              Kyoto Traveler) to RSVP, post questions, or host your own meetup.
+              {t("Sign in with a 1-click demo persona (Tokyo Local, Berlin Expat, or Kyoto Traveler) to RSVP, post questions, or host your own meetup.")}
             </div>
             <button
               type="button"
-              onClick={() => openAuthModal("Choose a 1-Click Demo Persona or Sign Up")}
+              onClick={() => openAuthModal(t("Choose a 1-Click Demo Persona or Sign Up"))}
               className="shrink-0 rounded-xl bg-[#2B4C7E] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#223C66]"
             >
               {t("Sign In / Try Demo")}
@@ -261,7 +260,7 @@ export function HomeDiscoveryClient({
             </button>
             {MEETUP_CATEGORIES.map((cat) => (
               <button
-                key={cat.name}
+                key={t(cat.name)}
                 type="button"
                 onClick={() =>
                   setCategory(category === cat.name ? "All" : cat.name)
@@ -285,7 +284,7 @@ export function HomeDiscoveryClient({
                 <select
                   value={languageFocus}
                   onChange={(e) => setLanguageFocus(e.target.value)}
-                  aria-label="Filter by language focus"
+                  aria-label={t("Filter by language focus")}
                   className="bg-transparent text-xs font-semibold text-[#1A1D24] outline-none"
                 >
                   <option value="All">{t("All Languages")}</option>
@@ -329,7 +328,7 @@ export function HomeDiscoveryClient({
                 <button
                   type="button"
                   onClick={() => setView("grid")}
-                  aria-label="Grid view"
+                  aria-label={t("Grid view")}
                   className={`rounded-lg p-1.5 transition ${
                     view === "grid"
                       ? "bg-[#1A1D24] text-white"
@@ -341,7 +340,7 @@ export function HomeDiscoveryClient({
                 <button
                   type="button"
                   onClick={() => setView("list")}
-                  aria-label="Schedule list view"
+                  aria-label={t("Schedule list view")}
                   className={`rounded-lg p-1.5 transition ${
                     view === "list"
                       ? "bg-[#1A1D24] text-white"
