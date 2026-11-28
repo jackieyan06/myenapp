@@ -70,7 +70,7 @@ export function CommunityDirectoryClient({
     }
     setSelectedMember(member);
     setInviteMessage(
-      `Hi ${member.name}! I saw your profile on En and would love to grab a coffee or practice languages around ${member.homeCity} soon.`
+      `Hi ${member.name}! I saw your profile on En and would love to grab a coffee or practice languages around ${t(member.homeCity)} soon.`
     );
     setInviteError("");
   };
@@ -233,7 +233,7 @@ export function CommunityDirectoryClient({
                         {member.nationalityFlag} {member.name}
                       </h2>
                       <div className="text-xs font-medium text-[#5A5D66]">
-                        {member.roleLabel} · {member.nationality}
+                        {t(member.roleLabel)} · {t(member.nationality)}
                       </div>
                     </div>
                   </div>
