@@ -15,6 +15,10 @@ const copy = {
     paidTitle: "Business Networking",
     paidIntro: "A fee applies only when an event is explicitly designated as a paid Business Networking event. General professional networking and community connections remain free.",
     paidItems: ["Any event fee and its terms will be clearly shown before you RSVP or pay.", "There is no general monthly or annual membership subscription.", "You only pay when you choose to join a paid Business Networking event."],
+    revenueTitle: "Proposed host revenue share",
+    revenueText: "When secure in-app payments become available, the proposed revenue split is 80% for the event host and 20% for EnJapan, calculated before payment-processing fees, refunds and other applicable adjustments. Final terms will be shown to hosts before they enable paid events.",
+    paymentStatusTitle: "Payment availability",
+    paymentStatusText: "Stripe checkout and automatic host payouts are not active yet. Paid event registration and payment are therefore not currently available through EnJapan. Do not send payment to EnJapan unless a secure checkout is displayed on the event page.",
     note: "Meetup hosts may separately note venue, food, drink or other shared expenses. Those costs are not an EnJapan membership fee and should be explained in the event details.",
     cta: "Explore meetups",
     host: "Host a gathering",
@@ -29,6 +33,10 @@ const copy = {
     paidTitle: "ビジネスネットワーキング",
     paidIntro: "参加費が発生するのは、有料のビジネスネットワーキングイベントとして明示された場合のみです。一般的なプロフェッショナル交流やコミュニティでのつながりは無料です。",
     paidItems: ["参加費と条件は、参加登録または支払いの前に明確に表示します。", "一般向けの月額・年額会員サブスクリプションはありません。", "有料のビジネスネットワーキングイベントに参加する場合のみお支払いください。"],
+    revenueTitle: "主催者への収益分配（予定）",
+    revenueText: "安全なアプリ内決済の提供開始後、イベント収益の80％を主催者、20％をEnJapanに分配する予定です。決済手数料、返金などの調整前の金額を基準とします。有料イベントを有効にする前に、主催者へ最終条件を提示します。",
+    paymentStatusTitle: "決済機能の提供状況",
+    paymentStatusText: "Stripe決済と主催者への自動送金はまだ有効化されていません。そのため、現在EnJapanを通じた有料イベントの申込み・決済はできません。イベントページに安全な決済画面が表示されない限り、EnJapanへの支払いは行わないでください。
     note: "会場費、飲食代などの実費は、主催者が別途設定する場合があります。これらはEnJapanの会員費ではなく、イベント詳細に明記されます。",
     cta: "交流会を探す",
     host: "交流会を主催する",
@@ -43,6 +51,10 @@ const copy = {
     paidTitle: "商务交流活动",
     paidIntro: "只有明确标注为收费商务交流活动的项目才会收取参加费。一般职业交流及社区互动均免费。",
     paidItems: ["活动费用及相关条件会在报名或付款前清楚显示。", "没有面向所有用户的月度或年度会员订阅费。", "只有选择参加收费商务交流活动时才需要付款。"],
+    revenueTitle: "主办方收入分成（拟议）",
+    revenueText: "安全的应用内付款功能上线后，拟将活动收入的 80% 分给主办方，20% 分给 EnJapan。分成以扣除支付手续费、退款及其他适用调整前的金额为基础。主办方启用收费活动前会看到最终条款。",
+    paymentStatusTitle: "付款功能状态",
+    paymentStatusText: "Stripe 结账和主办方自动收款目前尚未启用。因此，目前无法通过 EnJapan 报名或支付收费活动。除非活动页面显示安全的付款页面，否则请勿向 EnJapan 支付款项。
     note: "活动主办方可能另行收取场地、餐饮或其他共同费用。这些费用并非 EnJapan 会员费，并应在活动详情中说明。",
     cta: "浏览聚会",
     host: "发起聚会",
@@ -57,6 +69,10 @@ const copy = {
     paidTitle: "商務交流活動",
     paidIntro: "只有明確標示為收費商務交流活動的項目才會收取參加費。一般職涯交流及社群互動均免費。",
     paidItems: ["活動費用及相關條件會在報名或付款前清楚顯示。", "沒有面向所有使用者的月費或年費會員訂閱。", "只有選擇參加收費商務交流活動時才需要付款。"],
+    revenueTitle: "主辦人收入分潤（規劃中）",
+    revenueText: "安全的應用程式內付款功能上線後，預計將活動收入的 80% 分給主辦人，20% 分給 EnJapan。分潤以扣除支付手續費、退款及其他適用調整前的金額為基礎。主辦人啟用收費活動前會看到最終條款。",
+    paymentStatusTitle: "付款功能狀態",
+    paymentStatusText: "Stripe 結帳和主辦人自動收款目前尚未啟用。因此，目前無法透過 EnJapan 報名或支付收費活動。除非活動頁面顯示安全的付款頁面，否則請勿向 EnJapan 支付款項。
     note: "活動主辦人可能另行收取場地、餐飲或其他共同費用。這些費用並非 EnJapan 會員費，並應在活動詳情中說明。",
     cta: "瀏覽聚會",
     host: "發起聚會",
@@ -96,6 +112,24 @@ export default function PricingPage() {
           </section>
         </div>
 
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <section className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-[#1A1D24]">{text.revenueTitle}</h2>
+            <div className="mt-4 flex h-3 overflow-hidden rounded-full bg-[#EFE9DF]" role="img" aria-label="Proposed revenue share: 80 percent host, 20 percent EnJapan">
+              <div className="w-4/5 bg-[#477B56]" />
+              <div className="w-1/5 bg-[#D94E34]" />
+            </div>
+            <div className="mt-3 flex justify-between text-xs font-semibold text-[#5A5D66]">
+              <span>80% {locale === "ja" ? "主催者" : locale === "zh-cn" ? "主办方" : locale === "zh-tw" ? "主辦人" : "Host"}</span>
+              <span>20% EnJapan</span>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-[#5A5D66]">{text.revenueText}</p>
+          </section>
+          <section className="rounded-3xl border border-[#E7D7C9] bg-[#FFFDFC] p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-[#1A1D24]">{text.paymentStatusTitle}</h2>
+            <p className="mt-4 text-sm leading-6 text-[#5A5D66]">{text.paymentStatusText}</p>
+          </section>
+        </div>
         <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[#77736C]">{text.note}</p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           <Link href="/" className="rounded-2xl bg-[#D94E34] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#C04028]">{text.cta}</Link>
