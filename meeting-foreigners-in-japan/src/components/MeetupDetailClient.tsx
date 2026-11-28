@@ -743,7 +743,7 @@ export function MeetupDetailClient({
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-[#3E6B48]/12 px-4 py-3 text-sm font-bold text-[#3E6B48]">
                     <CheckCircle2 className="h-5 w-5" />
-                    You&apos;re Confirmed!
+                    {t("You're Confirmed!")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
                     {meetup.venueName && meetup.venueName !== "Venue to be announced" ? `${t("Look for the host at the venue.")} ${meetup.host.name} · ${meetup.venueName}. ` : `${t("The host will share the confirmed venue and meeting details before the event.")} `}{t("If your plans change, please cancel so someone else can join.")}
@@ -761,11 +761,10 @@ export function MeetupDetailClient({
                 <div className="mt-5 space-y-3">
                   <div className="flex items-center gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm font-bold text-amber-900">
                     <Clock className="h-5 w-5" />
-                    You&apos;re on the Waitlist
+                    {t("You're on the Waitlist")}
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    You&apos;ll automatically be promoted to Going if a spot
-                    opens up.
+                    {t("You'll automatically be promoted to Going if a spot opens up.")}
                   </p>
                   <button
                     type="button"
@@ -821,7 +820,7 @@ export function MeetupDetailClient({
             {/* Host Card */}
             <div className="rounded-3xl border border-[#E6E0D6] bg-white p-6">
               <div className="text-xs font-bold uppercase tracking-wider text-[#5A5D66]">
-                Hosted By
+                {t("Hosted By")}
               </div>
               <div className="mt-3 flex items-center gap-3">
                 <span
