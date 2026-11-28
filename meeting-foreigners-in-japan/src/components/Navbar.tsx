@@ -29,6 +29,7 @@ export function Navbar() {
     { href: "/", label: "Discover", icon: Compass },
     { href: "/community", label: "People", icon: Users },
     { href: "/guide", label: "Japan Guide", icon: BookOpen },
+    { href: locale === "en" ? "/pricing" : `/${locale}/pricing`, label: locale === "ja" ? "料金" : locale === "zh-cn" ? "价格" : locale === "zh-tw" ? "費用" : "Pricing", icon: BookOpen },
     ...(user
       ? [{ href: "/my-meetups", label: "My Hub", icon: CalendarHeart }]
       : []),
