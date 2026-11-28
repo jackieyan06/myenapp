@@ -137,17 +137,14 @@ export function HostMeetupForm() {
           {t("Create a Meetup in Japan")}
         </h1>
         <p className="mt-1.5 text-sm text-[#5A5D66]">
-          Whether it&apos;s a 6-person kissaten coffee morning, an English–Japanese
-          language exchange, or an izakaya evening—share the exact station exit
-          so newcomers find you easily.
+          {t("Whether it’s a 6-person kissaten coffee morning, an English–Japanese language exchange, or an izakaya evening—share the exact station exit so newcomers find you easily.")}
         </p>
       </div>
 
       {!user && (
         <div className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#D94E34]/30 bg-[#D94E34]/8 p-4 sm:flex-row sm:items-center">
           <div className="text-sm text-[#1A1D24]">
-            <strong>{t("Almost ready!")}</strong> Sign in (or choose a 1-click Demo
-            Persona) so guests know who is hosting.
+            <strong>{t("Almost ready!")}</strong> {t("Sign in (or choose a 1-click Demo Persona) so guests know who is hosting.")}
           </div>
           <button
             type="button"
