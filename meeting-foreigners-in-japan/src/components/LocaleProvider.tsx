@@ -926,6 +926,26 @@ export function LocaleProvider({
     setLocaleState(next);
     document.cookie = `en-locale=${next}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = next;
+
+    // Information pages have translated routes. Navigate to the matching
+    // locale-specific page so static page content changes with the selector.
+    const localizedSlugs = [
+      "about",
+      "terms",
+      "privacy",
+      "commercial-disclosure",
+      "advertising",
+      "pricing",
+    ];
+    const segments = pathname.split("/").filter(Boolean);
+    const currentSlug = segments[segments.length - 1];
+    if (currentSlug && localizedSlugs.includes(currentSlug)) {
+      window.location.href =
+        next === "en" ? `/${currentSlug}` : `/${next}/${currentSlug}`;
+      return;
+    }
+
+    // App pages use the shared translation dictionary and saved locale.
     window.location.reload();
   };
 
