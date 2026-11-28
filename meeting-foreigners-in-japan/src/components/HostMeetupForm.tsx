@@ -106,13 +106,13 @@ export function HostMeetupForm() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Unable to create meetup.");
+        setError(data.error || t("Unable to create meetup."));
       } else {
         router.push(`/meetups/${data.meetup.id}`);
         router.refresh();
       }
     } catch {
-      setError("Network error while publishing meetup.");
+      setError(t("Network error while publishing meetup."));
     } finally {
       setSubmitting(false);
     }
