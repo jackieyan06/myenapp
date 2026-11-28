@@ -114,12 +114,12 @@ export function MeetupDetailClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        setRsvpFeedback(data.error || "Could not complete RSVP.");
+        setRsvpFeedback(data.error || t("Could not complete RSVP."));
       } else {
         setRsvpFeedback(
           data.status === "waitlist"
-            ? "Added to waitlist! You'll automatically move up if a spot opens."
-            : "Spot confirmed! See you there."
+            ? t("Added to waitlist! You'll automatically move up if a spot opens.")
+            : t("Spot confirmed! See you there.")
         );
         setIntroNote("");
         await refreshDetail();
@@ -300,7 +300,7 @@ export function MeetupDetailClient({
             }`}
           >
             <Bookmark className={`h-3.5 w-3.5 ${saved ? "fill-current" : ""}`} />
-            {saved ? "Saved" : "Save"}
+            {saved ? t("Saved") : t("Save")}
           </button>
         </div>
       </div>
@@ -640,8 +640,8 @@ export function MeetupDetailClient({
                   onChange={(e) => setCommentText(e.target.value)}
                   placeholder={
                     user
-                      ? "Write a question or say hello to the group..."
-                      : "Sign in to join the meetup discussion..."
+                      ? t("Write a question or say hello to the group...")
+                      : t("Sign in to join the meetup discussion...")
                   }
                   className="flex-1 rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-4 py-2.5 text-sm text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                 />
@@ -670,7 +670,7 @@ export function MeetupDetailClient({
               <div className="flex items-center justify-between">
                 <span className="text-sm font-bold text-[#1A1D24]">
                   {isFull
-                    ? "Table is currently full"
+                    ? t("Table is currently full")
                     : `${spotsLeft} spot${spotsLeft === 1 ? "" : "s"} remaining`}
                 </span>
                 <span className="text-xs font-semibold text-[#5A5D66]">
@@ -746,7 +746,7 @@ export function MeetupDetailClient({
                     You&apos;re Confirmed!
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    {meetup.venueName && meetup.venueName !== "Venue to be announced" ? `Look for ${meetup.host.name} at ${meetup.venueName}. ` : "The host will share the confirmed venue and meeting details before the event. "}{t("If your plans change, please cancel so someone else can join.")}
+                    {meetup.venueName && meetup.venueName !== "Venue to be announced" ? `${t("Look for the host at the venue.")} ${meetup.host.name} · ${meetup.venueName}. ` : `${t("The host will share the confirmed venue and meeting details before the event. ")} `}{t("If your plans change, please cancel so someone else can join.")}
                   </p>
                   <button
                     type="button"
@@ -754,7 +754,7 @@ export function MeetupDetailClient({
                     onClick={handleCancelRsvp}
                     className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-xs font-semibold text-[#5A5D66] transition hover:border-red-300 hover:text-red-600"
                   >
-                    {rsvpLoading ? "Updating..." : "Cancel my RSVP"}
+                    {rsvpLoading ? t("Updating...") : t("Cancel my RSVP")}
                   </button>
                 </div>
               ) : meetup.viewerRsvpStatus === "waitlist" ? (
@@ -812,7 +812,7 @@ export function MeetupDetailClient({
                     }`}
                   >
                     {rsvpLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                    {isFull ? "Join Waitlist" : "Join This Meetup"}
+                    {isFull ? t("Join Waitlist") : t("Join This Meetup")}
                   </button>
                 </form>
               )}
@@ -1038,7 +1038,7 @@ export function MeetupDetailClient({
                   disabled={editLoading}
                   className="rounded-xl bg-[#D94E34] px-5 py-2 text-sm font-semibold text-white hover:bg-[#C04028]"
                 >
-                  {editLoading ? "Saving..." : "Save Changes"}
+                  {editLoading ? t("Saving...") : t("Save Changes")}
                 </button>
               </div>
             </form>
