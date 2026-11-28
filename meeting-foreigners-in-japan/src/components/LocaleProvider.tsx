@@ -334,6 +334,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Hi! Visiting from Canada / living in Tokyo, excited to chat!": "こんにちは！カナダから旅行中／東京在住です。お話しできるのを楽しみにしています！",
     "e.g. English / Japanese (N4)": "例：英語／日本語（N4）",
     "Write a friendly message to the host...": "主催者へのメッセージを入力してください…",
+    "Whether it’s a 6-person kissaten coffee morning, an English–Japanese language exchange, or an izakaya evening—share the exact station exit so newcomers find you easily.": "6人程度の喫茶店での朝のコーヒー交流、日英の言語交換、居酒屋での集まりなどを企画できます。初めての方にも分かるよう、駅の出口を正確に記載しましょう。",
+    "Sign in (or choose a 1-click Demo Persona) so guests know who is hosting.": "ログインするかワンクリックのデモアカウントを選択して、参加者に主催者を知らせましょう。",
+    "Proposed revenue share: 80 percent host, 20 percent EnJapan": "収益分配案：主催者80％、EnJapan20％",
   },
   "zh-cn": {
     "Connecting people, professionals & opportunities in Japan.": "连接人与人、专业人士与日本的发展机遇。",
@@ -655,6 +658,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Hi! Visiting from Canada / living in Tokyo, excited to chat!": "你好！我来自加拿大／目前住在东京，很期待和你交流！",
     "e.g. English / Japanese (N4)": "例如：英语／日语（N4）",
     "Write a friendly message to the host...": "给主办人写一条友好的消息……",
+    "Sign in (or choose a 1-click Demo Persona) so guests know who is hosting.": "请登录或选择一键演示身份，让参与者知道活动由谁主办。",
+    "Proposed revenue share: 80 percent host, 20 percent EnJapan": "拟议收入分成：主办方 80%，EnJapan 20%",
   },
   "zh-tw": {
     "Connecting people, professionals & opportunities in Japan.": "連結人與人、專業人士，以及在日本的各種機會。",
@@ -976,6 +981,8 @@ const messages: Record<Locale, Record<string, string>> = {
     "Hi! Visiting from Canada / living in Tokyo, excited to chat!": "你好！我來自加拿大／目前住在東京，很期待和你交流！",
     "e.g. English / Japanese (N4)": "例如：英文／日文（N4）",
     "Write a friendly message to the host...": "給主辦人寫一則友善的訊息……",
+    "Sign in (or choose a 1-click Demo Persona) so guests know who is hosting.": "請登入或選擇一鍵體驗身分，讓參加者知道活動由誰主辦。",
+    "Proposed revenue share: 80 percent host, 20 percent EnJapan": "規劃中的收入分潤：主辦人 80%，EnJapan 20%",
   },
 };
 
