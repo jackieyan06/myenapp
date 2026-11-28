@@ -100,17 +100,17 @@ export function MyHubClient({
             <CalendarHeart className="h-7 w-7" />
           </div>
           <h1 className="mt-4 font-display text-2xl font-extrabold text-[#1A1D24]">
-            Your Japan Meetup Hub
+            {t("Your Japan Meetup Hub")}
           </h1>
           <p className="mt-2 text-sm text-[#5A5D66]">
             {t("Sign in or select a 1-click Demo Persona to view your upcoming RSVPs, hosted gatherings, saved meetups, and coffee invitations.")}
           </p>
           <button
             type="button"
-            onClick={() => openAuthModal("Sign in to open My Hub")}
+            onClick={() => openAuthModal(t("Sign in to open My Hub"))}
             className="mt-6 rounded-2xl bg-[#D94E34] px-6 py-3 text-sm font-bold text-white hover:bg-[#C04028]"
           >
-            Sign In / Choose Demo Account
+            {t("Sign In / Choose Demo Account")}
           </button>
         </div>
       </div>
@@ -177,7 +177,7 @@ export function MyHubClient({
       const data = await res.json();
       if (res.ok) {
         setUser(data.user);
-        setProfileSavedMsg("Profile updated!");
+        setProfileSavedMsg(t("Profile updated!"));
         router.refresh();
       }
     } finally {
@@ -393,8 +393,8 @@ export function MyHubClient({
                           </div>
                           <div className="text-xs text-[#5A5D66]">
                             {conn.direction === "incoming"
-                              ? "Invited you"
-                              : "You invited"}{" "}
+                              ? t("Invited you")
+                              : t("You invited")}{" "}
                             · {conn.meetupContext}
                           </div>
                         </div>
