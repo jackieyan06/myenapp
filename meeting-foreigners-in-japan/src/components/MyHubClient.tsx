@@ -177,7 +177,7 @@ export function MyHubClient({
       const data = await res.json();
       if (res.ok) {
         setUser(data.user);
-        setProfileSavedMsg("Profile updated!");
+        setProfileSavedMsg(t("Profile updated!"));
         router.refresh();
       }
     } finally {
@@ -393,8 +393,8 @@ export function MyHubClient({
                           </div>
                           <div className="text-xs text-[#5A5D66]">
                             {conn.direction === "incoming"
-                              ? "Invited you"
-                              : "You invited"}{" "}
+                              ? t("Invited you")
+                              : t("You invited")}{" "}
                             · {conn.meetupContext}
                           </div>
                         </div>
