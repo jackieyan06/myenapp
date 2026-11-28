@@ -98,7 +98,7 @@ export function MeetupDetailClient({
   const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to join this meetup");
+      openAuthModal(t("Sign in to join this meetup"));
       return;
     }
     setRsvpLoading(true);
@@ -139,7 +139,7 @@ export function MeetupDetailClient({
         method: "DELETE",
       });
       if (res.ok) {
-        setRsvpFeedback("Your RSVP has been cancelled.");
+        setRsvpFeedback(t("Your RSVP has been cancelled."));
         await refreshDetail();
         router.refresh();
       }
@@ -150,7 +150,7 @@ export function MeetupDetailClient({
 
   const handleToggleSave = async () => {
     if (!user) {
-      openAuthModal("Sign in to save meetups");
+      openAuthModal(t("Sign in to save meetups"));
       return;
     }
     const res = await fetch(`/api/meetups/${meetup.id}/save`, {
@@ -175,7 +175,7 @@ export function MeetupDetailClient({
   const handlePostComment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to ask a question or say hello");
+      openAuthModal(t("Sign in to ask a question or say hello"));
       return;
     }
     if (!commentText.trim()) return;
@@ -237,7 +237,7 @@ export function MeetupDetailClient({
   const handleSendWave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
-      openAuthModal("Sign in to message the host");
+      openAuthModal(t("Sign in to message the host"));
       return;
     }
     setWaveLoading(true);
@@ -786,7 +786,7 @@ export function MeetupDetailClient({
                       rows={2}
                       value={introNote}
                       onChange={(e) => setIntroNote(e.target.value)}
-                      placeholder="Hi! Visiting from Canada / living in Tokyo, excited to chat!"
+                      placeholder={t("Hi! Visiting from Canada / living in Tokyo, excited to chat!")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2 text-xs text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                     />
                   </div>
@@ -798,7 +798,7 @@ export function MeetupDetailClient({
                       type="text"
                       value={speakingLang}
                       onChange={(e) => setSpeakingLang(e.target.value)}
-                      placeholder="e.g. English / Japanese (N4)"
+                      placeholder={t("e.g. English / Japanese (N4)")}
                       className="w-full rounded-xl border border-[#E6E0D6] bg-[#FAF8F4] px-3 py-2 text-xs text-[#1A1D24] outline-none focus:border-[#D94E34] focus:bg-white"
                     />
                   </div>
@@ -866,7 +866,7 @@ export function MeetupDetailClient({
                     type="button"
                     onClick={() => {
                       if (!user) {
-                        openAuthModal("Sign in to wave to the host");
+                        openAuthModal(t("Sign in to wave to the host"));
                         return;
                       }
                       setWaveOpen(true);
@@ -1097,7 +1097,7 @@ export function MeetupDetailClient({
                   minLength={5}
                   value={waveMsg}
                   onChange={(e) => setWaveMsg(e.target.value)}
-                  placeholder={`Hi ${meetup.host.name}! I'm interested in your ${meetup.city} meetup...`}
+                  placeholder={t("Write a friendly message to the host...")}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3.5 py-2.5 text-sm outline-none focus:border-[#D94E34]"
                 />
                 <button
