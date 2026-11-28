@@ -746,7 +746,7 @@ export function MeetupDetailClient({
                     You&apos;re Confirmed!
                   </div>
                   <p className="text-xs text-[#5A5D66]">
-                    {meetup.venueName && meetup.venueName !== "Venue to be announced" ? `${t("Look for the host at the venue.")} ${meetup.host.name} · ${meetup.venueName}. ` : `${t("The host will share the confirmed venue and meeting details before the event. ")} `}{t("If your plans change, please cancel so someone else can join.")}
+                    {meetup.venueName && meetup.venueName !== "Venue to be announced" ? `${t("Look for the host at the venue.")} ${meetup.host.name} · ${meetup.venueName}. ` : `${t("The host will share the confirmed venue and meeting details before the event.")} `}{t("If your plans change, please cancel so someone else can join.")}
                   </p>
                   <button
                     type="button"
