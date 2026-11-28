@@ -352,6 +352,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!": "4〜8人のカフェ交流会を開くと、近所の外国人や地元の人と気軽に知り合えます！",
     "Visit the People directory to say hello and invite someone for a coffee chat.": "メンバー一覧で挨拶し、コーヒー交流に誘ってみましょう。",
     "Show “Open to Coffee Chats” badge on my directory card": "メンバーカードに「コーヒー交流歓迎」バッジを表示する",
+    "accepted": "承認済み",
+    "declined": "辞退",
+    "pending": "保留中",
   },
   "zh-cn": {
     "Connecting people, professionals & opportunities in Japan.": "连接人与人、专业人士与日本的发展机遇。",
@@ -690,6 +693,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!": "举办一场 4 至 8 人的咖啡聚会，是认识附近外籍人士和当地居民的轻松方式！",
     "Visit the People directory to say hello and invite someone for a coffee chat.": "前往成员目录打个招呼，邀请他人一起喝咖啡交流。",
     "Show “Open to Coffee Chats” badge on my directory card": "在我的成员卡片上显示“欢迎咖啡交流”徽章",
+    "accepted": "已接受",
+    "declined": "已拒绝",
+    "pending": "待处理",
   },
   "zh-tw": {
     "Connecting people, professionals & opportunities in Japan.": "連結人與人、專業人士，以及在日本的各種機會。",
@@ -1028,6 +1034,9 @@ const messages: Record<Locale, Record<string, string>> = {
     "Hosting a 4–8 person café meetup is one of the easiest ways to meet foreigners and locals in your neighborhood!": "舉辦一場 4 至 8 人的咖啡聚會，是認識附近外籍居民與在地居民的輕鬆方式！",
     "Visit the People directory to say hello and invite someone for a coffee chat.": "前往成員目錄打聲招呼，邀請他人一起喝咖啡交流。",
     "Show “Open to Coffee Chats” badge on my directory card": "在我的成員卡片上顯示「歡迎咖啡交流」徽章",
+    "accepted": "已接受",
+    "declined": "已婉拒",
+    "pending": "待處理",
   },
 };
 
