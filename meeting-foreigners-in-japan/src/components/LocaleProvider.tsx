@@ -346,6 +346,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "You invited": "あなたが招待しました",
     "Unable to send invite.": "招待を送信できませんでした。",
     "Network error while sending invite.": "招待の送信中にネットワークエラーが発生しました。",
+    "Look for the host at the venue.": "会場で主催者をお探しください。",
   },
   "zh-cn": {
     "Connecting people, professionals & opportunities in Japan.": "连接人与人、专业人士与日本的发展机遇。",
@@ -678,6 +679,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "You invited": "您邀请了",
     "Unable to send invite.": "无法发送邀请。",
     "Network error while sending invite.": "发送邀请时发生网络错误。",
+    "Look for the host at the venue.": "请在场地寻找主办人。",
   },
   "zh-tw": {
     "Connecting people, professionals & opportunities in Japan.": "連結人與人、專業人士，以及在日本的各種機會。",
@@ -1010,6 +1012,7 @@ const messages: Record<Locale, Record<string, string>> = {
     "You invited": "您邀請了",
     "Unable to send invite.": "無法傳送邀請。",
     "Network error while sending invite.": "傳送邀請時發生網路錯誤。",
+    "Look for the host at the venue.": "請在場地尋找主辦人。",
   },
 };
 
