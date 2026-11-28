@@ -262,7 +262,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => {
                   setMobileOpen(false);
-                  openAuthModal("Sign in or Try a Demo Account");
+                  openAuthModal(t("Sign in or Try a Demo Account"));
                 }}
                 className="w-full rounded-xl border border-[#E6E0D6] bg-white py-2.5 text-sm font-semibold text-[#1A1D24]"
               >
