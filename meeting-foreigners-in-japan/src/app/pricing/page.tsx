@@ -115,7 +115,7 @@ export default function PricingPage() {
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           <section className="rounded-3xl border border-[#E6E0D6] bg-white p-6 sm:p-8">
             <h2 className="text-xl font-bold text-[#1A1D24]">{text.revenueTitle}</h2>
-            <div className="mt-4 flex h-3 overflow-hidden rounded-full bg-[#EFE9DF]" role="img" aria-label="Proposed revenue share: 80 percent host, 20 percent EnJapan">
+            <div className="mt-4 flex h-3 overflow-hidden rounded-full bg-[#EFE9DF]" role="img" aria-label={locale === "en" ? "Proposed revenue share: 80 percent host, 20 percent EnJapan" : locale === "ja" ? "収益分配案：主催者80％、EnJapan20％" : locale === "zh-cn" ? "拟议收入分成：主办方 80%，EnJapan 20%" : "規劃中的收入分潤：主辦人 80%，EnJapan 20%"}>
               <div className="w-4/5 bg-[#477B56]" />
               <div className="w-1/5 bg-[#D94E34]" />
             </div>
