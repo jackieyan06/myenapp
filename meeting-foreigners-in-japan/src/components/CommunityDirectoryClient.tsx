@@ -239,7 +239,7 @@ export function CommunityDirectoryClient({
                   </div>
                   {member.openToCoffee && (
                     <span
-                      title="Open to coffee chats"
+                      title={t("Open to coffee chats")}
                       className="inline-flex items-center gap-1 rounded-full bg-[#3E6B48]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#3E6B48]"
                     >
                       <Coffee className="h-3 w-3" />
@@ -360,11 +360,11 @@ export function CommunityDirectoryClient({
                   onChange={(e) => setInviteContext(e.target.value)}
                   className="w-full rounded-xl border border-[#E6E0D6] bg-white px-3 py-2 text-sm outline-none focus:border-[#D94E34]"
                 >
-                  <option>Coffee &amp; Language Chat</option>
-                  <option>Lunch / Ramen Meet</option>
-                  <option>Neighborhood Walk</option>
-                  <option>Coworking Session</option>
-                  <option>Travel Tips / Local Advice</option>
+                  <option>{t("Coffee & Language Chat")}</option>
+                  <option>{t("Lunch / Ramen Meet")}</option>
+                  <option>{t("Neighborhood Walk")}</option>
+                  <option>{t("Coworking Session")}</option>
+                  <option>{t("Travel Tips / Local Advice")}</option>
                 </select>
               </div>
               <div>
